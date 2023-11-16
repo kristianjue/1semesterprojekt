@@ -39,3 +39,14 @@
             .style('transform','scale(1.0)');    
         })
     })
+
+    //fakataboks til tallerken
+    function showInfo() {
+        var infoBox = document.getElementById("infoBox");
+        infoBox.style.display = "block";
+      }
+      
+      function hideInfo() {
+        var infoBox = document.getElementById("infoBox");
+        infoBox.style.display = "none";
+      }
