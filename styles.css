@@ -21,8 +21,8 @@ body {
 }
 
 .plate img {
-    width: 200px;
-    height: auto;
+    width: 150px;
+    height: 150px;
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
