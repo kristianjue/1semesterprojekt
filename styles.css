@@ -50,6 +50,13 @@ body {
 
 #pieChartVegetarian{
     position: absolute;
+    left: 50px;
+    top:50px;
 }
 
+#pieChartMeatLover {
+    position: absolute;
+    left: 1150px; /* Juster denne værdi til den korrekte placering ved siden af kød-billedet */
+    top: 50px;
+}
 
