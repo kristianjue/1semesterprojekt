@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>CO2-udledning: Vegetarisk vs Kødret</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
    <!-- <div class="IconWidget"> 
@@ -47,6 +47,15 @@
             
         </div>
     </div>
+
+    //faktaboks til tallerken
+    <div id="plate" onmouseover="showInfo()" onmouseout="hideInfo()">
+        <img src="MadIcon.png" alt="Tallerken">
+        <div id="infoBox">
+          <p>Diagram og fakta vises her</p>
+        </div>
+    </div>
+
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="script.js"></script>
 </body>

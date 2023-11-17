@@ -144,27 +144,24 @@
         pieChartVegetarian();
         })
     .on('mouseout',function(){
-      d3.select("#pieChartVegetarian").remove();
-      d3.select(this)
-      .transition()
-      .duration(100)
-      .style('transform','scale(1.0)')  
+            d3.select(this)
+            .transition()
+            .duration(100)
+            .style('transform','scale(1.0)');    
         })
     
     d3.select('#meatDish img')
     .on('mouseover', function() {
-      d3.select(this)
-      .transition()
-      .duration(100)
-      .style('transform','scale(1.1)');
-      pieChartMeatLover();
-    })
+        d3.select(this)
+        .transition()
+        .duration(100)
+        .style('transform','scale(1.1)');
+        })
     .on('mouseout',function(){
-      d3.select("#pieChartMeatLover").remove();
-      d3.select(this)
-      .transition()
-      .duration(100)
-      .style('transform','scale(1.0)')
+            d3.select(this)
+            .transition()
+            .duration(100)
+            .style('transform','scale(1.0)');    
         })
     })*/
 
