@@ -6,15 +6,45 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="vegetarIcon">
-        <div class="plate" id="vegetarianDish">
-            <span class="info">Skriv info: </span>
+   <!-- <div class="IconWidget"> 
+        <div class="vegetarIcon">
+            <div class="plateIMG" id="vegetarianDish">
+                <span class="info">Skriv info: </span>
+            </div>                
+            </div>
         </div>
-    </div>
-    
-    <div class="ikkevegetarIcon">
-        <div class="plate" id="meatDish">
-            <span class="info">Skriv info:</span>
+        
+        <div class="ikkevegetarIcon">
+            <div class="plateIMG" id="meatDish">
+                <span class="info">Skriv info:</span>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="dashboard">
+        <div class="dashboard-item" id = "vegetarianDish">
+        </div>
+
+        <div class="dashboard-item">
+            <div class="header">CO2 UDLEDNINGEN PR KG</div>
+            <div class="number">5.35</div>
+            <div class="subtext"></div>
+        </div>
+
+        <div class="dashboard-item full-width" id = "VegetarianPieChart">
+        </div>
+
+
+        <div class="dashboard-item" id = "meatDish"> 
+        </div>
+
+        <div class="dashboard-item">
+            <div class="header">CO2 UDLEDNINGEN PR KG</div>
+            <div class="number">5.91</div>
+            <div class="subtext"></div>    
+        </div>
+        <div class="dashboard-item full-width" id = "MeatPieChart">
+            
         </div>
     </div>
     <script src="https://d3js.org/d3.v7.min.js"></script>

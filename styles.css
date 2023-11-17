@@ -4,27 +4,67 @@ body {
     padding: 20px;
 }
 
-.vegetarIcon {
-    position:absolute;
-    top: 100px; 
-    left: 50px; 
-    margin-left: 300px;
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    max-width: 1200px;
+    margin: auto;
+}
+.dashboard-item {
+    border: 2px solid black;
+    padding: 20px;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.ikkevegetarIcon{
-    position:absolute;
-    top: 100px; 
-    left: 850px; 
-    margin-left: 300;
-    display: flex;
-    justify-content: space-around;
+/* Generel typografi og layout */
+body {
+    font-family: 'Arial', sans-serif; /* Arial skrifttype anvendes */
+    text-align: center; /* Centrerer tekst */
+    color: #333; /* Mørkegrå farve for tekst */
+    background: #fff; /* Hvid baggrund */
+    padding: 20px; /* Polstring rundt om indholdet */
 }
 
-.plate img {
-    width: 150px;
-    height: 150px;
+/* Stil for overskriften */
+.header {
+    font-size: 15px; /* Større skriftstørrelse for overskriften */
+    font-weight: bold; /* Gør teksten fed */
+    margin-bottom: 10px; /* Margen under overskriften */
+}
+
+/* Stil for det store tal */
+.number {
+    font-size: 72px; /* Stor skriftstørrelse for tal */
+    font-weight: bold; /* Gør tallet fed */
+    color: #ff4136; /* Rød farve for tal */
+    margin-bottom: 5px; /* Margen under tallet */
+}
+
+/* Stil for den sekundære tekst */
+.subtext {
+    font-size: 18px; /* Mindre skriftstørrelse for sekundær tekst */
+    color: #666; /* Lysere grå farve for sekundær tekst */
+    font-style: italic; /* Kursiv stil */
+}
+
+.full-width {
+    grid-column: span 2;
+}
+/* Stil til at imitere de røde linjediagrammer */
+.chart-placeholder {
+    height: 50px;
+    background-color: #e4e4e4;
+    width: 100%;
+    margin: 10px 0;
+}
+
+img {
+    width: 250px;
+    height: 250px;
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
@@ -48,15 +88,16 @@ body {
     visibility: visible;
 }
 
-#pieChartVegetarian{
-    position: absolute;
-    left: 50px;
-    top:50px;
+#pieChartVegetarian, #pieChartMeatLover {
+    position: relative; /* Change to relative positioning */
+    left: 0;
+    top: 0;
 }
 
-#pieChartMeatLover {
-    position: absolute;
-    left: 1150px; /* Juster denne værdi til den korrekte placering ved siden af kød-billedet */
-    top: 50px;
+.dashboard-item {
+    /* Other styles */
+    position: relative; /* Ensure container is positioned relatively */
 }
+
+
 
