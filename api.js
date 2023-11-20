@@ -23,7 +23,7 @@ app.get("/tallerken/", async (req, res) => {
         let queryData = await klient.query('select * from tallerken');
         res.json({
             "ok": true,
-            "foods": queryData.rows,
+            "tallerken": queryData.rows,
         });
     } catch (error) {
         res.json({
@@ -39,7 +39,7 @@ app.get("/personbil_udvikling/:bilType", async (req, res) => {
         let queryData = await klient.query('select * from personbil_udvikling where vehicletype_id =$1', [bilType]);
         res.json({
             "ok": true,
-            "foods": queryData.rows,
+            "personbil_udvikling": queryData.rows,
         });
     } catch (error) {
         res.json({
@@ -54,7 +54,7 @@ app.get("/vegetarer/", async (req, res) => {
         let queryData = await klient.query('select * from vegetarer_i_antal');
         res.json({
             "ok": true,
-            "foods": queryData.rows,
+            "vegetarer": queryData.rows,
         });
     } catch (error) {
         res.json({
@@ -71,7 +71,7 @@ app.get("/maaltider/:maaltidId", async (req, res) => {
         let queryData = await klient.query('select * from tallerken  where maaltid_id =$1', [maaltidId]);
         res.json({
             "ok": true,
-            "foods": queryData.rows,
+            "maaltider": queryData.rows,
         });
     } catch (error) {
         res.json({
@@ -87,7 +87,7 @@ app.get("/vehicle_co2_emissions/:vehicletype", async (req, res) => {
         let queryData = await klient.query('select * from vehicle_co2_emissions  where vehicletype_id =$1', [vehicletype]);
         res.json({
             "ok": true,
-            "foods": queryData.rows,
+            "vehicle_co2_emissions": queryData.rows,
         });
     } catch (error) {
         res.json({
