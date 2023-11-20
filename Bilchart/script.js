@@ -110,7 +110,12 @@
             .append("rect")
             .attr('x', d => d > 0 ? x(0) : x(d))
             .attr("y", (d, i) => y('Item ' + (i + 1)))
-            .attr("width", d => d > 0 ? x(d) : x(0))
+            .attr("width", function (d) {
+                if(d>0){return x(d)}
+                else if (d==0) {return 1}
+                else {return x(0)}
+            
+            })
             .attr("height", y.bandwidth())
             .style("fill", function(d, i) { return colors[i]; }); // Set fill color based on position in dataset
             //.attr("fill", "orange");
@@ -121,7 +126,10 @@
             .enter()
             .append("text")
             .text(d => d.toFixed(4)) // Format the number to 4 decimal places
-            .attr("x", d => x(d) + 5) // Position text a bit right of the bar end
+            .attr("x", function (d) {
+                if(d>0){return x(d)-5}
+                else if (d==0) {return 50}
+                else {return x(0)}}) // Position text a bit right of the bar end
             .attr("y", (d, i) => y('Item ' + (i + 1)) + y.bandwidth() / 2 + 5) // Center text in the bar
             .attr("alignment-baseline", "middle")
             .attr("font-family", "sans-serif")
@@ -196,12 +204,15 @@
             .enter()
             .append("text")
             .text(d => d.toFixed(4)) // Format the number to 4 decimal places
-            .attr("x", d => x(d) - 25) // Position text a bit right of the bar end
+            .attr("x", function (d) {
+                if(d>0){return x(d)-24}
+                else if (d==0) {return 14}
+                else {return x(0)}}) // Position text a bit right of the bar end
             .attr("y", (d, i) => y('Item ' + (i + 1)) + y.bandwidth() / 2 + 5) // Center text in the bar
             .attr("alignment-baseline", "middle")
             .attr("font-family", "sans-serif")
             .attr("font-size", "11px")
-            .attr("fill", "black");
+            .attr("fill", "black")
 
     
         // Append x-axis
