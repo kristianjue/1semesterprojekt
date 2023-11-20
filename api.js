@@ -49,6 +49,54 @@ app.get("/personbil_udvikling/:bilType", async (req, res) => {
     }
 });
 
+app.get("/vegetarer/", async (req, res) => {
+    try {
+        let queryData = await klient.query('select * from vegetarer_i_antal');
+        res.json({
+            "ok": true,
+            "foods": queryData.rows,
+        });
+    } catch (error) {
+        res.json({
+            "ok": false,
+            "message": error.message,
+        });
+    }
+});
+
+
+app.get("/maaltider/:maaltidId", async (req, res) => {
+    try {
+        const maaltidId = req.params.maaltidId;
+        let queryData = await klient.query('select * from tallerken  where maaltid_id =$1', [maaltidId]);
+        res.json({
+            "ok": true,
+            "foods": queryData.rows,
+        });
+    } catch (error) {
+        res.json({
+            "ok": false,
+            "message": error.message,
+        });
+    }
+});
+
+app.get("/vehicle_co2_emissions/:vehicletype", async (req, res) => {
+    try {
+        const vehicletype = req.params.vehicletype;
+        let queryData = await klient.query('select * from vehicle_co2_emissions  where vehicletype_id =$1', [vehicletype]);
+        res.json({
+            "ok": true,
+            "foods": queryData.rows,
+        });
+    } catch (error) {
+        res.json({
+            "ok": false,
+            "message": error.message,
+        });
+    }
+});
+
 
 
 app.listen(port, () => {
