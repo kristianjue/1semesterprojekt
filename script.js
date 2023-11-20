@@ -1,290 +1,213 @@
-
-    // Tilføj billeder ved hjælp af D3.js
-    d3.select('#vegetarianDish')
-      .append('img')
-      .attr('src', 'vegetarian.png') // Stien til dit vegetariske mad ikon
-      .attr('alt', 'Vegetarisk ret')
+    d3.select("#vegetarianDish")
+      .append("img")
+      .attr("src", "vegetarian.png") 
       barchartVegetarian();
-
-     
-    d3.select('#meatDish')
-      .append('img')
-      .attr('src', 'meatlover.png') // Stien til dit kød mad ikon
-      .attr('alt', 'Kødret');
+      
+    d3.select("#meatDish")
+      .append("img")
+      .attr("src", "meatlover.png") 
       barchartMeatlover();
 
+    d3.selectAll(".informations-billede")
+        .append("img")
+        .attr("src","informationbutton.png")
+        .on("mouseover",function(event,d){
+            d3.select(this)
+            .style("opacity", 0.5);
+         })
+        .on("mouseout",function(event,d){
+            d3.select(this)
+            .style("opacity",1);
+        })
+    
+    d3.selectAll(".informations-billede img")
+        .on("click", showOverlayContentInfo);
+    
+    d3.select('#closeOverlay')
+        .on('click', closeOverlayContentInfo);    
+       
+   
 
-      
-      function barchartVegetarian() {
-        var w = 550;
-        var h = 250;
+    let billede = document.getElementsByClassName("informations-billede");
+
+    billede[0].addEventListener("click", function () {
+        // Handle click for vegetarian information icon
+        
+        let vegetarianptag = document.createElement("p");
+        vegetarianptag.textContent = "This is vegetarian information.";
+        informationDisplay(vegetarianptag);
+    });
+
+    billede[1].addEventListener("click", function () {
+        // Handle click for meat information icon
+        let overlayContent = document.getElementById("overlayContent");    
+        let meatptag = document.createElement("p");
+        meatptag.textContent = "This is meat information.";
+        informationDisplay(meatptag);
+    });
+
+    function informationDisplay(ptag) {
+        // Clear previous content
+        // Append the new <p> tag
+        let previousTag = overlayContent.querySelector("p");
+        if (previousTag) {
+            previousTag.remove();
+        }    
+        overlayContent.appendChild(ptag);
+
+        // Display the overlay
+        overlayContent.style.display = "block";
+    }
+
+
+    function showOverlayContentInfo() {
+            d3.select('#overlayContent').style('display', 'block');
+    }
+        
+    function closeOverlayContentInfo() {
+            d3.select('#overlayContent').style('display', 'none');
+    }  
+
+
+    function barchartVegetarian() {
+        let dataset = [0.1196, 0.0494, 0.0872, 0.1408, 0.1586, 0.0056];
+
+        let colors = [
+            "#A52A2A", // Brun
+            "#FFFF00", // Gul
+            "#FF0000", // Rød
+            "#0000FF", // Blå
+            "#800080", // Lilla
+            "#FFA500"  // Orange
+        ];
+
     
-        var dataset = [0.1196, 0.0494, 0.0872, 0.1408, 0.1586, 0.0056];
+        let margin = {top: 20, right: 30, bottom: 40, left: 70},
+            width = 550 - margin.left - margin.right,
+            height = 300 - margin.top - margin.bottom;
     
-        // The xScale will determine the length of the bars.
-        var xScale = d3.scaleLinear()
-            .domain([0, d3.max(dataset)])
-            .range([0, w]);
+        let svg = d3.select("#VegetarianBarChart")
+          .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     
-        // The yScale now uses scaleBand to determine the position along the Y axis.
-        var yScale = d3.scaleBand()
-            .domain(d3.range(dataset.length))
-            .range([0, h])
-            .paddingInner(0.05);
+        let x = d3.scaleLinear()
+            .domain([0, 0.45])
+            .range([0, width]);
     
-        // Create SVG element
-        var svg = d3.select("#VegetarianPieChart")
+    
+        let y = d3.scaleBand()
+            .range([0, height])
+            .domain(dataset.map((d, i) => 'Item ' + (i + 1))) 
+            .padding(0.1);
+    
+       
+        svg.selectAll("rect")
+            .data(dataset)
+            .enter()
+            .append("rect")
+            .attr("x", x(0))
+            .attr("y", (d, i) => y('Item ' + (i + 1)))
+            .attr("width", d => x(d))
+            .attr("height", y.bandwidth())
+            .style("fill", function(d, i) { return colors[i]; }); // Set fill color based on position in dataset
+            //.attr("fill", "orange");
+    
+        // Add text labels
+        svg.selectAll("text")
+            .data(dataset)
+            .enter()
+            .append("text")
+            .text(d => d.toFixed(4)) // Format the number to 4 decimal places
+            .attr("x", d => x(d) + 5) // Position text a bit right of the bar end
+            .attr("y", (d, i) => y('Item ' + (i + 1)) + y.bandwidth() / 2 + 5) // Center text in the bar
+            .attr("alignment-baseline", "middle")
+            .attr("font-family", "sans-serif")
+            .attr("font-size", "11px")
+            .attr("fill", "black");
+    
+        // Append x-axis
+        svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x));
+    
+        // Append y-axis
+        svg.append("g")
+            .call(d3.axisLeft(y));
+    }
+
+         
+
+    function barchartMeatlover() {
+        let dataset = [0.4335, 0.0695, 0.0025, 0.115, 0.071, 0.0025];
+
+        let colors = [
+            "#A52A2A", // Brun
+            "#FFFF00", // Gul
+            "#FF0000", // Rød
+            "#0000FF", // Blå
+            "#800080", // Lilla
+            "#FFA500"  // Orange
+        ];
+
+
+        let margin = {top: 20, right: 30, bottom: 40, left: 70},
+            width = 550 - margin.left - margin.right,
+            height = 300 - margin.top - margin.bottom;
+    
+        let svg = d3.select("#MeatBarChart")
             .append("svg")
-            .attr("width", w)
-            .attr("height", h);
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    
+        let x = d3.scaleLinear()
+            .domain([0, 0.45])
+            .range([0, width]);
+    
+        let y = d3.scaleBand()
+            .range([0, height])
+            .domain(dataset.map((d, i) => 'Item ' + (i + 1)))
+            .padding(0.1);
     
         // Create bars
         svg.selectAll("rect")
             .data(dataset)
             .enter()
             .append("rect")
-            .attr("y", function(d, i) {
-                return yScale(i);
-            })
-            .attr("height", yScale.bandwidth())
-            .attr("width", function(d) {
-                return xScale(d); // Width is now based on the data value
-            })
-            
+            .attr("x", x(0))
+            .attr("y", (d, i) => y('Item ' + (i + 1)))
+            .attr("width", d => x(d))
+            .attr("height", y.bandwidth())
+            .style("fill", function(d, i) { return colors[i]; }); // Set fill color based on position in dataset
+            //.style("fill", "orange"); 
     
-        // Create labels
+        // Add text labels
         svg.selectAll("text")
             .data(dataset)
             .enter()
             .append("text")
-            .text(function(d) {
-                return d;
-            })
-            .attr("text-anchor", "left")
-            .attr("y", function(d, i) {
-                return yScale(i) + yScale.bandwidth() / 2;
-            })
-            .attr("x", function(d) {
-                return xScale(d) + 3; // Offset a bit right for the label
-            })
-            .attr("alignment-baseline", "middle") // Center the text vertically in the bar
+            .text(d => d.toFixed(4)) // Format the number to 4 decimal places
+            .attr("x", d => x(d) + 5) // Position text a bit right of the bar end
+            .attr("y", (d, i) => y('Item ' + (i + 1)) + y.bandwidth() / 2 + 5) // Center text in the bar
+            .attr("alignment-baseline", "middle")
             .attr("font-family", "sans-serif")
             .attr("font-size", "11px")
-            .attr("fill", "black"); // Change the color to something visible on a green bar
+            .attr("fill", "black");
+
+    
+        // Append x-axis
+        svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x).ticks(8));
+    
+        // Append y-axis
+        svg.append("g")
+            .call(d3.axisLeft(y));
     }
     
-    function barchartMeatlover() {
-      var w = 550;
-      var h = 250;
-  
-      var dataset = [0.4335, 0.0695, 0.0025, 0.115, 0.071, 0.0025];
-  
-      // The xScale will determine the length of the bars.
-      var xScale = d3.scaleLinear()
-          .domain([0, d3.max(dataset)])
-          .range([0, w]);
-  
-      // The yScale now uses scaleBand to determine the position along the Y axis.
-      var yScale = d3.scaleBand()
-          .domain(d3.range(dataset.length))
-          .range([0, h])
-          .paddingInner(0.05);
-  
-      // Create SVG element
-      var svg = d3.select("#MeatPieChart")
-          .append("svg")
-          .attr("width", w)
-          .attr("height", h);
-  
-      // Create bars
-      svg.selectAll("rect")
-          .data(dataset)
-          .enter()
-          .append("rect")
-          .attr("y", function(d, i) {
-              return yScale(i);
-          })
-          .attr("height", yScale.bandwidth())
-          .attr("width", function(d) {
-              return xScale(d); // Width is now based on the data value
-          })
-          
-  
-      // Create labels
-      svg.selectAll("text")
-          .data(dataset)
-          .enter()
-          .append("text")
-          .text(function(d) {
-              return d;
-          })
-          .attr("text-anchor", "left")
-          .attr("y", function(d, i) {
-              return yScale(i) + yScale.bandwidth() / 2;
-          })
-          .attr("x", function(d) {
-              return xScale(d) + 3; // Offset a bit right for the label
-          })
-          .attr("alignment-baseline", "middle") // Center the text vertically in the bar
-          .attr("font-family", "sans-serif")
-          .attr("font-size", "11px")
-          .attr("fill", "black"); // Change the color to something visible on a green bar
-  }
-
-     
-
-   // Hvis vi skal have mouse over funktion   
-   /* document.addEventListener('DOMContentLoaded', function() {
-    d3.select('#vegetarianDish img')
-    .on('mouseover', function() {
-        d3.select(this)
-        .transition()
-        .duration(100)
-        .style('transform','scale(1.1)');
-        pieChartVegetarian();
-        })
-    .on('mouseout',function(){
-            d3.select(this)
-            .transition()
-            .duration(100)
-            .style('transform','scale(1.0)');    
-        })
-    
-    d3.select('#meatDish img')
-    .on('mouseover', function() {
-        d3.select(this)
-        .transition()
-        .duration(100)
-        .style('transform','scale(1.1)');
-        })
-    .on('mouseout',function(){
-            d3.select(this)
-            .transition()
-            .duration(100)
-            .style('transform','scale(1.0)');    
-        })
-    })*/
-
-
-    // PIE CHART
-
-    /*function pieChartVegetarian() {
-      var w = 300;
-      var h = 300;
-  
-      var dataset = [5, 10, 20, 45, 6, 70];
-  
-      var outerRadius = w / 2;
-      var innerRadius = 0;
-      var arc = d3.arc()
-          .innerRadius(innerRadius)
-          .outerRadius(outerRadius);
-  
-      var pie = d3.pie();
-  
-      var color = d3.scaleOrdinal(d3.schemeCategory10);
-  
-      var svg = d3.select("#VegetarianPieChart")
-          .append("svg")
-          .attr("id", "pieChartVegetarian")
-          .attr("width", w)
-          .attr("height", h);
-  
-      var arcs = svg.selectAll("g.arc")
-          .data(pie(dataset))
-          .enter()
-          .append("g")
-          .attr("class", "arc")
-          .attr("transform", "translate(" + outerRadius + "," + outerRadius + ")");
-  
-      arcs.append("path")
-          .attr("fill", function(d, i) {
-              return color(i);
-          })
-          .attr("d", arc);
-  
-      arcs.append("text")
-          .attr("transform", function(d) {
-              return "translate(" + arc.centroid(d) + ")";
-          })
-          .attr("text-anchor", "middle")
-          .text(function(d) {
-              return d.value;
-          });
-  
-      // Mouseover and mouseout events
-      arcs.on("mouseover", function(d) {
-          d3.select(this)
-              .transition()
-              .duration(200)
-              .attr("transform", function(d) { 
-                  var dist = 10;
-                  var angle = (d.startAngle + d.endAngle) / 2;
-                  var x = dist * Math.sin(angle);
-                  var y = -dist * Math.cos(angle);
-                  return "translate(" + outerRadius + "," + outerRadius + ") translate(" + x + "," + y + ")";
-              });
-      })
-      .on("mouseout", function(d) {
-          d3.select(this)
-              .transition()
-              .duration(200)
-              .attr("transform", "translate(" + outerRadius + "," + outerRadius + ")");
-      });
-  }
-  
-    function pieChartMeatLover(){
-
-      var w = 200;
-      var h = 200;
-  
-      var dataset = [ 5, 10, 20, 45, 6, 25 ];
-  
-      var outerRadius = w / 2;
-      var innerRadius = 0;
-      var arc = d3.arc()
-            .innerRadius(innerRadius)
-            .outerRadius(outerRadius);
-      
-      var pie = d3.pie();
-      
-      //Easy colors accessible via a 10-step ordinal scale
-      var color = d3.scaleOrdinal(d3.schemeCategory10);
-  
-      //Create SVG element
-      var svg = d3.select("#MeatPieChart")
-            .append("svg")
-            .attr("id","pieChartMeatLover")
-            .attr("width", w)
-            .attr("height", h)
-            
-      
-      //Set up groups
-      var arcs = svg.selectAll("g.arc")
-              .data(pie(dataset))
-              .enter()
-              .append("g")
-              .attr("class", "arc")
-              .attr("transform", "translate(" + outerRadius + "," + outerRadius + ")");
-      
-      //Draw arc paths
-      arcs.append("path")
-          .attr("fill", function(d, i) {
-            return color(i);
-          })
-          .attr("d", arc);
-      
-      //Labels
-      arcs.append("text")
-          .attr("transform", function(d) {
-            return "translate(" + arc.centroid(d) + ")";
-          })
-          .attr("text-anchor", "middle")
-          .text(function(d) {
-            return d.value;
-          });
-    }*/
-
 
     
-

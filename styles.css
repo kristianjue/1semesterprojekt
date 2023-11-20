@@ -20,6 +20,25 @@ body {
     align-items: center;
 }
 
+.dashboard-car{
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    display: grid;
+    grid-gap: 10px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.line {
+    fill: none;
+    stroke: #CC0000;
+    stroke-width: 2;
+}
+.dot {
+    fill: #CC0000;
+}
+
 /* Generel typografi og layout */
 body {
     font-family: 'Arial', sans-serif; /* Arial skrifttype anvendes */
@@ -65,9 +84,24 @@ body {
 img {
     width: 250px;
     height: 250px;
-    border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
+}
+
+.informations-billede img{
+    position: absolute;
+    bottom: 10px; /* Juster afstanden fra bunden efter behov */
+    right: 10px; /* Juster afstanden fra højre side efter behov */
+    width: 25px;
+    height: 25px;
+}
+
+.sortering img{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    bottom: 10px; /* Juster afstanden fra bunden efter behov */
+    right: 50px; /* Juster afstanden fra højre side efter behov */
 }
 
 .info {
@@ -100,5 +134,32 @@ img {
     position: relative; /* Ensure container is positioned relatively */
 }
 
+/* Stil for overlay */
+#overlayContent {
+    display: none; /* Start with hidden overlay */
+    position: fixed; /* Fixed position relative to viewport */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust position to truly center */
+    background: white; /* Background color */
+    padding: 40px; /* Padding inside the box */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 1); /* Shadow for a pop-up effect */
+    /*z-index: 1000; /* Ensure it's on top of other elements */
+    /*text-align: center; /* Center the text inside */
+}
+
+/* Add this to style the close button */
+#closeOverlayInfo {
+    margin-top: 20px;
+    padding: 5px 10px;
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+  
 
 
