@@ -12,7 +12,6 @@ body {
     margin: auto;
 }
 .dashboard-item {
-    border: 2px solid black;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -56,13 +55,19 @@ body {
 }
 
 /* Stil for det store tal */
-.number {
+#numberone {
     font-size: 72px; /* Stor skriftstørrelse for tal */
     font-weight: bold; /* Gør tallet fed */
-    color: #ff4136; /* Rød farve for tal */
+    color: #0076c0; /* Rød farve for tal */
     margin-bottom: 5px; /* Margen under tallet */
 }
 
+#numbertwo {
+    font-size: 72px; /* Stor skriftstørrelse for tal */
+    font-weight: bold; /* Gør tallet fed */
+    color: #003353; /* Rød farve for tal */
+    margin-bottom: 5px; /* Margen under tallet */
+}
 /* Stil for den sekundære tekst */
 .subtext {
     font-size: 18px; /* Mindre skriftstørrelse for sekundær tekst */
@@ -188,7 +193,21 @@ img {
         transform: rotate(45deg);
       }
       
+      
 
   
-
+      .dashboard {
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 20px 50px;
+        background-color:  rgb(16, 49, 181);
+        padding: 10px;
+      }
+      
+      .dashboard > div {
+        background-color: rgba(255, 255, 255);
+        text-align: center;
+        padding: 10px 0;
+        font-size: 30px;
+      }
 

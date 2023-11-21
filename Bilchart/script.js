@@ -1,6 +1,6 @@
     d3.select("#vegetarianDish")
       .append("img")
-      .attr("src", "370196215_882309036581375_9156075466853432003_n.png") 
+      .attr("src", "2audi.png") 
       barchartVegetarian();
       
     d3.select("#meatDish")
@@ -104,37 +104,63 @@
             .padding(0.1);
     
        
-        svg.selectAll("rect")
+            svg.selectAll("rect")
             .data(dataset)
             .enter()
             .append("rect")
-            .attr('x', d => d > 0 ? x(0) : x(d))
+            .attr('x', x(0))  // Start from the y-axis position
             .attr("y", (d, i) => y('Item ' + (i + 1)))
-            .attr("width", function (d) {
-                if(d>0){return x(d)}
-                else if (d==0) {return 1}
-                else {return x(0)}
-            
-            })
+            .attr("width", 0)  // Start with zero width
             .attr("height", y.bandwidth())
-            .style("fill", function(d, i) { return colors[i]; }); // Set fill color based on position in dataset
-            //.attr("fill", "orange");
+            .transition()
+            .duration(1000)
+            .ease(d3.easeCubic)
+            .attr("width", function (d) {
+                if (d > 0) {
+                    return x(d);
+                } else if (d == 0) {
+                    return 1;
+                } else {
+                    return x(0);
+                }
+            })
+            .attr('x', d => d > 0 ? x(0) : x(d))  // Move to the final x position
+            .transition()
+            .duration(1000)
+            .style("fill", function (d) {
+                if (d > 0) {
+                    // Set color based on positive values
+                    return "rgb(0, 0, " + Math.round(255 / d / 2 - 10) + ")";
+                } else {
+                    // Set light blue for negative values
+                    return "lightblue";
+                }
+            });
+        
     
         // Add text labels
         svg.selectAll("text")
             .data(dataset)
             .enter()
             .append("text")
+            .attr("x", x(0))  // Start from the y-axis position
+            .attr("y", (d, i) => y('Item ' + (i + 1)) + y.bandwidth() / 2 + 5) // Center text in the bar
             .text(d => d.toFixed(4)) // Format the number to 4 decimal places
+            .transition()
+            .duration(1000)
+            .ease(d3.easeCubic)
             .attr("x", function (d) {
-                if(d>0){return x(d)-5}
+                if(d>1){return x(d)-5}
                 else if (d==0) {return 50}
+                else if (d > 0.01 && d < 1) {return x(d)+9}
                 else {return x(0)}}) // Position text a bit right of the bar end
             .attr("y", (d, i) => y('Item ' + (i + 1)) + y.bandwidth() / 2 + 5) // Center text in the bar
             .attr("alignment-baseline", "middle")
             .attr("font-family", "sans-serif")
             .attr("font-size", "11px")
-            .attr("fill", "black");
+            .style("fill", function (d) {
+                return d > 0 ? "white" : "black"; // Set the fill color based on the value of d
+            });
     
         // Append x-axis
         svg.append("g")
@@ -183,37 +209,68 @@
     
         // Create bars
         svg.selectAll("rect")
-            .data(dataset)
-            .enter()
-            .append("rect")
-            .attr('x', d => d > 0 ? x(0) : x(d))
-            .attr("y", (d, i) => y('Item ' + (i + 1)))
-            .attr("width", function (d) {
-                if(d>0){return x(d)}
-                else if (d==0) {return 1}
-                else {return x(0)}
-            
-            })
-            .attr("height", y.bandwidth())
-            .style("fill", function(d, i) { return colors[i]; }); // Set fill color based on position in dataset
+        .data(dataset)
+        .enter()
+        .append("rect")
+        .attr('x', x(0))  // Start from the y-axis position
+        .attr("y", (d, i) => y('Item ' + (i + 1)))
+        .attr("width", 0)  // Start with zero width
+        .attr("height", y.bandwidth())
+        .transition()
+        .duration(1000)
+        .ease(d3.easeCubic)
+        .attr("width", function (d) {
+            if (d > 0) {
+                return x(d);
+            } else if (d == 0) {
+                return 1;
+            } else {
+                return x(0);
+            }
+        })
+        .attr('x', d => d > 0 ? x(0) : x(d))  // Move to the final x position
+        .transition()
+        .duration(1000)
+        .style("fill", function (d) {
+            if (d > 0) {
+                // Set color based on positive values
+                return "rgb(0, 0, " + Math.round(255 / d / 2 - 10) + ")";
+            } else {
+                // Set light blue for negative values
+                return "lightblue";
+            }
+        });
+    
+             // Set fill color based on position in dataset
             //.style("fill", "orange"); 
     
         // Add text labels
         svg.selectAll("text")
-            .data(dataset)
-            .enter()
-            .append("text")
-            .text(d => d.toFixed(4)) // Format the number to 4 decimal places
-            .attr("x", function (d) {
-                if(d>0){return x(d)-24}
-                else if (d==0) {return 14}
-                else {return x(0)}}) // Position text a bit right of the bar end
-            .attr("y", (d, i) => y('Item ' + (i + 1)) + y.bandwidth() / 2 + 5) // Center text in the bar
-            .attr("alignment-baseline", "middle")
-            .attr("font-family", "sans-serif")
-            .attr("font-size", "11px")
-            .attr("fill", "black")
-
+        .data(dataset)
+        .enter()
+        .append("text")
+        .attr("x", x(0))  // Start from the y-axis position
+        .attr("y", (d, i) => y('Item ' + (i + 1)) + y.bandwidth() / 2 + 5) // Center text in the bar
+        .text(d => d.toFixed(4)) // Format the number to 4 decimal places
+        .transition()
+        .duration(1000)
+        .ease(d3.easeCubic)
+        .attr("alignment-baseline", "middle")
+        .attr("font-family", "sans-serif")
+        .attr("font-size", "11px")
+        .style("fill", function (d) {
+            return d > 0 ? "white" : "black"; // Set the fill color based on the value of d
+        })
+        .attr("x", function (d) {
+            if (d > 0) {
+                return x(d) - 24;
+            } else if (d == 0) {
+                return 14;
+            } else {
+                return x(0);
+            }
+        });
+    
     
         // Append x-axis
         svg.append("g")
