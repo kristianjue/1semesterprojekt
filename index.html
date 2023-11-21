@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>CO2-udledning: Vegetarisk vs Kødret</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
    <!-- <div class="IconWidget"> 
         <div class="vegetarIcon">
@@ -22,7 +24,7 @@
     </div> -->
 
     <div class="dashboard">
-        <div class="dashboard-item" id = "vegetarianDish">
+        <div class="dashboard-item" id="vegetarianDish">
         </div>
         <div class="dashboard-item" id = "meatDish"> 
         </div>
@@ -34,16 +36,29 @@
             <div class="informations-billede" id="vegetarianinformation"></div>
             <div class="sortering"></div>
         </div>
+
+        <div class="dashboard-item full-width" id="VegetarianBarChart">
+        </div>
+
+
+        <div class="dashboard-item" id="meatDish">
+        </div>
+
+
         <div class="dashboard-item">
             <div class="header">CO2 UDLEDNINGEN PR MÅLTID</div>
             <div class="number">0.704</div>
             <div class="subtext"></div>
-            <div class="informations-billede" id="meatinformation"></div>    
+            <div class="informations-billede" id="meatinformation"></div>
             <div class="sortering"></div>
         </div>
+
+        <div class="dashboard-item full-width" id="MeatBarChart">
+
         <div class="dashboard-item full-width" id = "VegetarianBarChart">
         </div>
         <div class="dashboard-item full-width" id = "MeatBarChart">
+
         </div>
     </div>
 
@@ -51,13 +66,14 @@
     <div id="overlayContent" style="display:none;">
         <button id="closeOverlay">Luk</button>
     </div>
-  
+
 
     <svg width="1000" height="400"></svg>
 
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="script.js"></script> 
+    <script src="script.js"></script>
     <!-- <script src="electriccar.js"></script> -->
 </body>
+
 </html>
