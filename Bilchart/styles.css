@@ -198,8 +198,8 @@ img {
   
       .dashboard {
         display: grid;
-        grid-template-columns: auto auto;
-        gap: 20px 50px;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); /* Adjust column width as needed */
+        gap: 20px 40px;
         background-color:  rgb(16, 49, 181);
         padding: 10px;
       }
@@ -210,4 +210,13 @@ img {
         padding: 10px 0;
         font-size: 30px;
       }
+
+      #textbeside {
+        position:relative; top:50px; left: 500px; margin-left:0px; margin-right:0px;
+    margin-left: 20px;
+    font-size: 15px;
+    font-style: italic; /* Kursiv stil */
+    font-weight: bold;
+}
+
 
