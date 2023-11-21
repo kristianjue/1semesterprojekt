@@ -1,313 +1,313 @@
 {
-    "data": [
+    "elbildata": [
       {
-        "Period": "2011M01",
+        "Period": "Q1-2011",
         "Benzin": 0,
         "Diesel": 0,
         "El": 0
       },
       {
-        "Period": "2011M04",
+        "Period": "Q2-2011",
         "Benzin": -3212,
         "Diesel": 20754,
         "El": 239
       },
       {
-        "Period": "2011M07",
+        "Period": "Q3-2011",
         "Benzin": -5144,
         "Diesel": 17178,
         "El": 75
       },
       {
-        "Period": "2011M10",
+        "Period": "Q4-2011",
         "Benzin": -11022,
         "Diesel": 11782,
         "El": 21
       },
       {
-        "Period": "2012M01",
+        "Period": "Q1-2012",
         "Benzin": -8536,
         "Diesel": 7194,
         "El": 123
       },
       {
-        "Period": "2012M04",
+        "Period": "Q2-2012",
         "Benzin": -4320,
         "Diesel": 16896,
         "El": 55
       },
       {
-        "Period": "2012M07",
+        "Period": "Q3-2012",
         "Benzin": -1493,
         "Diesel": 19942,
         "El": 176
       },
       {
-        "Period": "2012M10",
+        "Period": "Q4-2012",
         "Benzin": -3454,
         "Diesel": 7713,
         "El": 138
       },
       {
-        "Period": "2013M01",
+        "Period": "Q1-2013",
         "Benzin": -5297,
         "Diesel": 8376,
         "El": 108
       },
       {
-        "Period": "2013M04",
+        "Period": "Q2-2013",
         "Benzin": 5099,
         "Diesel": 9003,
         "El": 2
       },
       {
-        "Period": "2013M07",
+        "Period": "Q3-2013",
         "Benzin": 3601,
         "Diesel": 12783,
         "El": -28
       },
       {
-        "Period": "2013M10",
+        "Period": "Q4-2013",
         "Benzin": 1337,
         "Diesel": 5713,
         "El": 103
       },
       {
-        "Period": "2014M01",
+        "Period": "Q1-2014",
         "Benzin": -6894,
         "Diesel": 932,
         "El": 253
       },
       {
-        "Period": "2014M04",
+        "Period": "Q2-2014",
         "Benzin": 8306,
         "Diesel": 9303,
         "El": 249
       },
       {
-        "Period": "2014M07",
+        "Period": "Q3-2014",
         "Benzin": 5693,
         "Diesel": 13473,
         "El": 214
       },
       {
-        "Period": "2014M10",
+        "Period": "Q4-2014",
         "Benzin": 2758,
         "Diesel": 5283,
         "El": 325
       },
       {
-        "Period": "2015M01",
+        "Period": "Q1-2015",
         "Benzin": 3111,
         "Diesel": 5863,
         "El": 550
       },
       {
-        "Period": "2015M04",
+        "Period": "Q2-2015",
         "Benzin": 10035,
         "Diesel": 11313,
         "El": 661
       },
       {
-        "Period": "2015M07",
+        "Period": "Q3-2015",
         "Benzin": 11659,
         "Diesel": 11342,
         "El": 549
       },
       {
-        "Period": "2015M10",
+        "Period": "Q4-2015",
         "Benzin": 6159,
         "Diesel": 5144,
         "El": 1207
       },
       {
-        "Period": "2016M01",
+        "Period": "Q1-2016",
         "Benzin": 4072,
         "Diesel": 6938,
         "El": 2524
       },
       {
-        "Period": "2016M04",
+        "Period": "Q2-2016",
         "Benzin": 11866,
         "Diesel": 11171,
         "El": -33
       },
       {
-        "Period": "2016M07",
+        "Period": "Q3-2016",
         "Benzin": 12537,
         "Diesel": 13985,
         "El": 61
       },
       {
-        "Period": "2016M10",
+        "Period": "Q4-2016",
         "Benzin": 5985,
         "Diesel": 4925,
         "El": 392
       },
       {
-        "Period": "2017M01",
+        "Period": "Q1-2017",
         "Benzin": 5057,
         "Diesel": 7503,
         "El": 257
       },
       {
-        "Period": "2017M04",
+        "Period": "Q2-2017",
         "Benzin": 12429,
         "Diesel": 11517,
         "El": -123
       },
       {
-        "Period": "2017M07",
+        "Period": "Q3-2017",
         "Benzin": 12551,
         "Diesel": 11637,
         "El": -74
       },
       {
-        "Period": "2017M10",
+        "Period": "Q4-2017",
         "Benzin": 5754,
         "Diesel": -715,
         "El": 282
       },
       {
-        "Period": "2018M01",
+        "Period": "Q1-2018",
         "Benzin": 3654,
         "Diesel": 7824,
         "El": 117
       },
       {
-        "Period": "2018M04",
+        "Period": "Q2-2018",
         "Benzin": 12091,
         "Diesel": 9341,
         "El": 215
       },
       {
-        "Period": "2018M07",
+        "Period": "Q3-2018",
         "Benzin": 13332,
         "Diesel": 11340,
         "El": 237
       },
       {
-        "Period": "2018M10",
+        "Period": "Q4-2018",
         "Benzin": 977,
         "Diesel": 5058,
         "El": 355
       },
       {
-        "Period": "2019M01",
+        "Period": "Q1-2019",
         "Benzin": 5056,
         "Diesel": 1742,
         "El": 721
       },
       {
-        "Period": "2019M04",
+        "Period": "Q2-2019",
         "Benzin": 16737,
         "Diesel": 3031,
         "El": 1231
       },
       {
-        "Period": "2019M07",
+        "Period": "Q3-2019",
         "Benzin": 13510,
         "Diesel": 6121,
         "El": 1159
       },
       {
-        "Period": "2019M10",
+        "Period": "Q4-2019",
         "Benzin": 2574,
         "Diesel": 56,
         "El": 1551
       },
       {
-        "Period": "2020M01",
+        "Period": "Q1-2020",
         "Benzin": 2971,
         "Diesel": 684,
         "El": 1836
       },
       {
-        "Period": "2020M04",
+        "Period": "Q2-2020",
         "Benzin": 4041,
         "Diesel": -1704,
         "El": 2120
         },
         {
-        "Period": "2020M07", 
+        "Period": "Q3-2020", 
         "Benzin": 18524,
         "Diesel": 6887,
         "El": 2076
         },
         {
-        "Period": "2020M10",
+        "Period": "Q4-2020",
         "Benzin": 4212,
         "Diesel": -348,
         "El": 5285
         },
         {
-        "Period": "2021M01",
+        "Period": "Q1-2021",
         "Benzin": -680,
         "Diesel": -3212,
         "El": 6929
         },
         {
-        "Period": "2021M04",
+        "Period": "Q2-2021",
         "Benzin": 10993,
         "Diesel": -2831,
         "El": 4422
         },
         {
-        "Period": "2021M07",
+        "Period": "Q3-2021",
         "Benzin": 10186,
         "Diesel": -946,
         "El": 6729
         },
         {
-        "Period": "2021M10",
+        "Period": "Q4-2021",
         "Benzin": -6564,
         "Diesel": -9957,
         "El": 12126
         },
         {
-        "Period": "2022M01",
+        "Period": "Q1-2022",
         "Benzin": -7522,
         "Diesel": -12288,
         "El": 13403
         },
         {
-        "Period":"2022M04",
+        "Period":"Q2-2022",
         "Benzin": 2024,
         "Diesel": -6900,
         "El": 10888
         },
         {
-        "Period": "2022M07",
+        "Period": "Q3-2022",
         "Benzin": -3096,
         "Diesel": -6883,
         "El": 11512
         },
         {
-        "Period":"2022M10",
+        "Period":"Q4-2022",
         "Benzin": -11614,
         "Diesel": -14041,
         "El": 10454
         },
         {
-        "Period":"2023M01",
+        "Period":"Q1-2023",
         "Benzin": -7298,
         "Diesel": -12547,
         "El": 13125
         },
         {
-        "Period":"2023M04",
+        "Period":"Q2-2023",
         "Benzin": 1402,
         "Diesel": -9358,
         "El": 16716
         },
         {
-        "Period":"2023M07",
+        "Period":"Q3-2023",
         "Benzin": -2387,
         "Diesel": -10446,
         "El": 20097
         },
         {
-        "Period":"2023M10",
+        "Period":"Q4-2023",
         "Benzin": -15437,
         "Diesel": -19403,
         "El": 25310

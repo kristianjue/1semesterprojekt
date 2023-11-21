@@ -18,6 +18,20 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative; /* Ensure container is positioned relatively */
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+.line {
+    fill: none;
+    stroke: #CC0000;
+    stroke-width: 2;
+}
+.dot {
+    fill: #CC0000;
 }
 
 /* Generel typografi og layout */
@@ -51,54 +65,59 @@ body {
     font-style: italic; /* Kursiv stil */
 }
 
-.full-width {
-    grid-column: span 2;
-}
-/* Stil til at imitere de røde linjediagrammer */
-.chart-placeholder {
-    height: 50px;
-    background-color: #e4e4e4;
-    width: 100%;
-    margin: 10px 0;
-}
-
 img {
     width: 250px;
     height: 250px;
-    border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
 }
 
-.info {
-    visibility: hidden;
-    width: 200px;
-    background-color: green;
-    color: white;
-    text-align: center;
-    padding: 5px 0;
+.informations-billede img{
     position: absolute;
-    z-index: 1;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 10px; /* Juster afstanden fra bunden efter behov */
+    right: 10px; /* Juster afstanden fra højre side efter behov */
+    width: 25px;
+    height: 25px;
+}
+
+.sortering img{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    bottom: 10px; /* Juster afstanden fra bunden efter behov */
+    right: 50px; /* Juster afstanden fra højre side efter behov */
 }
 
 .plate:hover .info {
     visibility: visible;
 }
 
-
-#pieChartVegetarian, #pieChartMeatLover {
-    position: relative; /* Change to relative positioning */
-    left: 0;
-    top: 0;
+/* Stil for overlay */
+#overlayContent {
+    display: none; /* Start with hidden overlay */
+    position: fixed; /* Fixed position relative to viewport */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust position to truly center */
+    background: white; /* Background color */
+    padding: 40px; /* Padding inside the box */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 1); /* Shadow for a pop-up effect */
+    /*z-index: 1000; /* Ensure it's on top of other elements */
+    /*text-align: center; /* Center the text inside */
 }
 
-.dashboard-item {
-    /* Other styles */
-    position: relative; /* Ensure container is positioned relatively */
+/* Add this to style the close button */
+#closeOverlayInfo {
+    margin-top: 20px;
+    padding: 5px 10px;
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
+  
 
 
