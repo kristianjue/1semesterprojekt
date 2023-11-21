@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CO2-udledning: Elbil vs Brændselbil</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="dashboard-item" id = "vegetarianDish">
+        </div>
+        <div class="dashboard-item">
+            <div class="header">CO2 UDLEDNINGEN FOR ELBIL</div>
+            <div class="number" id = "numberone">2.6875</div>
+            <div class="subtext"></div>
+            <div class="informations-billede" id="vegetarianinformation"></div>
+            <div class="sortering"></div>
+        </div>
+        <div class="dashboard-item full-width" id = "VegetarianBarChart">
+            <p id = "textbeside">Her kan der stå noget info om vores elbil</p>
+        </div>
+       
+
+
+        <div class="dashboard-item" id = "meatDish"> 
+        </div>
+        <div class="dashboard-item">
+            <div class="header">CO2 UDLEDNINGEN FOR BRÆNDSELBIL</div>
+            <div class="number" id = "numbertwo">4.2500</div>
+            <div class="subtext"></div>
+            <div class="informations-billede" id="meatinformation"></div>    
+            <div class="sortering"></div>
+        </div>
+        <div class="dashboard-item full-width" id = "MeatBarChart">
+        </div>
+    </div>
+
+    <!-- Overlay, som vil blive vist, når informationsikonet klikkes på -->
+    <div id="overlayContent" style="display:none;">
+        <button id="closeOverlay"></button>
+    </div>
+  
+
+    <svg width="1000" height="100"></svg>
+
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="script.js"></script> 
+    <!-- <script src="electriccar.js"></script> -->
+</body>
+</html>
