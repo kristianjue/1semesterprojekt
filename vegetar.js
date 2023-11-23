@@ -89,7 +89,7 @@ function displayData(dataset) {
         .append("circle")
         .attr("cx", function (d) { return xScale(d[0]); })
         .attr("cy", function (d) { return yScale(d[1]); })
-        .attr("r", 4)
+        .attr("r", 5)
         .attr("transform", "translate(" + 100 + "," + 100 + ")")
         .style("fill", "#ffa406")
 
@@ -100,9 +100,9 @@ function displayData(dataset) {
 
             tooltip.html(d[1].toLocaleString('da-DK') + ' Vegetarer')
                 .style("left", (event.pageX) + "px")
-                .style("top", (event.pageY) + 10 + "px")
+                .style("top", (event.pageY) + 15 + "px")
             setTimeout(
-                function () { tooltip.transition().style('opacity', 0) }, 2000)
+                function () { tooltip.transition().style('opacity', 0) }, 3000)
         })
 
 
@@ -120,7 +120,7 @@ function displayData(dataset) {
         .attr("d", line)
         .style("fill", "none")
         .style("stroke", "#ffa406")
-        .style("stroke-width", "2");
+        .style("stroke-width", "3");
 }
 
 // Definerer funktionen som asynkront henter data fra en url der kommer med som argument og derefter retunerer dataen som JSON  
