@@ -1,222 +1,236 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 20px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
 }
 
 .dashboard {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
-    max-width: 1500px;
-    margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  max-width: 1500px;
+  margin: auto;
 }
 .dashboard-item {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.dashboard-car{
-    position: absolute;
-    width: 100%;
-    height: 400px;
-    display: grid;
-    grid-gap: 10px;
-    max-width: 1200px;
-    margin: auto;
+.dashboard-car {
+  position: absolute;
+  width: 100%;
+  height: 400px;
+  display: grid;
+  grid-gap: 10px;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .line {
-    fill: none;
-    stroke: #CC0000;
-    stroke-width: 2;
+  fill: none;
+  stroke: #cc0000;
+  stroke-width: 2;
 }
 .dot {
-    fill: #CC0000;
+  fill: #cc0000;
 }
 
 /* Generel typografi og layout */
 body {
-    font-family: 'Arial', sans-serif; /* Arial skrifttype anvendes */
-    text-align: center; /* Centrerer tekst */
-    color: #333; /* Mørkegrå farve for tekst */
-    background: #fff; /* Hvid baggrund */
-    padding: 20px; /* Polstring rundt om indholdet */
+  font-family: "Arial", sans-serif; /* Arial skrifttype anvendes */
+  text-align: center; /* Centrerer tekst */
+  color: #333; /* Mørkegrå farve for tekst */
+  background: #fff; /* Hvid baggrund */
+  padding: 20px; /* Polstring rundt om indholdet */
 }
 
 /* Stil for overskriften */
 .header {
-    font-size: 15px; /* Større skriftstørrelse for overskriften */
-    font-weight: bold; /* Gør teksten fed */
-    margin-bottom: 10px; /* Margen under overskriften */
+  font-size: 15px; /* Større skriftstørrelse for overskriften */
+  font-weight: bold; /* Gør teksten fed */
+  margin-bottom: 10px; /* Margen under overskriften */
 }
 
 /* Stil for det store tal */
 #numberone {
-    font-size: 72px; /* Stor skriftstørrelse for tal */
-    font-weight: bold; /* Gør tallet fed */
-    color: #0076c0; /* Rød farve for tal */
-    margin-bottom: 5px; /* Margen under tallet */
+  font-size: 72px; /* Stor skriftstørrelse for tal */
+  font-weight: bold; /* Gør tallet fed */
+  color: #0076c0; /* Rød farve for tal */
+  margin-bottom: 5px; /* Margen under tallet */
 }
 
 #numbertwo {
-    font-size: 72px; /* Stor skriftstørrelse for tal */
-    font-weight: bold; /* Gør tallet fed */
-    color: #003353; /* Rød farve for tal */
-    margin-bottom: 5px; /* Margen under tallet */
+  font-size: 72px; /* Stor skriftstørrelse for tal */
+  font-weight: bold; /* Gør tallet fed */
+  color: #003353; /* Rød farve for tal */
+  margin-bottom: 5px; /* Margen under tallet */
 }
 /* Stil for den sekundære tekst */
 .subtext {
-    font-size: 18px; /* Mindre skriftstørrelse for sekundær tekst */
-    color: #666; /* Lysere grå farve for sekundær tekst */
-    font-style: italic; /* Kursiv stil */
+  font-size: 18px; /* Mindre skriftstørrelse for sekundær tekst */
+  color: #666; /* Lysere grå farve for sekundær tekst */
+  font-style: italic; /* Kursiv stil */
 }
 
 .full-width {
-    grid-column: span 2;
+  grid-column: span 2;
 }
 /* Stil til at imitere de røde linjediagrammer */
 .chart-placeholder {
-    height: 50px;
-    background-color: #e4e4e4;
-    width: 100%;
-    margin: 10px 0;
+  height: 50px;
+  background-color: #e4e4e4;
+  width: 100%;
+  margin: 10px 0;
 }
 
 img {
-    width: 480px;
-    height: 269.5px;
-    border-radius: 4px;
-    padding: 5px;
+  width: 480px;
+  height: 269.5px;
+  border-radius: 4px;
+  padding: 5px;
 }
 
-.informations-billede img{
-    position: absolute;
-    bottom: 10px; /* Juster afstanden fra bunden efter behov */
-    right: 10px; /* Juster afstanden fra højre side efter behov */
-    width: 25px;
-    height: 25px;
+.informations-billede img {
+  position: absolute;
+  bottom: 10px; /* Juster afstanden fra bunden efter behov */
+  right: 10px; /* Juster afstanden fra højre side efter behov */
+  width: 25px;
+  height: 25px;
 }
 
-.sortering img{
-    width: 25px;
-    height: 25px;
-    position: absolute;
-    bottom: 10px; /* Juster afstanden fra bunden efter behov */
-    right: 50px; /* Juster afstanden fra højre side efter behov */
+.sortering img {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  bottom: 10px; /* Juster afstanden fra bunden efter behov */
+  right: 50px; /* Juster afstanden fra højre side efter behov */
 }
 
 .info {
-    visibility: hidden;
-    width: 200px;
-    background-color: green;
-    color: white;
-    text-align: center;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+  visibility: hidden;
+  width: 200px;
+  background-color: green;
+  color: white;
+  text-align: center;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .plate:hover .info {
-    visibility: visible;
+  visibility: visible;
 }
 
-
-#pieChartVegetarian, #pieChartMeatLover {
-    position: relative; /* Change to relative positioning */
-    left: 0;
-    top: 0;
+#pieChartVegetarian,
+#pieChartMeatLover {
+  position: relative; /* Change to relative positioning */
+  left: 0;
+  top: 0;
 }
 
 .dashboard-item {
-    /* Other styles */
-    position: relative; /* Ensure container is positioned relatively */
+  /* Other styles */
+  position: relative; /* Ensure container is positioned relatively */
 }
 
 /* Stil for overlay */
 #overlayContent {
-    display: none; /* Start with hidden overlay */
-    position: fixed; /* Fixed position relative to viewport */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust position to truly center */
-    background: white; /* Background color */
-    padding: 40px; /* Padding inside the box */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 1); /* Shadow for a pop-up effect */
-    /*z-index: 1000; /* Ensure it's on top of other elements */
-    /*text-align: center; /* Center the text inside */
+  display: none; /* Start with hidden overlay */
+  position: fixed; /* Fixed position relative to viewport */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust position to truly center */
+  background: white; /* Background color */
+  padding: 40px; /* Padding inside the box */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1); /* Shadow for a pop-up effect */
+  /*z-index: 1000; /* Ensure it's on top of other elements */
+  /*text-align: center; /* Center the text inside */
 }
 
 /* Add this to style the close button */
-    #closeOverlay {
-        border-radius: 50%;
-        padding: 0.5em;
-        width: 30px;
-        height: 30px;
-        border: 2px solid gray;
-        color: gray;
-        position: relative;
-      }
-      #closeOverlay:hover {
-        border: 2px solid Gray;
-        background-color: lightgray;
-        color: #ffffff;
-      }
-      
-      #closeOverlay::before {
-        content: " ";
-        position: absolute;
-        display: block;
-        background-color: gray;
-        width: 2px;
-        left: 12px;
-        top: 5px;
-        bottom: 5px;
-        transform: rotate(45deg);
-      }
-      #closeOverlay::after {
-        content: " ";
-        position: absolute;
-        display: block;
-        background-color: gray;
-        height: 2px;
-        top:12px;
-        left: 5px;
-        right: 5px;
-        transform: rotate(45deg);
-      }
-      
-      
-
-  
-      .dashboard {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); /* Adjust column width as needed */
-        gap: 20px 40px;
-        background-color:  rgb(16, 49, 181);
-        padding: 10px;
-      }
-      
-      .dashboard > div {
-        background-color: rgba(255, 255, 255);
-        text-align: center;
-        padding: 10px 0;
-        font-size: 30px;
-      }
-
-      #textbeside {
-        position:relative; top:50px; left: 500px; margin-left:0px; margin-right:0px;
-    margin-left: 20px;
-    font-size: 15px;
-    font-style: italic; /* Kursiv stil */
-    font-weight: bold;
+#closeOverlay {
+  border-radius: 50%;
+  padding: 0.5em;
+  width: 30px;
+  height: 30px;
+  border: 2px solid gray;
+  color: gray;
+  position: relative;
+}
+#closeOverlay:hover {
+  border: 2px solid Gray;
+  background-color: lightgray;
+  color: #ffffff;
 }
 
+#closeOverlay::before {
+  content: " ";
+  position: absolute;
+  display: block;
+  background-color: gray;
+  width: 2px;
+  left: 12px;
+  top: 5px;
+  bottom: 5px;
+  transform: rotate(45deg);
+}
+#closeOverlay::after {
+  content: " ";
+  position: absolute;
+  display: block;
+  background-color: gray;
+  height: 2px;
+  top: 12px;
+  left: 5px;
+  right: 5px;
+  transform: rotate(45deg);
+}
 
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(500px, 1fr)
+  ); /* Adjust column width as needed */
+  gap: 20px 40px;
+  background-color: rgb(16, 49, 181);
+  padding: 10px;
+}
+
+.dashboard > div {
+  background-color: rgba(255, 255, 255);
+  text-align: center;
+  padding: 10px 0;
+  font-size: 30px;
+}
+
+#textbeside1 {
+  position: absolute;
+  top: 30px;
+  left: 1150px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-left: 20px;
+  font-size: 15px;
+  font-style: italic; /* Kursiv stil */
+  font-weight: bold;
+}
+
+#textbeside2 {
+  position: relative;
+  top: 20px;
+  left: 500px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-left: 20px;
+  font-size: 15px;
+  font-style: italic; /* Kursiv stil */
+  font-weight: bold;
+}
