@@ -1,7 +1,10 @@
 const express = require("express");
+const cors = require("cors");
 const { Client } = require("pg");
 const app = express();
 const port = 3000;
+
+app.use(cors());
 
 
 
@@ -64,10 +67,9 @@ app.get("/vegetarer/", async (req, res) => {
 });
 
 
-app.get("/maaltider/:maaltidId", async (req, res) => {
+app.get("/maaltider/", async (req, res) => {
     try {
-        const maaltidId = req.params.maaltidId;
-        let queryData = await klient.query('select * from tallerken  where maaltid_id =$1', [maaltidId]);
+        let queryData = await klient.query('select * from tallerken');
         res.json({
             "ok": true,
             "maaltider": queryData.rows,
@@ -100,3 +102,4 @@ app.get("/vehicle_co2_emissions/:vehicletype", async (req, res) => {
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
+

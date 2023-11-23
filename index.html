@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>CO2-udledning: Vegetarisk vs Kødret</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+   <!-- <div class="IconWidget"> 
+        <div class="vegetarIcon">
+            <div class="plateIMG" id="vegetarianDish">
+                <span class="info">Skriv info: </span>
+            </div>                
+            </div>
+        </div>
+        
+        <div class="ikkevegetarIcon">
+            <div class="plateIMG" id="meatDish">
+                <span class="info">Skriv info:</span>
+            </div>
+        </div>
+    </div> -->
+
     <div class="dashboard">
-        <div class="dashboard-item" id = "vegetarianDish">
+        <div class="dashboard-item" id="vegetarianDish">
         </div>
         <div class="dashboard-item">
             <div class="header">CO2 UDLEDNINGEN I KG</div>
@@ -16,20 +33,19 @@
             <div class="informations-billede" id="vegetarianinformation"></div>
             <!--<div class="sort-billede" id = "sortvegetarian"></div>          HVIS DER SKAL INKLUDERES YEAR-->  
         </div>
-        <div class="dashboard-item full-width" id = "VegetarianBarChart">
+        <div class="dashboard-item full-width" id="VegetarianBarChart">
         </div>
 
-
-        <div class="dashboard-item" id = "meatDish"> 
+        <div class="dashboard-item" id="meatDish">
         </div>
         <div class="dashboard-item">
             <div class="header">CO2 UDLEDNINGEN I KG</div>
-            <div class="number" id = "meatloverNumber">1055.57</div>
+            <div class="number">1055.57</div>
             <div class="subtext">Værdierne repræsenterer CO2-udledning pr. kilogram for hver ingredient i undersøgelsen.</div>
             <div class="informations-billede" id="meatinformation"></div>    
-           <!-- <div class="sort-billede" id = "sortmeatlover"></div>          HVIS DER SKAL INKLUDERES YEAR-->
+            <div class="sortering"></div>
         </div>
-        <div class="dashboard-item full-width" id = "MeatBarChart">
+        <div class="dashboard-item full-width" id="MeatBarChart">
         </div>
     </div>
 
@@ -37,14 +53,12 @@
     <div id="overlayContent" style="display:none;">
         <button id="closeOverlay">Luk</button>
     </div>
+  
 
-    <!--  <div id="overlayContentSort" style="display:none;">
-        <button id="day">1 Dag</button>
-        <button id="year">1 år</button>
-    </div> --> 
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="script.js"></script> 
+    <script src="script.js"></script>
     <!-- <script src="electriccar.js"></script> -->
 </body>
+
 </html>
