@@ -65,7 +65,7 @@ body {
 #numbertwo {
   font-size: 72px; /* Stor skriftstørrelse for tal */
   font-weight: bold; /* Gør tallet fed */
-  color: #003353; /* Rød farve for tal */
+  color: #d34f02; /* Rød farve for tal */
   margin-bottom: 5px; /* Margen under tallet */
 }
 /* Stil for den sekundære tekst */
@@ -99,6 +99,7 @@ img {
   right: 10px; /* Juster afstanden fra højre side efter behov */
   width: 25px;
   height: 25px;
+  cursor: pointer;
 }
 
 .sortering img {
@@ -168,6 +169,7 @@ img {
   border: 2px solid Gray;
   background-color: lightgray;
   color: #ffffff;
+  cursor: pointer;
 }
 
 #closeOverlay::before {
@@ -205,7 +207,7 @@ img {
 }
 
 .dashboard > div {
-  background-color: rgba(255, 255, 255);
+  background-color: rgb(255, 255, 255);
   text-align: center;
   padding: 10px 0;
   font-size: 30px;
@@ -221,6 +223,7 @@ img {
   font-size: 15px;
   font-style: italic; /* Kursiv stil */
   font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #textbeside2 {

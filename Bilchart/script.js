@@ -4,7 +4,7 @@ let brændselbildata = [];
 fetchContent("http://localhost:3000/vehicle_co2_emissions/1").then((data) => {
   for (i = 0; i < data.vehicle_co2_emissions.length; i++) {
     elbildata.push([
-      Number(data.vehicle_co2_emissions[i].co2_t_pr_year),
+      Number(data.vehicle_co2_emissions[i].co2_t_pr_year) * 1000,
       data.vehicle_co2_emissions[i].stage_name,
     ]);
   }
@@ -15,7 +15,7 @@ fetchContent("http://localhost:3000/vehicle_co2_emissions/1").then((data) => {
 fetchContent("http://localhost:3000/vehicle_co2_emissions/2").then((data) => {
   for (i = 0; i < data.vehicle_co2_emissions.length; i++) {
     brændselbildata.push([
-      Number(data.vehicle_co2_emissions[i].co2_t_pr_year),
+      Number(data.vehicle_co2_emissions[i].co2_t_pr_year) * 1000,
       data.vehicle_co2_emissions[i].stage_name,
     ]);
   }
@@ -145,7 +145,7 @@ function barchartel(dataset) {
     .style("fill", function (d) {
       if (d[0] > 0) {
         // Set color based on positive values
-        return "rgb(0, 0, " + Math.round(255 / d[0] / 2 - 10) + ")";
+        return "rgb(0,0," + Math.round(255 - d[0] / 8 + 40) + ")";
       } else {
         // Set light blue for negative values
         return "lightblue";
@@ -160,17 +160,19 @@ function barchartel(dataset) {
     .append("text")
     .attr("x", x(0)) // Start from the y-axis position
     .attr("y", (d) => y(d[1]) + y.bandwidth() / 2 + 5) // Center text in the bar
-    .text((d) => d[0].toFixed(4)) // Format the number to 4 decimal places
+    .text((d) => d[0].toFixed(1)) // Format the number to 4 decimal places
     .transition()
     .duration(1000)
     .ease(d3.easeCubic)
     .attr("x", function (d) {
-      if (d[0] > 1) {
+      if (d[0] > 1000) {
         return x(d[0]) - 5;
       } else if (d[0] == 0) {
-        return 58;
-      } else if (d[0] > 0.01 && d[0] < 1) {
-        return x(d[0]) + 9;
+        return 60;
+      } else if (d[0] > 100 && d[0] < 1000) {
+        return x(d[0]) + 20;
+      } else if (d[0] > 60 && d[0] < 80) {
+        return x(d[0]) + 26;
       } else {
         return x(0);
       }
@@ -252,10 +254,16 @@ function barchartbrændsel(dataset) {
     .style("fill", function (d) {
       if (d[0] > 0) {
         // Set color based on positive values
-        return "rgb(0, 0, " + Math.round(255 / d[0] / 2 - 10) + ")";
+        return (
+          "rgb(255," +
+          Math.round(255 - d[0] / 5) +
+          "," +
+          Math.round(2 / d[0]) +
+          ")"
+        );
       } else {
         // Set light blue for negative values
-        return "lightblue";
+        return "rgb(253,250,114)";
       }
     });
 
@@ -270,7 +278,7 @@ function barchartbrændsel(dataset) {
     .append("text")
     .attr("x", x(0)) // Start from the y-axis position
     .attr("y", (d) => y(d[1]) + y.bandwidth() / 2 + 5) // Center text in the bar
-    .text((d) => d[0].toFixed(4)) // Format the number to 4 decimal places
+    .text((d) => d[0].toFixed(1)) // Format the number to 4 decimal places
     .transition()
     .duration(1000)
     .ease(d3.easeCubic)
@@ -281,12 +289,12 @@ function barchartbrændsel(dataset) {
       return d[0] > 0 ? "white" : "black"; // Set the fill color based on the value of d
     })
     .attr("x", function (d) {
-      if (d[0] > 0) {
+      if (d[0] > 1000) {
         return x(d[0]) - 25;
       } else if (d[0] == 0) {
         return 20;
-      } else if (d[0] > 0.01 && d[0] < 1) {
-        return x(d[0]) + 9;
+      } else if (d[0] > 100 && d[0] < 1000) {
+        return x(d[0] - 100);
       } else {
         return x(0);
       }
