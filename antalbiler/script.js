@@ -59,7 +59,7 @@
     svg.append("path")
       .datum(dataset)
       .attr("fill", "none")
-      .attr("stroke", "steelblue")
+      .attr("stroke", "#ffa406")
       .attr("stroke-width", 1.5)
       .attr("d", d3.line()
         .x(function (d) { return x(d[0]); })
@@ -77,7 +77,7 @@
       .attr("text-anchor", "middle")
       .attr("alignment-baseline", "middle")
       .text("-2,91%")
-      .style("fill", "red")  
+      .style("fill", "#ffa406")  
       .style("font-size", "50px")
       .style("bold");
 
@@ -87,7 +87,7 @@
         .attr("x2", x(parseTime("2022-01")))
         .attr("y1", 0)
         .attr("y2", height)
-        .attr("stroke", "red")
+        .attr("stroke", "#ffa406")
         .attr("stroke-width", 1.5)
         .style("stroke-dasharray", ("3, 3"));
     }
@@ -162,7 +162,7 @@
     svg2.append("path")
       .datum(dataset2)
       .attr("fill", "none")
-      .attr("stroke", "steelblue")
+      .attr("stroke", "#0096c7")
       .attr("stroke-width", 1.5)
       .attr("d", d3.line()
         .x(function (d) { return x2(d[0]); })
@@ -180,7 +180,7 @@
       .attr("text-anchor", "middle")
       .attr("alignment-baseline", "middle")
       .text("73,75%")
-      .style("fill", "green") 
+      .style("fill", "#0096c7") 
       .style("font-size", "50px")
       .style("bold");
 
@@ -190,6 +190,13 @@
       .attr("x2", x2(parseTime("2022-10")))
       .attr("y1", 0)
       .attr("y2", height2)
-      .attr("stroke", "green")
+      .attr("stroke", "#0096c7")
       .attr("stroke-width", 1.5)
       .style("stroke-dasharray", ("3, 3"));}
+
+    //Magi - det taler vi om senere!!
+    async function fetchContent(url) {
+      let request = await fetch(url);
+      let json = await request.json();
+      return json;
+  }

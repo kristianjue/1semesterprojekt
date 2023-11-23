@@ -12,7 +12,6 @@ body {
     margin: auto;
 }
 .dashboard-item {
-    border: 2px solid black;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -23,15 +22,6 @@ body {
 
 .full-width {
     grid-column: span 2;
-}
-
-.line {
-    fill: none;
-    stroke: #CC0000;
-    stroke-width: 2;
-}
-.dot {
-    fill: #CC0000;
 }
 
 /* Generel typografi og layout */
@@ -52,10 +42,17 @@ body {
 
 /* Stil for det store tal */
 .number {
-    font-size: 72px; /* Stor skriftstørrelse for tal */
+    font-size: 80px; /* Stor skriftstørrelse for tal */
     font-weight: bold; /* Gør tallet fed */
-    color: #ff4136; /* Rød farve for tal */
     margin-bottom: 5px; /* Margen under tallet */
+}
+
+#vegetarianNumber {
+    color: #ffa406;
+}
+
+#meatloverNumber{
+    color: #0096c7;
 }
 
 /* Stil for den sekundære tekst */
@@ -78,9 +75,10 @@ img {
     right: 10px; /* Juster afstanden fra højre side efter behov */
     width: 25px;
     height: 25px;
+    cursor: pointer;
 }
 
-.sortering img{
+.sort-billede img{
     width: 25px;
     height: 25px;
     position: absolute;
@@ -108,7 +106,7 @@ img {
 }
 
 /* Add this to style the close button */
-#closeOverlayInfo {
+#closeOverlay {
     margin-top: 20px;
     padding: 5px 10px;
     background-color: gray;
@@ -118,6 +116,29 @@ img {
     cursor: pointer;
 }
 
+#overlayContentSort {
+    display: none; /* Start with hidden overlay */
+    position: fixed; /* Fixed position relative to viewport */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust position to truly center */
+    background: white; /* Background color */
+    padding: 40px; /* Padding inside the box */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 1); /* Shadow for a pop-up effect */
+    /*z-index: 1000; /* Ensure it's on top of other elements */
+    /*text-align: center; /* Center the text inside */
+}
+
+#closeOverlay {
+    margin-top: 20px;
+    padding: 5px 10px;
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
   
 
 
