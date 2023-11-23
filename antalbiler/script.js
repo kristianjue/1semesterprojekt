@@ -66,6 +66,21 @@
         .y(function (d) { return y(d[1]); })
       );
 
+    //tilføj reference linje
+    let referenceYear = 2022;
+    let referenceMonth = 10; // Eksempel: januar
+    let referenceDate = d3.timeParse("%Y-%m")(`${referenceYear}-${referenceMonth}`);
+
+    svg.append("line")
+      .attr("x1", x(referenceDate))
+      .attr("x2", x(referenceDate))
+      .attr("y1", 0)
+      .attr("y2", height)
+      .attr("stroke", "#ffa406")
+      .attr("stroke-width", 1.5)
+      .style("stroke-dasharray", ("3, 3"));
+
+
     // Beregn midtpunktet af grafen
     var midX = (width + margin.left + margin.right) / 2;
     var midY = (height + margin.top + margin.bottom) / 2;
@@ -80,17 +95,8 @@
       .style("fill", "#ffa406")  
       .style("font-size", "50px")
       .style("bold");
-
-    // Tilføj reference linje
-    svg.append("line")
-        .attr("x1", x(parseTime("2022-01")))
-        .attr("x2", x(parseTime("2022-01")))
-        .attr("y1", 0)
-        .attr("y2", height)
-        .attr("stroke", "#ffa406")
-        .attr("stroke-width", 1.5)
-        .style("stroke-dasharray", ("3, 3"));
     }
+    
     //Magi - det taler vi om senere!!
     async function fetchContent(url) {
         let request = await fetch(url);
