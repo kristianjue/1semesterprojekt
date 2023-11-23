@@ -14,7 +14,6 @@ const klient = new Client({
 });
 
 
-
 klient.connect();
 
 
@@ -96,7 +95,6 @@ app.get("/vehicle_co2_emissions/:vehicletype", async (req, res) => {
         });
     }
 });
-
 
 
 app.listen(port, () => {
