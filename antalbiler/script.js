@@ -175,6 +175,20 @@
         .y(function (d) { return y2(d[1]); })
       );
 
+    //tilføj reference linje
+    let referenceYear2 = 2022;
+    let referenceMonth2 = 10; // Eksempel: januar
+    let referenceDate2 = d3.timeParse("%Y-%m")(`${referenceYear2}-${referenceMonth2}`);
+    
+    svg2.append("line")
+      .attr("x1", x2(referenceDate2))
+      .attr("x2", x2(referenceDate2))
+      .attr("y1", 0)
+      .attr("y2", height2)
+      .attr("stroke", "#0096c7")
+      .attr("stroke-width", 1.5)
+      .style("stroke-dasharray", ("3, 3"));
+
     // Beregn midtpunktet
     var midX2 = (width2 + margin2.left + margin2.right) / 2;
     var midY2 = (height2 + margin2.top + margin2.bottom) / 2;
