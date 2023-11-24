@@ -72,16 +72,6 @@
     let referenceYear = 2022;
     let referenceMonth = 10; // Eksempel: januar
     let referenceDate = d3.timeParse("%Y-%m")(`${referenceYear}-${referenceMonth}`);
-
-    /*svg.append("line")
-      .attr("x1", x(referenceDate))
-      .attr("x2", x(referenceDate))
-      .attr("y1", 0)
-      .attr("y2", height)
-      .attr("stroke", "#ffa406")
-      .attr("stroke-width", 1.5)
-      .style("stroke-dasharray", ("3, 3")); */
-    
     
     //tilføj tekst til reference linjen
     svg.append("text")
@@ -105,21 +95,6 @@
   .attr("y", 0)
   .attr("height", height)
   .attr("fill", "rgba(255, 164, 6, 0.3)"); // Farve og gennemsigtighed (juster efter behov)
-
-    /* Beregn midtpunktet af grafen
-    var midX = (width + margin.left + margin.right) / 2;
-    var midY = (height + margin.top + margin.bottom) / 2;
-
-    // Tilføj tekst til midten af grafen
-    svg.append("text")
-      .attr("x", midX)
-      .attr("y", midY)
-      .attr("text-anchor", "middle")
-      .attr("alignment-baseline", "middle")
-      .text("-2,91%")
-      .style("fill", "#ffa406")  
-      .style("font-size", "50px")
-      .style("bold"); */
 
     // Opret tooltip og cirkel
     var tooltip = d3.select("#line1")
@@ -289,15 +264,6 @@ svg.append("text")
     let referenceYear2 = 2022;
     let referenceMonth2 = 10; // Eksempel: januar
     let referenceDate2 = d3.timeParse("%Y-%m")(`${referenceYear2}-${referenceMonth2}`);
-    
-    /*svg2.append("line")
-      .attr("x1", x2(referenceDate2))
-      .attr("x2", x2(referenceDate2))
-      .attr("y1", 0)
-      .attr("y2", height2)
-      .attr("stroke", "#0096c7")
-      .attr("stroke-width", 1.5)
-      .style("stroke-dasharray", ("3, 3")); */
 
     //tilføj tekst til reference linjen
       svg2.append("text")
@@ -321,21 +287,6 @@ svg.append("text")
   .attr("y", 0)
   .attr("height", height2)
   .attr("fill", "rgba(0, 150, 199, 0.3)"); // Farve og gennemsigtighed (juster efter behov)
-
-    /* Beregn midtpunktet
-    var midX2 = (width2 + margin2.left + margin2.right) / 2;
-    var midY2 = (height2 + margin2.top + margin2.bottom) / 2;
-
-    // Tilføj tekst til midten af grafen
-    svg2.append("text")
-      .attr("x", midX2)
-      .attr("y", midY2)
-      .attr("text-anchor", "middle")
-      .attr("alignment-baseline", "middle")
-      .text("73,75%")
-      .style("fill", "#0096c7") 
-      .style("font-size", "50px")
-      .style("bold"); */
 
 // Opret tooltip og cirkel
 var tooltip2 = d3.select("#line2")
