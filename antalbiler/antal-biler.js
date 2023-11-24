@@ -1,5 +1,5 @@
 //graf over brændsel
-    // set the dimensions and margins of the graph
+    // Definer højde, brede og margin
     var margin = { top: 40, right: 95, bottom: 30, left: 60 },
       width = 530 - margin.left - margin.right,
       height = 420 - margin.top - margin.bottom;
@@ -57,7 +57,7 @@
     svg.append("g")
       .call(d3.axisLeft(y));
 
-    // Add the line
+    /* Add the line
     svg.append("path")
       .datum(dataset)
       .attr("fill", "none")
@@ -66,7 +66,7 @@
       .attr("d", d3.line()
         .x(function (d) { return x(d[0]); })
         .y(function (d) { return y(d[1]); })
-      );
+      ); */
 
     //tilføj reference linje
     let referenceYear = 2022;
@@ -249,7 +249,7 @@ svg.append("text")
     svg2.append("g")
       .call(d3.axisLeft(y2));
 
-    // Add the line
+    /* Add the line
     svg2.append("path")
       .datum(dataset2)
       .attr("fill", "none")
@@ -258,7 +258,7 @@ svg.append("text")
       .attr("d", d3.line()
         .x(function (d) { return x2(d[0]); })
         .y(function (d) { return y2(d[1]); })
-      );
+      ); */
 
     //tilføj reference linje
     let referenceYear2 = 2022;
