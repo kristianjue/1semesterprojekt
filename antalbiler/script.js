@@ -119,7 +119,7 @@
       .text("-2,91%")
       .style("fill", "#ffa406")  
       .style("font-size", "50px")
-      .style("bold"); */
+      .style("bold"); 
 
     // Opret tooltip og cirkel
     var tooltip = d3.select("#line1")
@@ -207,6 +207,7 @@ svg.append("text")
   .text("Brændsel-biler");
 
 }
+
 
     //Magi - det taler vi om senere!!
     async function fetchContent(url) {
@@ -334,7 +335,7 @@ svg.append("text")
       .text("73,75%")
       .style("fill", "#0096c7") 
       .style("font-size", "50px")
-      .style("bold"); */
+      .style("bold"); 
 
 // Opret tooltip og cirkel
 var tooltip2 = d3.select("#line2")
@@ -420,6 +421,7 @@ svg2.append("text")
   .style("text-decoration", "underline")
   .text("El-biler");
 }
+
 
     //Magi - det taler vi om senere!!
     async function fetchContent(url) {
