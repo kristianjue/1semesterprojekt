@@ -86,6 +86,7 @@ function closeOverlayContentInfo() {
 
 function barchartel(dataset) {
   console.log(dataset);
+  const popout2 = d3.select("#popout2");
 
   let margin = { top: 20, right: 30, bottom: 40, left: 150 },
     width = 700 - margin.left - margin.right,
@@ -127,6 +128,20 @@ function barchartel(dataset) {
     .attr("y", (d) => y(d[1]))
     .attr("width", 0) // Start with zero width
     .attr("height", y.bandwidth())
+    .attr("class", "elbil")
+    .on("mousemove", function (event, d) {
+      d3.selectAll(".elbil").transition().duration(50).style("opacity", 0.1);
+      d3.select(this).transition().duration(50).style("opacity", 1);
+      popout2.html(`<p>${d[1]}: ${d[0]}</p>`);
+      const [x, y] = d3.pointer(event, d);
+      const offset = 10; // You can adjust this offset
+      popout2.style("left", x + offset + "px").style("top", y + offset + "px");
+      popout2.style("display", "block");
+    })
+    .on("mouseout", function (event, d) {
+      d3.selectAll(".elbil").transition().duration(50).style("opacity", 1);
+      popout2.style("display", "none");
+    })
     .transition()
     .duration(1000)
     .ease(d3.easeCubic)
@@ -145,7 +160,13 @@ function barchartel(dataset) {
     .style("fill", function (d) {
       if (d[0] > 0) {
         // Set color based on positive values
-        return "rgb(0,0," + Math.round(255 - d[0] / 8 + 40) + ")";
+        return (
+          "rgb(0," +
+          Math.round(200 - d[0] / 8 + 40) +
+          "," +
+          Math.round(255 - d[0] / 8 + 40) +
+          ")"
+        );
       } else {
         // Set light blue for negative values
         return "lightblue";
@@ -153,7 +174,7 @@ function barchartel(dataset) {
     });
 
   // Add text labels
-  svg
+  /* svg
     .selectAll("text")
     .data(dataset)
     .enter()
@@ -184,7 +205,7 @@ function barchartel(dataset) {
     .style("fill", function (d) {
       return d[0] > 0 ? "white" : "black"; // Set the fill color based on the value of d
     });
-
+*/
   // Append x-axis
   svg
     .append("g")
@@ -196,6 +217,7 @@ function barchartel(dataset) {
 }
 
 function barchartbrændsel(dataset) {
+  const popout = d3.select("#popout");
   let margin = { top: 20, right: 30, bottom: 40, left: 150 },
     width = 700 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
@@ -236,6 +258,26 @@ function barchartbrændsel(dataset) {
     .attr("y", (d) => y(d[1]))
     .attr("width", 0) // Start with zero width
     .attr("height", y.bandwidth())
+    .attr("class", "brændselbil")
+    .on("mousemove", function (event, d) {
+      d3.selectAll(".brændselbil")
+        .transition()
+        .duration(50)
+        .style("opacity", 0.1);
+      d3.select(this).transition().duration(50).style("opacity", 1);
+      popout.html(`<p>${d[1]}: ${d[0]}</p>`);
+      const [x, y] = d3.pointer(event, d);
+      const offset = 10; // You can adjust this offset
+      popout.style("left", x + offset + "px").style("top", y + offset + "px");
+      popout.style("display", "block");
+    })
+    .on("mouseout", function (event, d) {
+      d3.selectAll(".brændselbil")
+        .transition()
+        .duration(50)
+        .style("opacity", 1);
+      popout.style("display", "none");
+    })
     .transition()
     .duration(1000)
     .ease(d3.easeCubic)
@@ -271,7 +313,7 @@ function barchartbrændsel(dataset) {
   //.style("fill", "orange");
 
   // Add text labels
-  svg
+  /* svg
     .selectAll("text")
     .data(dataset)
     .enter()
@@ -299,7 +341,7 @@ function barchartbrændsel(dataset) {
         return x(0);
       }
     });
-
+*/
   // Append x-axis
   svg
     .append("g")
