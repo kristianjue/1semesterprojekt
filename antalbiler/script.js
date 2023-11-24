@@ -207,7 +207,7 @@ svg.append("text")
   .text("Brændsel-biler");
 
 }
-    
+
     //Magi - det taler vi om senere!!
     async function fetchContent(url) {
         let request = await fetch(url);
