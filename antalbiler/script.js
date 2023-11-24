@@ -73,14 +73,14 @@
     let referenceMonth = 10; // Eksempel: januar
     let referenceDate = d3.timeParse("%Y-%m")(`${referenceYear}-${referenceMonth}`);
 
-    svg.append("line")
+    /*svg.append("line")
       .attr("x1", x(referenceDate))
       .attr("x2", x(referenceDate))
       .attr("y1", 0)
       .attr("y2", height)
       .attr("stroke", "#ffa406")
       .attr("stroke-width", 1.5)
-      .style("stroke-dasharray", ("3, 3")); 
+      .style("stroke-dasharray", ("3, 3")); */
     
     
     //tilføj tekst til reference linjen
@@ -174,8 +174,6 @@ function handleMouseOut() {
   focus.style("display", "none");
   tooltip.style("opacity", 0);
 }
-
-// ...
 
 // Opret en clipPath
 svg.append("defs").append("clipPath")
@@ -291,14 +289,14 @@ svg.append("text")
     let referenceMonth2 = 10; // Eksempel: januar
     let referenceDate2 = d3.timeParse("%Y-%m")(`${referenceYear2}-${referenceMonth2}`);
     
-    svg2.append("line")
+    /*svg2.append("line")
       .attr("x1", x2(referenceDate2))
       .attr("x2", x2(referenceDate2))
       .attr("y1", 0)
       .attr("y2", height2)
       .attr("stroke", "#0096c7")
       .attr("stroke-width", 1.5)
-      .style("stroke-dasharray", ("3, 3"));
+      .style("stroke-dasharray", ("3, 3")); */
 
     //tilføj tekst til reference linjen
       svg2.append("text")
@@ -421,7 +419,6 @@ svg2.append("text")
   .style("fill", "black")
   .style("text-decoration", "underline")
   .text("El-biler");
-
 }
 
     //Magi - det taler vi om senere!!
