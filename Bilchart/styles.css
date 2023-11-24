@@ -227,7 +227,7 @@ img {
 }
 
 #textbeside2 {
-  position: relative;
+  position: absolute;
   top: 20px;
   left: 500px;
   margin-left: 0px;
