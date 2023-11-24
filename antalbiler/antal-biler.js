@@ -12,9 +12,7 @@
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-
-
-    // Read the data //periode og antal skal ændres til det der står i json
+    //Indlæs Data, her bruges timeformat for at få daten i den korrekt format
     let dataset = [];
     let timeFormat = d3.timeFormat("%Y-%m")
 
@@ -42,7 +40,7 @@
 
     function createVisualization(dataset) {
 
-    // Add X axis --> it is a periode format
+    //Tilføjer X-aksen
     var x = d3.scaleTime()
       .domain(d3.extent(dataset, function (d) { return (d[0]); }))
       .range([0, width]);
@@ -50,30 +48,19 @@
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x));
 
-    // Add Y axis
+    //Tilføjer Y-aksen
     var y = d3.scaleLinear() 
       .domain([2150000, d3.max(dataset, function (d) { return +d[1]; })])
       .range([height, 0]);
     svg.append("g")
       .call(d3.axisLeft(y));
 
-    /* Add the line
-    svg.append("path")
-      .datum(dataset)
-      .attr("fill", "none")
-      .attr("stroke", "#ffa406")
-      .attr("stroke-width", 1.5)
-      .attr("d", d3.line()
-        .x(function (d) { return x(d[0]); })
-        .y(function (d) { return y(d[1]); })
-      ); */
-
-    //tilføj reference linje
+    //Variabler til reference området
     let referenceYear = 2022;
-    let referenceMonth = 10; // Eksempel: januar
+    let referenceMonth = 10;
     let referenceDate = d3.timeParse("%Y-%m")(`${referenceYear}-${referenceMonth}`);
     
-    //tilføj tekst til reference linjen
+    //Tilføj tekst til reference området
     svg.append("text")
     .attr("x", x(referenceDate) - 80) // Justér denne værdi for at justere vandret placering af teksten
     .attr("y", - 30) // Justér denne værdi for at justere lodret placering af teksten
@@ -88,7 +75,7 @@
     .style("font-size", "12px")
     .style("font-weight", "normal"); // Gør kun denne del ikke-fed
 
-    // Farv det ønskede område
+  //Farver det ønskede reference område
   svg.append("rect")
   .attr("x", x(referenceDate)) // Start x-koordinatet for farvet område
   .attr("width", width - x(referenceDate)) // Bredden af det farvede område
@@ -96,7 +83,7 @@
   .attr("height", height)
   .attr("fill", "rgba(255, 164, 6, 0.3)"); // Farve og gennemsigtighed (juster efter behov)
 
-    // Opret tooltip og cirkel
+    //Tilføj etiket og cirkel til grafens punkter
     var tooltip = d3.select("#line1")
         .append("div")
         .attr("class", "tooltip")
@@ -139,7 +126,7 @@ function handleMouseMove(event) {
   var i = bisectDate(dataset, xValue, 1);
   var d = dataset[i];
 
-  // Opdater cirkelens og tooltipens position
+  // Opdater cirkelens og etikkens position
   focus.attr("transform", "translate(" + x(d[0]) + "," + y(d[1]) + ")");
 
   // Opdater teksten ved siden af cirklen
@@ -151,14 +138,14 @@ function handleMouseOut() {
   tooltip.style("opacity", 0);
 }
 
-// Opret en clipPath
+//Tilføj clipPath
 svg.append("defs").append("clipPath")
   .attr("id", "clip")
   .append("rect")
   .attr("width", width) // Bredden af det område, du vil farve
   .attr("height", height); // Højden af det område, du vil farve
 
-// Add the line, men anvend clipPath
+//Tilføj linjen på grafen ved, at anvende clipPath
 svg.append("path")
   .datum(dataset)
   .attr("fill", "none")
@@ -169,8 +156,6 @@ svg.append("path")
     .y(function (d) { return y(d[1]); })
   )
   .attr("clip-path", "url(#clip)"); // Anvend clipPath
-
-
 
 // Tilføj en titel til venstre for grafen
 svg.append("text")
@@ -183,7 +168,7 @@ svg.append("text")
   .text("Brændsel-biler");
 
 }
-    
+
     //Magi - det taler vi om senere!!
     async function fetchContent(url) {
         let request = await fetch(url);
@@ -193,7 +178,7 @@ svg.append("text")
 
 
 //graf over el
-    // set the dimensions and margins of the graph
+    // Definer højde, brede og margin
     var margin2 = { top: 40, right: 95, bottom: 30, left: 60 },
       width2 = 530 - margin2.left - margin2.right,
       height2 = 420 - margin2.top - margin2.bottom;
