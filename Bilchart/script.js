@@ -8,7 +8,6 @@ fetchContent("http://localhost:3000/vehicle_co2_emissions/1").then((data) => {
       data.vehicle_co2_emissions[i].stage_name,
     ]);
   }
-  console.log(elbildata);
   barchartel(elbildata);
 });
 
@@ -19,7 +18,6 @@ fetchContent("http://localhost:3000/vehicle_co2_emissions/2").then((data) => {
       data.vehicle_co2_emissions[i].stage_name,
     ]);
   }
-  console.log(elbildata);
   barchartbrændsel(brændselbildata);
 });
 
@@ -85,12 +83,11 @@ function closeOverlayContentInfo() {
 }
 
 function barchartel(dataset) {
-  console.log(dataset);
   const popout2 = d3.select("#popout2");
 
   let margin = { top: 20, right: 30, bottom: 40, left: 150 },
     width = 700 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+    height = 380 - margin.top - margin.bottom;
 
   let svg = d3
     .select("#elbilchart")
@@ -143,7 +140,7 @@ function barchartel(dataset) {
       popout2.style("display", "none");
     })
     .transition()
-    .duration(1000)
+    .duration(1000) //The duration of the transition in milliseconds
     .ease(d3.easeCubic)
     .attr("width", function (d) {
       if (d[0] > 0) {
@@ -156,7 +153,7 @@ function barchartel(dataset) {
     })
     .attr("x", (d) => (d[0] > 0 ? x(0) : x(d[0]))) // Move to the final x position
     .transition()
-    .duration(1000)
+    .duration(1000) //The duration of the transition in milliseconds
     .style("fill", function (d) {
       if (d[0] > 0) {
         // Set color based on positive values
@@ -220,7 +217,7 @@ function barchartbrændsel(dataset) {
   const popout = d3.select("#popout");
   let margin = { top: 20, right: 30, bottom: 40, left: 150 },
     width = 700 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+    height = 380 - margin.top - margin.bottom;
 
   let svg = d3
     .select("#brændselchart")
@@ -262,7 +259,7 @@ function barchartbrændsel(dataset) {
     .on("mousemove", function (event, d) {
       d3.selectAll(".brændselbil")
         .transition()
-        .duration(50)
+        .duration(50) //The duration of the transition in milliseconds
         .style("opacity", 0.1);
       d3.select(this).transition().duration(50).style("opacity", 1);
       popout.html(`<p>${d[1]}: ${d[0]}</p>`);
@@ -274,12 +271,12 @@ function barchartbrændsel(dataset) {
     .on("mouseout", function (event, d) {
       d3.selectAll(".brændselbil")
         .transition()
-        .duration(50)
+        .duration(50) //The duration of the transition in milliseconds
         .style("opacity", 1);
       popout.style("display", "none");
     })
     .transition()
-    .duration(1000)
+    .duration(1000) //The duration of the transition in milliseconds
     .ease(d3.easeCubic)
     .attr("width", function (d) {
       if (d[0] > 0) {
@@ -292,7 +289,7 @@ function barchartbrændsel(dataset) {
     })
     .attr("x", (d) => (d[0] > 0 ? x(0) : x(d[0]))) // Move to the final x position
     .transition()
-    .duration(1000)
+    .duration(1000) //The duration of the transition in milliseconds
     .style("fill", function (d) {
       if (d[0] > 0) {
         // Set color based on positive values
@@ -352,7 +349,6 @@ function barchartbrændsel(dataset) {
   svg.append("g").call(d3.axisLeft(y));
 }
 
-//Magi - det taler vi om senere!!
 async function fetchContent(url) {
   let request = await fetch(url);
   let json = await request.json();
