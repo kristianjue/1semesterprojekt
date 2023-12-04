@@ -3,7 +3,7 @@ let aggregatedMeatloverData = 0;
 let maaltidVegetar = []; // maaltid 1, maaltid 4, maaltid 6
 let maaltidMeatlover = []; // maaltid 2, maaltid 3, maaltid 5
 
-fetchContent("Maaltider.json")
+fetchContent("http://localhost:3000/tallerken/")
   .then((data) => {
     // Iterer over data og opdel i vegetarisk og kødelsker arrays
     data.tallerken.forEach((maaltid) => {
@@ -187,10 +187,14 @@ function getDescription(category) {
     Agriculture:
       "Tryk for at læse mere om hvordan Agriculture påvriker CO2-udledningen...",
     iLUC: "Tryk for at læse mere om hvordan iLUC påvriker CO2-udledningen...",
-    FoodProcessing: "Tryk for at læse mere om hvordan FoodProcessing påvriker CO2-udledningen...",
-    Packaging: "Tryk for at læse mere om hvordan Packaging påvriker CO2-udledningen...",
-    Transport: "Tryk for at læse mere om hvordan Transport påvriker CO2-udledningen...",
-    Retail: "Tryk for at læse mere om hvordan Retail påvriker CO2-udledningen...",
+    FoodProcessing:
+      "Tryk for at læse mere om hvordan FoodProcessing påvriker CO2-udledningen...",
+    Packaging:
+      "Tryk for at læse mere om hvordan Packaging påvriker CO2-udledningen...",
+    Transport:
+      "Tryk for at læse mere om hvordan Transport påvriker CO2-udledningen...",
+    Retail:
+      "Tryk for at læse mere om hvordan Retail påvriker CO2-udledningen...",
   };
   return descriptions[category];
 }
@@ -262,6 +266,41 @@ function closeOverlayContentInfo() {
 function closeDescription() {
   d3.select(".contentplaceholder").style("display", "none");
 }
+
+let quizsubmitvegetarian = document.getElementById("vegetarvouch");
+let quizsubmitmeatlover = document.getElementById("meatlovervouch");
+
+quizsubmitvegetarian.addEventListener("click", function () {
+  sendQuizRequest(1);
+  console.log("Hej");
+  if ("click") {
+    quizsubmitvegetarian.disabled = true;
+    quizsubmitmeatlover.disabled = true;
+  }
+});
+
+quizsubmitmeatlover.addEventListener("click", function () {
+  sendQuizRequest(2);
+  console.log("hej igen");
+  if ("click") {
+    quizsubmitvegetarian.disabled = true;
+    quizsubmitmeatlover.disabled = true;
+  }
+});
+
+async function sendQuizRequest(value) {
+  try {
+    const response = await fetch("http://localhost:3000/quizvote/" + value, {
+      method: "POST",
+    });
+  } catch (error) {
+  } finally {
+    console.log("Success");
+    createQuizChart();
+  }
+}
+
+function createQuizChart() {}
 
 async function fetchContent(url) {
   let response = await fetch(url);

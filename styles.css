@@ -6,6 +6,35 @@ body {
   background: #fff; /* Hvid baggrund */
 }
 
+.submitquiz {
+  
+}
+
+.quizheader {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.quizanswer {
+  background-color: #f7f7f7;
+  padding: 60px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+}
+
+.quizanswer:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+#vegetarvouch {
+  background-color: #ffa406;
+}
+
+#meatlovervouch {
+  background-color: #0096c7;
+}
+
 .contentplaceholder {
   position: fixed;
   top: 50%;
@@ -16,7 +45,6 @@ body {
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
   z-index: 1000; /* Ensure it's on top of other elements */
-  /* Other styles to make it stand out */
   border: 2px solid #333; /* Add a border */
   height: 80%; /* Adjust the height as needed */
   width: 50%;

@@ -7,13 +7,64 @@
   </head>
 
   <body>
+    <div class="submitquiz">
+      <div class="quizheader"><h1>Hvem udleder mest CO2?</h1></div>
+      <button class="quizanswer" id="vegetarvouch">
+        Vegetaren der kører i dieselbil
+      </button>
+      <button class="quizanswer" id="meatlovervouch">
+        Kødspiseren der kører i elbil
+      </button>
+    </div>
+
+    <div class="quizbarchart"></div>
+
+    <div class="dashboard">
+      <div class="dashboard-item" id="vegetarianDish"></div>
+      <div class="dashboard-item">
+        <div class="header">CO2 UDLEDNINGEN I KG</div>
+        <div class="number" id="vegetarianNumber">522</div>
+        <div class="subtext">
+          Værdierne repræsenterer CO2-udledning pr. kilogram for hver ingredient
+          i undersøgelsen.
+        </div>
+        <div class="informations-billede" id="vegetarianinformation"></div>
+        <!--<div class="sort-billede" id = "sortvegetarian"></div>          HVIS DER SKAL INKLUDERES YEAR-->
+      </div>
+      <div class="dashboard-item full-width" id="VegetarianBarChart"></div>
+
+      <div class="dashboard-item" id="meatDish"></div>
+      <div class="dashboard-item">
+        <div class="header">CO2 UDLEDNINGEN I KG</div>
+        <div class="number" id="meatloverNumber">1056</div>
+        <div class="subtext">
+          Værdierne repræsenterer CO2-udledning pr. kilogram for hver ingredient
+          i undersøgelsen.
+        </div>
+        <div class="informations-billede" id="meatinformation"></div>
+        <div class="sortering"></div>
+      </div>
+      <div class="dashboard-item full-width" id="MeatBarChart"></div>
+    </div>
+
+    <div id="overlayContent" style="display: none">
+      <button id="closeOverlay">Luk</button>
+    </div>
+
+    <div id="hover-text" class="hover-text" style="display: none"></div>
+
     <div class="contentplaceholder" style="display: none">
       <span id="close-button">X</span>
       <div class="content" id="agriculture">
         <div class="content-text">
           <h1 class="title">Landbrug</h1>
           <p class="subtitle">
-            Landbruget spiller en betydelig rolle i vores kuldioxid-fodaftryk. Det bidrager til CO2-udledninger gennem forskellige aktiviteter, såsom brugen af fossile brændstoffer i landbrugsmaskiner, produktion og anvendelse af gødning samt jordprocesser, der frigiver kuldioxid. Derudover udleder husdyrhold, især køer og får, metan, en potent drivhusgas
+            Landbruget spiller en betydelig rolle i vores kuldioxid-fodaftryk.
+            Det bidrager til CO2-udledninger gennem forskellige aktiviteter,
+            såsom brugen af fossile brændstoffer i landbrugsmaskiner, produktion
+            og anvendelse af gødning samt jordprocesser, der frigiver kuldioxid.
+            Derudover udleder husdyrhold, især køer og får, metan, en potent
+            drivhusgas
           </p>
         </div>
         <div class="content-img">
@@ -28,8 +79,15 @@
         <div class="content-text">
           <h1 class="title">ILUC</h1>
           <p class="subtitle">
-            ILUC står for "Indirect Land Use Change," og det er et begreb inden for klima- og miljøvidenskab, der relaterer sig til fødevareproduktion og dens indvirkning på landbrugsarealer og skovområder.
-            Når fødevarer produceres, kræves der ofte landbrugsarealer til dyrkning af afgrøder eller opdræt af husdyr. Udvidelsen af landbrugsaktiviteter kan føre til ændringer i brugen af landbrugsarealer, herunder skovrydning eller omdannelse af naturområder til landbrug. Dette kan have en negativ indvirkning på økosystemer og biodiversitet.
+            ILUC står for "Indirect Land Use Change," og det er et begreb inden
+            for klima- og miljøvidenskab, der relaterer sig til
+            fødevareproduktion og dens indvirkning på landbrugsarealer og
+            skovområder. Når fødevarer produceres, kræves der ofte
+            landbrugsarealer til dyrkning af afgrøder eller opdræt af husdyr.
+            Udvidelsen af landbrugsaktiviteter kan føre til ændringer i brugen
+            af landbrugsarealer, herunder skovrydning eller omdannelse af
+            naturområder til landbrug. Dette kan have en negativ indvirkning på
+            økosystemer og biodiversitet.
           </p>
         </div>
       </div>
@@ -114,41 +172,6 @@
         </div>
       </div>
     </div>
-
-    <div class="dashboard">
-      <div class="dashboard-item" id="vegetarianDish"></div>
-      <div class="dashboard-item">
-        <div class="header">CO2 UDLEDNINGEN I KG</div>
-        <div class="number" id="vegetarianNumber">522</div>
-        <div class="subtext">
-          Værdierne repræsenterer CO2-udledning pr. kilogram for hver ingredient
-          i undersøgelsen.
-        </div>
-        <div class="informations-billede" id="vegetarianinformation"></div>
-        <!--<div class="sort-billede" id = "sortvegetarian"></div>          HVIS DER SKAL INKLUDERES YEAR-->
-      </div>
-      <div class="dashboard-item full-width" id="VegetarianBarChart"></div>
-
-      <div class="dashboard-item" id="meatDish"></div>
-      <div class="dashboard-item">
-        <div class="header">CO2 UDLEDNINGEN I KG</div>
-        <div class="number" id="meatloverNumber">1056</div>
-        <div class="subtext">
-          Værdierne repræsenterer CO2-udledning pr. kilogram for hver ingredient
-          i undersøgelsen.
-        </div>
-        <div class="informations-billede" id="meatinformation"></div>
-        <div class="sortering"></div>
-      </div>
-      <div class="dashboard-item full-width" id="MeatBarChart"></div>
-    </div>
-
-    <!-- Overlay, som vil blive vist, når informationsikonet klikkes på -->
-    <div id="overlayContent" style="display: none">
-      <button id="closeOverlay">Luk</button>
-    </div>
-
-    <div id="hover-text" class="hover-text" style="display: none"></div>
 
     <script src="d3.v7.js"></script>
     <script src="script.js"></script>
