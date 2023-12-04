@@ -1,9 +1,3 @@
-body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  padding: 20px;
-}
-
 .dashboard {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -16,7 +10,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  position: relative; /* Ensure container is positioned relatively */
 }
 
 .dashboard-car {
@@ -27,15 +21,6 @@ body {
   grid-gap: 10px;
   max-width: 1200px;
   margin: auto;
-}
-
-.line {
-  fill: none;
-  stroke: #cc0000;
-  stroke-width: 2;
-}
-.dot {
-  fill: #cc0000;
 }
 
 /* Generel typografi og layout */
@@ -49,7 +34,7 @@ body {
 
 /* Stil for overskriften */
 .header {
-  font-size: 20px; /* Større skriftstørrelse for overskriften */
+  font-size: 30px; /* Større skriftstørrelse for overskriften */
   font-weight: bold; /* Gør teksten fed */
   margin-bottom: 1px; /* Margen under overskriften */
 }
@@ -78,13 +63,6 @@ body {
 .full-width {
   grid-column: span 2;
 }
-/* Stil til at imitere de røde linjediagrammer */
-.chart-placeholder {
-  height: 50px;
-  background-color: #e4e4e4;
-  width: 100%;
-  margin: 10px 0;
-}
 
 /*  */
 img {
@@ -92,6 +70,11 @@ img {
   height: 269.5px;
   border-radius: 4px;
   padding: 5px;
+}
+
+#audi,
+#mercedes {
+  left: -100px;
 }
 
 /* Informations knappens instillinger */
@@ -110,36 +93,6 @@ img {
   position: absolute;
   bottom: 10px; /* Juster afstanden fra bunden efter behov */
   right: 50px; /* Juster afstanden fra højre side efter behov */
-}
-
-.info {
-  visibility: hidden;
-  width: 200px;
-  background-color: green;
-  color: white;
-  text-align: center;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 1;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.plate:hover .info {
-  visibility: visible;
-}
-
-#pieChartVegetarian,
-#pieChartMeatLover {
-  position: relative; /* Change to relative positioning */
-  left: 0;
-  top: 0;
-}
-
-.dashboard-item {
-  /* Other styles */
-  position: relative; /* Ensure container is positioned relatively */
 }
 
 /* Stil for overlay */
@@ -197,32 +150,6 @@ img {
   transform: rotate(45deg);
 }
 
-#textbeside1 {
-  position: absolute;
-  top: 20px;
-  left: 1150px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-left: 20px;
-  font-size: 15px;
-  font-style: italic; /* Kursiv stil */
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-#textbeside2 {
-  position: absolute;
-  top: 20px;
-  left: px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-left: 20px;
-  font-size: 15px;
-  font-style: italic; /* Kursiv stil */
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 #popout {
   display: none;
   position: absolute;
@@ -241,4 +168,9 @@ img {
   border: 1px solid #ccc;
   box-shadow: 0 20px 1px rgba(0, 0, 0, 0.1);
   z-index: 9999;
+}
+
+#elbilchart,
+#brændselchart {
+  left: 50px;
 }
