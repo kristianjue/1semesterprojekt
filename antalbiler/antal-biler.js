@@ -4,7 +4,7 @@
       width = 530 - margin.left - margin.right,
       height = 420 - margin.top - margin.bottom;
 
-    // append the svg object to the body of the page
+    //Tilføj svg object til body på siden
     var svg = d3.select("#line1")
       .append("svg")
       .attr("width", width + margin.left + margin.right)
@@ -71,7 +71,6 @@
     .attr("x", x(referenceDate) - 80)
     .attr("dy", 20) // Justér denne værdi for at justere afstanden mellem linjerne
     .text("fra 2022/10 til 2023/10")
-    /*.style("fill", "#0096c7") */
     .style("font-size", "12px")
     .style("font-weight", "normal"); // Gør kun denne del ikke-fed
 
@@ -81,7 +80,7 @@
   .attr("width", width - x(referenceDate)) // Bredden af det farvede område
   .attr("y", 0)
   .attr("height", height)
-  .attr("fill", "rgba(255, 164, 6, 0.3)"); // Farve og gennemsigtighed (juster efter behov)
+  .attr("fill", "rgba(255, 164, 6, 0.3)"); 
 
     //Tilføj etiket og cirkel til grafens punkter
     var tooltip = d3.select("#line1")
@@ -93,7 +92,7 @@
         .style("display", "none");
 
     focus.append("circle")
-    .attr("r", 5) // Cirkelradius
+    .attr("r", 5) 
     .attr("class", "focus-circle")
     .style("fill", "#ffa406");
 
@@ -177,13 +176,11 @@ svg.append("text")
     }
 
 
-//graf over el
-    // Definer højde, brede og margin
+//graf over el, her gøres det samme som ved grafen over brændsel
     var margin2 = { top: 40, right: 95, bottom: 30, left: 60 },
       width2 = 530 - margin2.left - margin2.right,
       height2 = 420 - margin2.top - margin2.bottom;
 
-    // append the svg object to the body of the page
     var svg2 = d3.select("#line2")
       .append("svg")
       .attr("width", width2 + margin2.left + margin2.right)
@@ -191,8 +188,6 @@ svg.append("text")
       .append("g")
       .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
 
-    // Read the data2
-        // Read the data //periode og antal skal ændres til det der står i json
         let dataset2 = [];
         let timeFormat2 = d3.timeFormat("%Y-%m")
     
@@ -219,7 +214,7 @@ svg.append("text")
     
     
         function createVisualization2(dataset2) {
-    // Add x2 axis --> it is a periode format
+
     var x2 = d3.scaleTime()
       .domain(d3.extent(dataset2, function (d) { return d[0]; }))
       .range([0, width2]);
@@ -227,53 +222,36 @@ svg.append("text")
       .attr("transform", "translate(0," + height2 + ")")
       .call(d3.axisBottom(x2));
 
-    // Add Y axis
     var y2 = d3.scaleLinear()
       .domain([0, d3.max(dataset2, function (d) { return +d[1]; })])
       .range([height2, 0]);
     svg2.append("g")
       .call(d3.axisLeft(y2));
 
-    /* Add the line
-    svg2.append("path")
-      .datum(dataset2)
-      .attr("fill", "none")
-      .attr("stroke", "#0096c7")
-      .attr("stroke-width", 1.5)
-      .attr("d", d3.line()
-        .x(function (d) { return x2(d[0]); })
-        .y(function (d) { return y2(d[1]); })
-      ); */
-
-    //tilføj reference linje
     let referenceYear2 = 2022;
-    let referenceMonth2 = 10; // Eksempel: januar
+    let referenceMonth2 = 10; 
     let referenceDate2 = d3.timeParse("%Y-%m")(`${referenceYear2}-${referenceMonth2}`);
 
-    //tilføj tekst til reference linjen
       svg2.append("text")
-      .attr("x", x2(referenceDate2) - 80) // Justér denne værdi for at justere vandret placering af teksten
-      .attr("y", - 30) // Justér denne værdi for at justere lodret placering af teksten
+      .attr("x", x2(referenceDate2) - 80) 
+      .attr("y", - 30) 
       .text("Stigning på 73,75%")
       .style("font-size", "14px")
       .style("font-weight", "bold")
       .append("tspan")
       .attr("x", x2(referenceDate2) - 80)
-      .attr("dy", 20) // Justér denne værdi for at justere afstanden mellem linjerne
+      .attr("dy", 20) 
       .text("fra 2022/10 til 2023/10")
-      /*.style("fill", "#0096c7") */
       .style("font-size", "12px")
-      .style("font-weight", "normal"); // Gør kun denne del ikke-fed
+      .style("font-weight", "normal"); 
 
-      // Farv det ønskede område
   svg2.append("rect")
-  .attr("x", x2(referenceDate2)) // Start x-koordinatet for farvet område
-  .attr("width", width2 - x2(referenceDate2)) // Bredden af det farvede område
+  .attr("x", x2(referenceDate2)) 
+  .attr("width", width2 - x2(referenceDate2)) 
   .attr("y", 0)
   .attr("height", height2)
-  .attr("fill", "rgba(0, 150, 199, 0.3)"); // Farve og gennemsigtighed (juster efter behov)
+  .attr("fill", "rgba(0, 150, 199, 0.3)"); 
 
-// Opret tooltip og cirkel
 var tooltip2 = d3.select("#line2")
   .append("div")
   .attr("class", "tooltip2")
@@ -283,17 +261,16 @@ var focus2 = svg2.append("g")
   .style("display", "none");
 
 focus2.append("circle")
-  .attr("r", 5) // Cirkelradius
+  .attr("r", 5) 
   .attr("class", "focus-circle")
   .style("fill", "#0096c7");
 
 focus2.append("text")
-  .attr("x", 9) // Opdateret fra x2 til x
-  .attr("dy", ".35em") // Opdateret fra dy2 til dy
+  .attr("x", 9) 
+  .attr("dy", ".35em") 
   .style("font-size", "15px")
   .attr("class", "focus-text");
 
-// Tilføj en overlay til hele grafen for at håndtere hover-events
 svg2.append("rect")
   .attr("width", width2)
   .attr("height", height2)
@@ -304,7 +281,6 @@ svg2.append("rect")
   .on("mousemove", handleMouseMove2)
   .on("mouseout", handleMouseOut2);
 
-// Funktion til at håndtere hover-event
 function handleMouseOver2() {
   focus2.style("display", null);
   tooltip2.style("opacity", 1);
@@ -316,10 +292,8 @@ function handleMouseMove2(event) {
   var i = bisectDate(dataset2, x2Value, 1);
   var d = dataset2[i];
 
-  // Opdater cirkelens og tooltipens position
   focus2.attr("transform", "translate(" + x2(d[0]) + "," + y2(d[1]) + ")");
 
-  // Opdater teksten ved siden af cirklen
   focus2.select(".focus-text").text(d[1].toLocaleString('da-DK'));
 }
 
@@ -328,14 +302,12 @@ function handleMouseOut2() {
   tooltip2.style("opacity", 0);
 }
 
-// Opret en clipPath
 svg2.append("defs").append("clipPath")
   .attr("id", "clip2")
   .append("rect")
-  .attr("width", width2) // Bredden af det område, du vil farve
-  .attr("height", height2); // Højden af det område, du vil farve
+  .attr("width", width2) 
+  .attr("height", height2); 
 
-// Add the line, men anvend clipPath
 svg2.append("path")
   .datum(dataset2)
   .attr("fill", "none")
@@ -345,21 +317,18 @@ svg2.append("path")
     .x(function (d) { return x2(d[0]); })
     .y(function (d) { return y2(d[1]); })
   )
-  .attr("clip-path", "url(#clip2)"); // Anvend clipPath
+  .attr("clip-path", "url(#clip2)"); 
 
-
-// Tilføj en titel til venstre for grafen
 svg2.append("text")
-  .attr("x", -margin.left)  // Placer til venstre for grafområdet
-  .attr("y", -margin.top / 2)  // Placer over toppen af grafområdet
-  .attr("text-anchor", "start")  // Juster til venstrejusteret tekst
-  .style("font-size", "20px")  // Juster størrelsen efter behov
+  .attr("x", -margin.left)  
+  .attr("y", -margin.top / 2)  
+  .attr("text-anchor", "start")  
+  .style("font-size", "20px") 
   .style("fill", "black")
   .style("text-decoration", "underline")
   .text("El-biler");
 }
 
-    //Magi - det taler vi om senere!!
     async function fetchContent(url) {
       let request = await fetch(url);
       let json = await request.json();
