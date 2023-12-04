@@ -8,12 +8,21 @@ app.use(cors());
 
 
 
+/*const klient = new Client({
+  user: "dtbnxqxt",
+  host: "ella.db.elephantsql.com",
+  database: "dtbnxqxt",
+  password: "t3TRWO3wjuAFuDXdP6bmerLSDEbp6WOE",
+  port: 5432,
+});*/
+
 const klient = new Client({
-    user: "dtbnxqxt",
-    host: "ella.db.elephantsql.com",
-    database: "dtbnxqxt",
-    password: "t3TRWO3wjuAFuDXdP6bmerLSDEbp6WOE",
-    port: 5432
+  user: "db_1semesterprojekt_user",
+  host: "dpg-clmq2effeb2c73eaooe0-a.frankfurt-postgres.render.com",
+  database: "databasen",
+  password: "ve0iwn4Dx9SvRv2JCS9HtudCR6nUzEpK",
+  port: 5432,
+  ssl: { rejectUnauthorized: false },
 });
 
 klient.connect();
