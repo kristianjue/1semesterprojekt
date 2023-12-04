@@ -21,6 +21,7 @@ var svg = d3.select("#datavisualiseirng")
     .attr("width", w)
     .attr("height", h)
 
+
 // Definerer margin
 var svg = d3.select("svg"),
     margin = 200,
@@ -92,6 +93,7 @@ function displayData(dataset) {
         .attr("r", 5)
         .attr("transform", "translate(" + 100 + "," + 100 + ")")
         .style("fill", "#ffa406")
+        .style("cursor", "zoom-in")
 
         // Logik til når man holder musen over et punkt, vises label (for 2 sek)
         .on('mouseover', function (event, d) {
@@ -102,7 +104,7 @@ function displayData(dataset) {
                 .style("left", (event.pageX) + "px")
                 .style("top", (event.pageY) + 15 + "px")
             setTimeout(
-                function () { tooltip.transition().style('opacity', 0) }, 3000)
+                function () { tooltip.transition().style('opacity', 0) }, 4000)
         })
 
 
@@ -120,7 +122,8 @@ function displayData(dataset) {
         .attr("d", line)
         .style("fill", "none")
         .style("stroke", "#ffa406")
-        .style("stroke-width", "3");
+        .style("stroke-width", "3")
+        .style("cursor", "zoom-in");
 }
 
 // Definerer funktionen som asynkront henter data fra en url der kommer med som argument og derefter retunerer dataen som JSON  
