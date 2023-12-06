@@ -1,35 +1,33 @@
-let elbildata = [];
-let brændselbildata = [];
+let eCardata = [];
+let fuelCardata = [];
 
 fetchContent("https://api.backlogbusters.tech/vehicle_co2_emissions/1").then(
   (data) => {
     for (i = 0; i < data.vehicle_co2_emissions.length; i++) {
-      elbildata.push([
+      eCardata.push([
         Number(data.vehicle_co2_emissions[i].co2_t_pr_year) * 1000,
         data.vehicle_co2_emissions[i].stage_name,
       ]);
     }
-    barchartel(elbildata);
+    barchartel(eCardata);
   }
 );
 
 fetchContent("https://api.backlogbusters.tech/vehicle_co2_emissions/2").then(
   (data) => {
     for (i = 0; i < data.vehicle_co2_emissions.length; i++) {
-      brændselbildata.push([
+      fuelCardata.push([
         Number(data.vehicle_co2_emissions[i].co2_t_pr_year) * 1000,
         data.vehicle_co2_emissions[i].stage_name,
       ]);
     }
-    barchartbrændsel(brændselbildata);
+    barchartFuel(fuelCardata);
   }
 );
 
 d3.select("#audi").append("img").attr("src", "2audi.png");
-// barchartel();
 
 d3.select("#mercedes").append("img").attr("src", "mercedesamg.png");
-// barchartbrændsel();
 
 d3.selectAll(".information-picture")
   .append("img")
@@ -50,23 +48,22 @@ let billede = document.getElementsByClassName("information-picture");
 billede[0].addEventListener("click", function () {
   // Handle click for vegetarian information icon
 
-  let elbilptag = document.createElement("p");
-  elbilptag.textContent =
+  let eCarptag = document.createElement("p");
+  eCarptag.textContent =
     "This is information about CO2 emissions from electriccars";
-  informationDisplay(elbilptag);
+  informationDisplay(eCarptag);
 });
 
 billede[1].addEventListener("click", function () {
   // Handle click for meat information icon
   let overlayContent = document.getElementById("overlayContent");
-  let brændselbilptag = document.createElement("p");
-  brændselbilptag.textContent =
+  let fuelCarptag = document.createElement("p");
+  fuelCarptag.textContent =
     "This is information about CO2 emissions from fuelcars";
-  informationDisplay(brændselbilptag);
+  informationDisplay(fuelCarptag);
 });
 
 function informationDisplay(ptag) {
-  // Clear previous content
   // Append the new <p> tag
   let previousTag = overlayContent.querySelector("p");
   if (previousTag) {
@@ -94,7 +91,7 @@ function barchartel(dataset) {
     height = 380 - margin.top - margin.bottom;
 
   let svg = d3
-    .select("#elbilchart")
+    .select("#eCarchart")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -174,39 +171,6 @@ function barchartel(dataset) {
       }
     });
 
-  // Add text labels
-  /* svg
-    .selectAll("text")
-    .data(dataset)
-    .enter()
-    .append("text")
-    .attr("x", x(0)) // Start from the y-axis position
-    .attr("y", (d) => y(d[1]) + y.bandwidth() / 2 + 5) // Center text in the bar
-    .text((d) => d[0].toFixed(1)) // Format the number to 4 decimal places
-    .transition()
-    .duration(1000)
-    .ease(d3.easeCubic)
-    .attr("x", function (d) {
-      if (d[0] > 1000) {
-        return x(d[0]) - 5;
-      } else if (d[0] == 0) {
-        return 60;
-      } else if (d[0] > 100 && d[0] < 1000) {
-        return x(d[0]) + 20;
-      } else if (d[0] > 60 && d[0] < 80) {
-        return x(d[0]) + 26;
-      } else {
-        return x(0);
-      }
-    }) // Position text a bit right of the bar end
-    .attr("y", (d, i) => y(d[1]) + y.bandwidth() / 2 + 5) // Center text in the bar
-    .attr("alignment-baseline", "middle")
-    .attr("font-family", "sans-serif")
-    .attr("font-size", "11px")
-    .style("fill", function (d) {
-      return d[0] > 0 ? "white" : "black"; // Set the fill color based on the value of d
-    });
-*/
   // Append x-axis
   svg
     .append("g")
@@ -217,14 +181,14 @@ function barchartel(dataset) {
   svg.append("g").call(d3.axisLeft(y));
 }
 
-function barchartbrændsel(dataset) {
+function barchartFuel(dataset) {
   const popout = d3.select("#popout");
   let margin = { top: 20, right: 30, bottom: 40, left: 150 },
     width = 700 - margin.left - margin.right,
     height = 380 - margin.top - margin.bottom;
 
   let svg = d3
-    .select("#brændselchart")
+    .select("#fuelChart")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -259,9 +223,9 @@ function barchartbrændsel(dataset) {
     .attr("y", (d) => y(d[1]))
     .attr("width", 0) // Start with zero width
     .attr("height", y.bandwidth())
-    .attr("class", "brændselbil")
+    .attr("class", "fuelCar")
     .on("mousemove", function (event, d) {
-      d3.selectAll(".brændselbil")
+      d3.selectAll(".fuelCar")
         .transition()
         .duration(50) //The duration of the transition in milliseconds
         .style("opacity", 0.1);
@@ -273,7 +237,7 @@ function barchartbrændsel(dataset) {
       popout.style("display", "block");
     })
     .on("mouseout", function (event, d) {
-      d3.selectAll(".brændselbil")
+      d3.selectAll(".fuelCar")
         .transition()
         .duration(50) //The duration of the transition in milliseconds
         .style("opacity", 1);
@@ -309,40 +273,6 @@ function barchartbrændsel(dataset) {
         return "rgb(253,250,114)";
       }
     });
-
-  // Set fill color based on position in dataset
-  //.style("fill", "orange");
-
-  // Add text labels
-  /* svg
-    .selectAll("text")
-    .data(dataset)
-    .enter()
-    .append("text")
-    .attr("x", x(0)) // Start from the y-axis position
-    .attr("y", (d) => y(d[1]) + y.bandwidth() / 2 + 5) // Center text in the bar
-    .text((d) => d[0].toFixed(1)) // Format the number to 4 decimal places
-    .transition()
-    .duration(1000)
-    .ease(d3.easeCubic)
-    .attr("alignment-baseline", "middle")
-    .attr("font-family", "sans-serif")
-    .attr("font-size", "11px")
-    .style("fill", function (d) {
-      return d[0] > 0 ? "white" : "black"; // Set the fill color based on the value of d
-    })
-    .attr("x", function (d) {
-      if (d[0] > 1000) {
-        return x(d[0]) - 25;
-      } else if (d[0] == 0) {
-        return 20;
-      } else if (d[0] > 100 && d[0] < 1000) {
-        return x(d[0] - 100);
-      } else {
-        return x(0);
-      }
-    });
-*/
   // Append x-axis
   svg
     .append("g")
