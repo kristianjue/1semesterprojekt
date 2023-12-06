@@ -146,6 +146,7 @@ function createBarChart(
     })
     .on("click", function (event, d) {
       d3.selectAll(".contentplaceholder").style("display", "block");
+      d3.sel
 
       const category = d.category;
 
@@ -154,6 +155,10 @@ function createBarChart(
       if (categorySection) {
         categorySection.scrollIntoView({ behavior: "smooth", block: "center" });
       }
+
+      
+
+
     });
 
   d3.select("#close-button").on("click", closeDescription);
