@@ -146,19 +146,15 @@ function createBarChart(
     })
     .on("click", function (event, d) {
       d3.selectAll(".contentplaceholder").style("display", "block");
-      d3.sel
-
+      // Vi mangler en måde at starte med at sætte alle div's med class "content" til display none
       const category = d.category;
-
       const categorySection = document.getElementById(category);
-
-      if (categorySection) {
-        categorySection.scrollIntoView({ behavior: "smooth", block: "center" });
+      console.log(category);
+      categorySection.style.display = "flex";
+      if (document.getElemensByClass()) {
+        //categorySection.scrollIntoView({ behavior: "smooth", block: "start" });
+        categorySection.style.display = "block";
       }
-
-      
-
-
     });
 
   d3.select("#close-button").on("click", closeDescription);
