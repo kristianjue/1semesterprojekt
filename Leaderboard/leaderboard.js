@@ -1,58 +1,41 @@
 // set the dimensions and margins of the graph
-const margin = {top: 10, right: 30, bottom: 20, left: 50},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+const margin = { top: 10, right: 30, bottom: 20, left: 50 },
+  width = 460 - margin.left - margin.right,
+  height = 500 - margin.top - margin.bottom;
 
-// append the svg object to the body of the page
-const svg = d3.select("#dataforleaderboard")
-  .append("svg")
+// Fetch og opsætning af diagram
+fetchContent("http://localhost:3000/leaderboard").then((data) => {
+  const dataset = data.leaderboard;
+  drawStackedBarChart(dataset);
+});
+
+// Funktion til at oprette stacked bar chart
+function drawStackedBarChart(data) {
+  const keys = ["fooddata", "vehicledata"];
+
+  const svg = d3
+    .select("#dataforleaderboard")
+    .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform",`translate(${margin.left},${margin.top})`);
+    .append("g")
+    .attr("transform", `translate(${margin.left},${margin.top})`);
 
-// Parse the Data
-d3.csv("leaderboard.csv").then( function(data) {
+  const stack = d3.stack().keys(keys);
 
-  // List of subgroups = header of the csv files = soil condition here
-  const subgroups = data.columns.slice(1)
+  const series = stack(data);
 
-  // List of groups = species here = value of the first column called group -> I show them on the X axis
-  const groups = data.map(d => d.group)
+  const color = d3.scaleOrdinal().domain(keys).range(["#66c2a5", "#fc8d62"]);
 
-  // Add X axis
-  const x = d3.scaleBand()
-      .domain(data.map(d => d.group))
-      .range([0, width])
-      .padding([0.2])
-  svg.append("g")
-    .attr("transform", `translate(0, ${height})`)
-    .call(d3.axisBottom(x).tickSizeOuter(0));
+  // Skalering af akser
+  const xScale = d3.scaleBand().domain([0, 1]).range([0, 400]).padding(0.1);
 
-  // Add Y axis
-  const y = d3.scaleLinear()
-    .domain([0, 5000])
-    .range([ height, 0 ]);
-  svg.append("g")
-    .call(d3.axisLeft(y));
+  const yScale = d3.scaleLinear().domain([0, 5000]).range([400, 0]); // Ændret fra 300 til 400
 
-  // color palette = one color per subgroup
-  const color = d3.scaleOrdinal()
-    .domain(subgroups)
-    .range(['#ffa406','#0096c7'])
+  const popout2 = d3.select("#popout2");
 
-  //stack the data? --> stack per subgroup
-  const stackedData = d3.stack()
-    .keys(subgroups)
-    (data)
-
-
-
-
-  // ----------------
-  // Create a tooltip
-  // ----------------
-  const tooltip = d3.select("#dataforleaderboard")
+  const tooltip = d3
+    .select("#dataforleaderboard")
     .append("div")
     .style("opacity", 0)
     .attr("class", "tooltip")
@@ -60,45 +43,84 @@ d3.csv("leaderboard.csv").then( function(data) {
     .style("border", "solid")
     .style("border-width", "1px")
     .style("border-radius", "5px")
-    .style("padding", "10px")
+    .style("padding", "10px");
 
-  // Three function that change the tooltip when user hover / move / leave a cell
-  const mouseover = function(event, d) {
+  // Three functions that change the tooltip and handle opacity changes
+  const mouseover = function (event, d) {
+    console.log(d);
     const subgroupName = d3.select(this.parentNode).datum().key;
     const subgroupValue = d.data[subgroupName];
-    tooltip
-        .html(subgroupName + ":" + subgroupValue)
-        .style("opacity", 1)
+    tooltip.html(subgroupName + ":" + subgroupValue).style("opacity", 1);
 
-  }
-  const mousemove = function(event, d) {
-    tooltip.style("transform","translateY(-55%)")
-           .style("left",(event.x)+10+"px")
-           .style("top",(event.y)+40+"px")
-  }
-  const mouseleave = function(event, d) {
-    tooltip
-      .style("opacity", 0)
-  }
+    // Highlight the specific part of the bar
+    d3.select(this).transition().duration(200).style("opacity", 1);
 
-  // Show the bars
-  svg.append("g")
+    // Fade out other bars and their corresponding parts
+    d3.selectAll("rect")
+      .filter((otherD) => {
+        return otherD[0] != d[0] || otherD[1] != d[1];
+      })
+      .transition()
+      .duration(200)
+      .style("opacity", 0.2);
+  };
+
+  const mouseleave = function (event, d) {
+    tooltip.style("opacity", 0);
+
+    // Restore opacity of other bars and their corresponding parts
+    d3.selectAll("rect").transition().duration(200).style("opacity", 1);
+  };
+
+  const mousemove = function (event, d) {
+    tooltip
+      .style("transform", "translateY(-55%)")
+      .style("left", event.x + 10 + "px")
+      .style("top", event.y + 40 + "px");
+  };
+
+  // Opret bjælker
+  svg
     .selectAll("g")
-    // Enter in the stack data = loop key per key = group per group
-    .data(stackedData)
+    .data(series)
     .join("g")
-      .attr("fill", d => color(d.key))
-      .selectAll("rect")
-      // enter a second time = loop subgroup per subgroup to add all rectangles
-      .data(d => d)
-      .join("rect")
-        .attr("x", d =>  x(d.data.group))
-        .attr("y", d => y(d[1]))
-        .attr("height", d => y(d[0]) - y(d[1]))
-        .attr("width",x.bandwidth())
-        .attr("stroke", "grey")
-      .on("mouseover", mouseover)
-      .on("mousemove", mousemove)
-      .on("mouseleave", mouseleave)
+    .attr("fill", (d) => color(d.key))
+    .selectAll("rect")
+    .data((d) => d)
+    .join("rect")
+    .attr("x", (d, i) => xScale(i))
+    .attr("y", (d) => yScale(d[1]))
+    .attr("height", (d) => yScale(d[0]) - yScale(d[1]))
+    .attr("width", xScale.bandwidth())
+    .attr("class", "Board")
+    .on("mouseover", mouseover)
+    .on("mousemove", mousemove)
+    .on("mouseleave", mouseleave);
 
-})
+  // Opret x-akse
+  svg
+    .append("g")
+    .attr("transform", `translate(0, ${400})`)
+    .call(
+      d3.axisBottom(xScale).tickFormat(function (d) {
+        console.log(data);
+        console.log(d);
+        //while (d < data.length) {
+        if (data[d].person_id === 1) {
+          return "Meatlover";
+        } else {
+          return "Vegetarian";
+        }
+        //}
+      })
+    );
+
+  // Opret y-akse
+  svg.append("g").call(d3.axisLeft(yScale));
+}
+
+async function fetchContent(url) {
+  let request = await fetch(url);
+  let json = await request.json();
+  return json;
+}

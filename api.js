@@ -7,11 +7,12 @@ const port = 3000;
 app.use(cors());
 
 const klient = new Client({
-  user: "dtbnxqxt",
-  host: "ella.db.elephantsql.com",
-  database: "dtbnxqxt",
-  password: "t3TRWO3wjuAFuDXdP6bmerLSDEbp6WOE",
+  user: "db_1semesterprojekt_user",
+  host: "dpg-clmq2effeb2c73eaooe0-a.frankfurt-postgres.render.com",
+  database: "databasen",
+  password: "ve0iwn4Dx9SvRv2JCS9HtudCR6nUzEpK",
   port: 5432,
+  ssl: { rejectUnauthorized: false },
 });
 
 klient.connect();
@@ -123,6 +124,57 @@ app.get("/quizvote/results", async (req, res) => {
     res.json({
       ok: true,
       results: queryData.rows,
+    });
+  } catch (error) {
+    res.json({
+      ok: false,
+      message: error.message,
+    });
+  }
+});
+
+app.get("/yearly_co2_food", async (req, res) => {
+  try {
+    let queryData = await klient.query(
+      "select * from yearly_co2_food"
+    );
+    res.json({
+      ok: true,
+      yearly_co2_food: queryData.rows,
+    });
+  } catch (error) {
+    res.json({
+      ok: false,
+      message: error.message,
+    });
+  }
+});
+
+app.get("/yearly_co2_vehicle", async (req, res) => {
+  try {
+    let queryData = await klient.query(
+      "select * from yearly_co2_vehicle"
+    );
+    res.json({
+      ok: true,
+      vehicle_co2_emissions: queryData.rows,
+    });
+  } catch (error) {
+    res.json({
+      ok: false,
+      message: error.message,
+    });
+  }
+});
+
+app.get("/leaderboard", async (req, res) => {
+  try {
+    let queryData = await klient.query(
+      "select * from leaderboard"
+    );
+    res.json({
+      ok: true,
+      leaderboard: queryData.rows,
     });
   } catch (error) {
     res.json({
