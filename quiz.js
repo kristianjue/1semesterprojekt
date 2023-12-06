@@ -21,7 +21,7 @@ quizsubmitmeatlover.addEventListener("click", function () {
 
 async function sendQuizRequest(value) {
   try {
-    await fetch("http://localhost:3000/quizvote/" + value, {
+    await fetch("https://api.backlogbusters.tech/quizvote/" + value, {
       method: "POST",
     });
   } catch (error) {
@@ -110,19 +110,21 @@ function createQuizChart(dataset) {
 function fetchdata() {
   let dataset = [];
 
-  fetchContent("http://localhost:3000/quizvote/results").then((data) => {
-    for (var i = 0; i < data.results.length; i++) {
-      dataset.push({
-        Person: "Vegetaren",
-        Value: Number(data.results[i].percentageof1),
-      });
-      dataset.push({
-        Person: "Kødelskeren",
-        Value: Number(data.results[i].percentageof2),
-      });
+  fetchContent("https://api.backlogbusters.tech/quizvote/results").then(
+    (data) => {
+      for (var i = 0; i < data.results.length; i++) {
+        dataset.push({
+          Person: "Vegetaren",
+          Value: Number(data.results[i].percentageof1),
+        });
+        dataset.push({
+          Person: "Kødelskeren",
+          Value: Number(data.results[i].percentageof2),
+        });
+      }
+      createQuizChart(dataset);
     }
-    createQuizChart(dataset);
-  });
+  );
 
   async function fetchContent(url) {
     let request = await fetch(url);

@@ -3,7 +3,7 @@ let aggregatedMeatloverData = 0;
 let maaltidVegetar = []; // maaltid 1, maaltid 4, maaltid 6
 let maaltidMeatlover = []; // maaltid 2, maaltid 3, maaltid 5
 
-fetchContent("http://localhost:3000/tallerken/")
+fetchContent("https://api.backlogbusters.tech/tallerken/")
   .then((data) => {
     // Iterer over data og opdel i vegetarisk og kødelsker arrays
 
