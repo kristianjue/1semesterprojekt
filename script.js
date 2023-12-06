@@ -152,7 +152,7 @@ function createBarChart(
       const categorySection = document.getElementById(category);
 
       if (categorySection) {
-        categorySection.scrollIntoView({ behavior: "smooth", block: "start" });
+        categorySection.scrollIntoView({ behavior: "smooth", block: "center" });
       }
     });
 
