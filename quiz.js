@@ -107,7 +107,6 @@ function createQuizChart(dataset) {
     .style("font-weight", "bold"); // Fed skrift
 }
 
-
 function fetchdata() {
   let dataset = [];
 
