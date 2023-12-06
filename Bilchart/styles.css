@@ -78,7 +78,7 @@ img {
 }
 
 /* Informations knappens instillinger */
-.informations-billede img {
+.information-picture img {
   position: absolute;
   bottom: 10px; /* Juster afstanden fra bunden efter behov */
   right: 10px; /* Juster afstanden fra højre side efter behov */

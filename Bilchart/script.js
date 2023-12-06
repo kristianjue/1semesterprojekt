@@ -1,25 +1,29 @@
 let elbildata = [];
 let brændselbildata = [];
 
-fetchContent("http://localhost:3000/vehicle_co2_emissions/1").then((data) => {
-  for (i = 0; i < data.vehicle_co2_emissions.length; i++) {
-    elbildata.push([
-      Number(data.vehicle_co2_emissions[i].co2_t_pr_year) * 1000,
-      data.vehicle_co2_emissions[i].stage_name,
-    ]);
+fetchContent("https://api.backlogbusters.tech/vehicle_co2_emissions/1").then(
+  (data) => {
+    for (i = 0; i < data.vehicle_co2_emissions.length; i++) {
+      elbildata.push([
+        Number(data.vehicle_co2_emissions[i].co2_t_pr_year) * 1000,
+        data.vehicle_co2_emissions[i].stage_name,
+      ]);
+    }
+    barchartel(elbildata);
   }
-  barchartel(elbildata);
-});
+);
 
-fetchContent("http://localhost:3000/vehicle_co2_emissions/2").then((data) => {
-  for (i = 0; i < data.vehicle_co2_emissions.length; i++) {
-    brændselbildata.push([
-      Number(data.vehicle_co2_emissions[i].co2_t_pr_year) * 1000,
-      data.vehicle_co2_emissions[i].stage_name,
-    ]);
+fetchContent("https://api.backlogbusters.tech/vehicle_co2_emissions/2").then(
+  (data) => {
+    for (i = 0; i < data.vehicle_co2_emissions.length; i++) {
+      brændselbildata.push([
+        Number(data.vehicle_co2_emissions[i].co2_t_pr_year) * 1000,
+        data.vehicle_co2_emissions[i].stage_name,
+      ]);
+    }
+    barchartbrændsel(brændselbildata);
   }
-  barchartbrændsel(brændselbildata);
-});
+);
 
 d3.select("#audi").append("img").attr("src", "2audi.png");
 // barchartel();
@@ -27,7 +31,7 @@ d3.select("#audi").append("img").attr("src", "2audi.png");
 d3.select("#mercedes").append("img").attr("src", "mercedesamg.png");
 // barchartbrændsel();
 
-d3.selectAll(".informations-billede")
+d3.selectAll(".information-picture")
   .append("img")
   .attr("src", "informationbutton.png")
   .on("mouseover", function (event, d) {
@@ -37,18 +41,18 @@ d3.selectAll(".informations-billede")
     d3.select(this).style("opacity", 1);
   });
 
-d3.selectAll(".informations-billede img").on("click", showOverlayContentInfo);
+d3.selectAll(".information-picture img").on("click", showOverlayContentInfo);
 
 d3.select("#closeOverlay").on("click", closeOverlayContentInfo);
 
-let billede = document.getElementsByClassName("informations-billede");
+let billede = document.getElementsByClassName("information-picture");
 
 billede[0].addEventListener("click", function () {
   // Handle click for vegetarian information icon
 
   let elbilptag = document.createElement("p");
   elbilptag.textContent =
-    "Dette er information omkring CO2 udledning fra Elbiler.";
+    "This is information about CO2 emissions from electriccars";
   informationDisplay(elbilptag);
 });
 
@@ -57,7 +61,7 @@ billede[1].addEventListener("click", function () {
   let overlayContent = document.getElementById("overlayContent");
   let brændselbilptag = document.createElement("p");
   brændselbilptag.textContent =
-    "Dette er information omkring CO2 udledning fra Brændselbiler.";
+    "This is information about CO2 emissions from fuelcars";
   informationDisplay(brændselbilptag);
 });
 
@@ -125,9 +129,9 @@ function barchartel(dataset) {
     .attr("y", (d) => y(d[1]))
     .attr("width", 0) // Start with zero width
     .attr("height", y.bandwidth())
-    .attr("class", "elbil")
+    .attr("class", "eCar")
     .on("mousemove", function (event, d) {
-      d3.selectAll(".elbil").transition().duration(50).style("opacity", 0.1);
+      d3.selectAll(".eCar").transition().duration(50).style("opacity", 0.1);
       d3.select(this).transition().duration(50).style("opacity", 1);
       popout2.html(`<p>${d[1]}: ${d[0]}</p>`);
       const [x, y] = d3.pointer(event, d);
@@ -136,7 +140,7 @@ function barchartel(dataset) {
       popout2.style("display", "block");
     })
     .on("mouseout", function (event, d) {
-      d3.selectAll(".elbil").transition().duration(50).style("opacity", 1);
+      d3.selectAll(".eCar").transition().duration(50).style("opacity", 1);
       popout2.style("display", "none");
     })
     .transition()
