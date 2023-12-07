@@ -224,28 +224,30 @@ var svg2 = d3
 let dataset2 = [];
 let timeFormat2 = d3.timeFormat("%Y-%m");
 
-fetchContent("http://localhost:3000/personbil_udvikling/1").then((data) => {
-  for (var i = 0; i < data.personbil_udvikling.length; i++) {
-    dataset2.push([
-      data.personbil_udvikling[i].årogkvartal,
-      data.personbil_udvikling[i].antal_biler,
-    ]);
+fetchContent("http://api.backlogbusters.tech/personbil_udvikling/1").then(
+  (data) => {
+    for (var i = 0; i < data.personbil_udvikling.length; i++) {
+      dataset2.push([
+        data.personbil_udvikling[i].årogkvartal,
+        data.personbil_udvikling[i].antal_biler,
+      ]);
+    }
+    console.log(dataset2);
+    let parseTime = d3.timeParse("%Y-%m");
+
+    dataset2.forEach(function (d) {
+      console.log(d[0]);
+      d[0] = parseTime(d[0]);
+      console.log(d[0]);
+    });
+    dataset2.sort(function (a, b) {
+      return a[0] - b[0];
+    });
+
+    console.log(dataset2);
+    createVisualization2(dataset2);
   }
-  console.log(dataset2);
-  let parseTime = d3.timeParse("%Y-%m");
-
-  dataset2.forEach(function (d) {
-    console.log(d[0]);
-    d[0] = parseTime(d[0]);
-    console.log(d[0]);
-  });
-  dataset2.sort(function (a, b) {
-    return a[0] - b[0];
-  });
-
-  console.log(dataset2);
-  createVisualization2(dataset2);
-});
+);
 
 function createVisualization2(dataset2) {
   var x2 = d3
