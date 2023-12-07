@@ -3,9 +3,10 @@ let aggregatedMeatloverData = 0;
 let maaltidVegetar = []; // maaltid 1, maaltid 4, maaltid 6
 let maaltidMeatlover = []; // maaltid 2, maaltid 3, maaltid 5
 
-fetchContent("Maaltider.json")
+fetchContent("https://api.backlogbusters.tech/tallerken/")
   .then((data) => {
     // Iterer over data og opdel i vegetarisk og kødelsker arrays
+
     data.tallerken.forEach((maaltid) => {
       if (
         maaltid.maaltid_id === 1 ||
@@ -43,15 +44,6 @@ fetchContent("Maaltider.json")
   .catch((error) => {
     console.error("Der opstod en fejl under hentning af JSON-data:", error);
   });
-
-const translationMap = {
-  Agriculture: "Landbrug",
-  iLUC: "iLUC",
-  FoodProcessing: "Fødevareforarbejdning",
-  Packaging: "Emballage",
-  Transport: "Transport",
-  Retail: "Detailhandel",
-};
 
 function aggregateData(maaltider) {
   const aggregatedData = {
@@ -147,17 +139,26 @@ function createBarChart(
         .style("left", xPosition + "px")
         .style("top", yPosition - 50 + "px");
     })
-    .on("mouseout", function (event, d) {
+    .on("mouseout", function () {
       d3.selectAll(".barcharts").transition().duration(10).style("opacity", 1);
 
       d3.selectAll(".tooltip").remove();
     })
     .on("click", function (event, d) {
       d3.selectAll(".contentplaceholder").style("display", "block");
-      /*const category = d.category;
-      if (category === "Agriculture") {
-        scrollToElement("#detail");
-      }*/
+      d3.sel
+
+      const category = d.category;
+
+      const categorySection = document.getElementById(category);
+
+      if (categorySection) {
+        categorySection.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+
+      
+
+
     });
 
   d3.select("#close-button").on("click", closeDescription);
@@ -187,10 +188,14 @@ function getDescription(category) {
     Agriculture:
       "Tryk for at læse mere om hvordan Agriculture påvriker CO2-udledningen...",
     iLUC: "Tryk for at læse mere om hvordan iLUC påvriker CO2-udledningen...",
-    FoodProcessing: "Tryk for at læse mere om hvordan FoodProcessing påvriker CO2-udledningen...",
-    Packaging: "Tryk for at læse mere om hvordan Packaging påvriker CO2-udledningen...",
-    Transport: "Tryk for at læse mere om hvordan Transport påvriker CO2-udledningen...",
-    Retail: "Tryk for at læse mere om hvordan Retail påvriker CO2-udledningen...",
+    FoodProcessing:
+      "Tryk for at læse mere om hvordan FoodProcessing påvriker CO2-udledningen...",
+    Packaging:
+      "Tryk for at læse mere om hvordan Packaging påvriker CO2-udledningen...",
+    Transport:
+      "Tryk for at læse mere om hvordan Transport påvriker CO2-udledningen...",
+    Retail:
+      "Tryk for at læse mere om hvordan Retail påvriker CO2-udledningen...",
   };
   return descriptions[category];
 }

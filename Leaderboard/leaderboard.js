@@ -1,5 +1,5 @@
 // set the dimensions and margins of the graph
-const margin = { top: 10, right: 30, bottom: 20, left: 50 },
+const margin = { top: 10, right: 30, bottom: 20, left: 60 },
   width = 460 - margin.left - margin.right,
   height = 500 - margin.top - margin.bottom;
 
@@ -30,7 +30,19 @@ function drawStackedBarChart(data) {
   // Skalering af akser
   const xScale = d3.scaleBand().domain([0, 1]).range([0, 400]).padding(0.1);
 
-  const yScale = d3.scaleLinear().domain([0, 5000]).range([400, 0]); // Ændret fra 300 til 400
+  const yScale = d3.scaleLinear().domain([0, 5000]).range([400, 0]);
+
+  // Tilføj titlen til y-aksen med en justeret y-offset
+  svg
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -margin.left)
+    .attr("x", 0 - height / 2)
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .style("font-size", "12px")
+    //.style("font-style", "italic")
+    .text("Co2-udledning");
 
   const popout2 = d3.select("#popout2");
 
@@ -50,7 +62,7 @@ function drawStackedBarChart(data) {
     console.log(d);
     const subgroupName = d3.select(this.parentNode).datum().key;
     const subgroupValue = d.data[subgroupName];
-    tooltip.html(subgroupName + ":" + subgroupValue).style("opacity", 1);
+    tooltip.html(subgroupName + ":" + " " + subgroupValue).style("opacity", 1);
 
     // Highlight the specific part of the bar
     d3.select(this).transition().duration(200).style("opacity", 1);
@@ -113,7 +125,9 @@ function drawStackedBarChart(data) {
         }
         //}
       })
-    );
+    )
+    .selectAll("text")
+    .style("font-size", "12px");
 
   // Opret y-akse
   svg.append("g").call(d3.axisLeft(yScale));
