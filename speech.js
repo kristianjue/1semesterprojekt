@@ -11,26 +11,9 @@ speech.addEventListener("click", function () {
 function toggleSpeechBubble() {
   currentSection = fullpage_api.getActiveSection();
   ActiveSectionNumber = currentSection.anchor;
-  console.log(ActiveSectionNumber);
-  localStorage.setItem("PlayedSound",true);
   if (ActiveSectionNumber === "1") {
     slide1.play();
   } else if (ActiveSectionNumber === "2") {
     slide2.play();
   }
 }
-
-setTimeout(function () {
-  iconAnimation();
-}, 5000);
-
-function iconAnimation(speech) {
-  if ((localStorage.getItem("playedSound") = "true")) {
-    console.log(localStorage.getItem("PlayedSound"));
-    localStorage.clear();
-  } else {
-    speech.style("animation", "jump 1s ease-in-out infinite");
-    console.log("kode kørt");
-  }
-}
-
