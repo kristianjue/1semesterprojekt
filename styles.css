@@ -6,13 +6,6 @@ body {
   background: #fff; /* Hvid baggrund */
 }
 
-.submitquiz {
-}
-
-.quizheader {
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
 .quizanswer {
   background-color: #f7f7f7;
   padding: 60px;
