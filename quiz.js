@@ -26,6 +26,7 @@ async function sendQuizRequest(value) {
     });
   } catch (error) {
   } finally {
+    fullpage_api.moveSectionDown();
     console.log("Success");
     fetchdata();
   }

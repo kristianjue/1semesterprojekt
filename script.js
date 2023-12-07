@@ -146,19 +146,26 @@ function createBarChart(
     })
     .on("click", function (event, d) {
       d3.selectAll(".contentplaceholder").style("display", "block");
-      d3.sel
-
-      const category = d.category;
-
-      const categorySection = document.getElementById(category);
-
-      if (categorySection) {
-        categorySection.scrollIntoView({ behavior: "smooth", block: "center" });
+      const AllCategories = [
+        "Agriculture",
+        "iLUC",
+        "FoodProcessing",
+        "Packaging",
+        "Transport",
+        "Retail",
+      ];
+      for (let i = 0; i < AllCategories.length; i++) {
+        const categorySection = document.getElementById(AllCategories[i]);
+        categorySection.style.display = "none";
       }
-
-      
-
-
+      const category = d.category;
+      const categorySection = document.getElementById(category);
+      console.log(category);
+      categorySection.style.display = "flex";
+      if (document.getElemensByClass()) {
+        //categorySection.scrollIntoView({ behavior: "smooth", block: "start" });
+        categorySection.style.display = "block";
+      }
     });
 
   d3.select("#close-button").on("click", closeDescription);

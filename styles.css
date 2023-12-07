@@ -6,13 +6,6 @@ body {
   background: #fff; /* Hvid baggrund */
 }
 
-.submitquiz {
-}
-
-.quizheader {
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
 .quizanswer {
   background-color: #f7f7f7;
   padding: 60px;
@@ -36,18 +29,17 @@ body {
 
 .contentplaceholder {
   position: fixed;
-  top: 50%;
+  top: 60%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 64%);
   background: white;
   padding: 40px;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
   z-index: 1000; /* Ensure it's on top of other elements */
   border: 2px solid #333; /* Add a border */
-  height: 80%; /* Adjust the height as needed */
+  height: 60%; /* Adjust the height as needed */
   width: 50%;
-  overflow-y: auto;
 }
 
 .content {
@@ -254,4 +246,12 @@ img {
 
 .barcharts {
   cursor: pointer;
+}
+
+.arrow-down {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  transform: translate(-0%, 1400%);
+  z-index: 1000;
 }

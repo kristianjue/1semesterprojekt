@@ -4,17 +4,15 @@
     <meta charset="UTF-8" />
     <title>CO2-udledning: Vegetarisk vs Kødret</title>
     <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.css"
-    />
+    <link rel="stylesheet" href="fullpage.css" />
   </head>
 
   <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"></script>
-    <div class="submitquiz">
-      <div class="quizheader"><h1>Hvem udleder mest CO2?</h1></div>
+    <script src="fullpage-src.js"></script>
+    <img src="arrow-down.png" class="arrow-down" onclick="fullpage_api.moveSectionDown()" />
+    <div id="fullpage">
+      <div class="section">
+        <h1>Hvem udleder mest CO2?</h1>
       <button class="quizanswer" id="vegetarvouch">
         Vegetaren der kører i dieselbil
       </button>
@@ -22,10 +20,9 @@
         Kødspiseren der kører i elbil
       </button>
     </div>
-
-    <div class="quizbarchart"></div>
-
-    <div class="dashboard">
+    
+<div class="section">  
+<div class="dashboard">
       <div class="dashboard-item" id="vegetarianDish"></div>
       <div class="dashboard-item">
         <div class="header">CO2 UDLEDNINGEN I KG</div>
@@ -98,7 +95,7 @@
         </div>
       </div>
 
-      <div class="content" id="FoodProcessing">
+      <div class="content" id="FoodProcessing" >
         <div class="content-text">
           <h1 class="title">Fødevareforarbejdning</h1>
           <p class="subtitle">
@@ -118,7 +115,7 @@
         </div>
       </div>
 
-      <div class="content" id="Packaging">
+      <div class="content" id="Packaging" >
         <div class="content-img">
           <img src="Emballage.png" alt="" />
         </div>
@@ -158,7 +155,7 @@
         </div>
       </div>
 
-      <div class="content" id="Retail">
+      <div class="content" id="Retail" >
         <div class="content-img">
           <img src="Forretning.png" alt="" />
         </div>
@@ -178,10 +175,20 @@
         </div>
       </div>
     </div>
+</div>
+</div>
+</div>
+      <div class="section"><p>test2</p></div>
+    </div>
+    <div class="submitquiz">
+      
+    <div class="quizbarchart"></div>
+
+    
 
     <script src="d3.v7.js"></script>
     <script src="script.js"></script>
     <script src="quiz.js"></script>
-    <script src="fullpage.js"></script>
+    <script src="scroll-logic.js"></script>
   </body>
 </html>
