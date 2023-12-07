@@ -12,12 +12,12 @@ fetchContent("https://api.backlogbusters.tech/vegetarer/").then((data) => {
 });
 
 //Definerer højde og bredde
-var w = 1000;
-var h = 500;
+var w = 2000;
+var h = 1000;
 
 //Finder div med ID'et datavisualiseirng og laver en SVG med defineret højde og bredde
 var svg = d3
-  .select("#datavisualiseirng")
+  .select("#vegetarian")
   .append("svg")
   .attr("width", w)
   .attr("height", h);
@@ -36,7 +36,7 @@ var g = svg.append("g").attr("transform", "translate(" + 100 + "," + 100 + ")");
 
 // Opretter variabel til at lave labels
 var tooltip = d3
-  .select("#datavisualiseirng")
+  .select("#vegetarian")
   .append("div")
   .style("position", "absolute")
   .style("background-color", "#fff")
@@ -54,8 +54,8 @@ function displayData(dataset) {
     .attr("y", 100)
     .attr("text-anchor", "middle")
     .style("font-family", "Helvetica")
-    .style("font-size", 20)
-    .text("Antal vegetarer i Danmark");
+    .style("font-size", 32)
+    .text("Development of vegetarians in Denmark");
 
   svg
     .append("text")
@@ -63,16 +63,16 @@ function displayData(dataset) {
     .attr("y", height - 15 + 150)
     .attr("text-anchor", "middle")
     .style("font-family", "Helvetica")
-    .style("font-size", 12)
-    .text("År");
+    .style("font-size", 20)
+    .text("Year");
 
   svg
     .append("text")
     .attr("text-anchor", "middle")
-    .attr("transform", "translate(85,85)")
+    .attr("transform", "translate(85,55)")
     .style("font-family", "Helvetica")
-    .style("font-size", 12)
-    .text("Antal vegetarer");
+    .text("Vegetarians")
+    .style("font-size", 20);
 
   // Opretter værdier på x-aksen, men kun på specifikke årstal
   g.append("g")
@@ -82,10 +82,15 @@ function displayData(dataset) {
         .axisBottom(xScale)
         .tickValues([2017, 2018, 2019, 2020, 2021, 2022])
         .tickFormat(d3.format("d"))
-    );
+    )
+    .selectAll("text")
+    .style("font-size", "16px");
 
   // Opretter værdier på y-aksen, hvor værdierne bliver vist som heltal
-  g.append("g").call(d3.axisLeft(yScale).tickFormat(d3.format("d")));
+  g.append("g")
+    .call(d3.axisLeft(yScale).tickFormat(d3.format("d")))
+    .selectAll("text")
+    .style("font-size", "16px");
 
   // Opretter datapunkter/prikker på grafen
   svg
@@ -100,7 +105,7 @@ function displayData(dataset) {
     .attr("cy", function (d) {
       return yScale(d[1]);
     })
-    .attr("r", 5)
+    .attr("r", 10)
     .attr("transform", "translate(" + 100 + "," + 100 + ")")
     .style("fill", "#ffa406")
     .style("cursor", "zoom-in")
@@ -110,7 +115,8 @@ function displayData(dataset) {
       tooltip.transition().style("opacity", 1);
 
       tooltip
-        .html(d[1].toLocaleString("da-DK") + " Vegetarer")
+        .html(d[1].toLocaleString("da-DK") + " Vegetarians")
+        .style("font-size", "20px")
         .style("left", event.pageX + "px")
         .style("top", event.pageY + 15 + "px");
       setTimeout(function () {

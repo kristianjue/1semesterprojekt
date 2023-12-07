@@ -9,186 +9,27 @@
 
   <body>
     <script src="fullpage-src.js"></script>
-    <img src="arrow-down.png" class="arrow-down" onclick="fullpage_api.moveSectionDown()" />
     <div id="fullpage">
-      <div class="section">
-        <h1>Hvem udleder mest CO2?</h1>
-      <button class="quizanswer" id="vegetarvouch">
-        Vegetaren der kører i dieselbil
-      </button>
-      <button class="quizanswer" id="meatlovervouch">
-        Kødspiseren der kører i elbil
-      </button>
-    </div>
-    
-<div class="section">  
-<div class="dashboard">
-      <div class="dashboard-item" id="vegetarianDish"></div>
-      <div class="dashboard-item">
-        <div class="header">CO2 UDLEDNINGEN I KG</div>
-        <div class="number" id="vegetarianNumber">522</div>
-        <div class="subtext">
-          Værdierne repræsenterer CO2-udledning pr. kilogram for hver ingredient
-          i undersøgelsen.
-        </div>
-        <div class="informations-billede" id="vegetarianinformation"></div>
-        <!--<div class="sort-billede" id = "sortvegetarian"></div>          HVIS DER SKAL INKLUDERES YEAR-->
-      </div>
-      <div class="dashboard-item full-width" id="VegetarianBarChart"></div>
-
-      <div class="dashboard-item" id="meatDish"></div>
-      <div class="dashboard-item">
-        <div class="header">CO2 UDLEDNINGEN I KG</div>
-        <div class="number" id="meatloverNumber">1056</div>
-        <div class="subtext">
-          Værdierne repræsenterer CO2-udledning pr. kilogram for hver ingredient
-          i undersøgelsen.
-        </div>
-        <div class="informations-billede" id="meatinformation"></div>
-        <div class="sortering"></div>
-      </div>
-      <div class="dashboard-item full-width" id="MeatBarChart"></div>
-    </div>
-
-    <div id="overlayContent" style="display: none">
-      <button id="closeOverlay">Luk</button>
-    </div>
-
-    <div id="hover-text" class="hover-text" style="display: none"></div>
-
-    <div class="contentplaceholder" style="display: none">
-      <span id="close-button">X</span>
-      <div class="content" id="Agriculture">
-        <div class="content-text">
-          <h1 class="title">Landbrug</h1>
-          <p class="subtitle">
-            Landbruget spiller en betydelig rolle i vores kuldioxid-fodaftryk.
-            Det bidrager til CO2-udledninger gennem forskellige aktiviteter,
-            såsom brugen af fossile brændstoffer i landbrugsmaskiner, produktion
-            og anvendelse af gødning samt jordprocesser, der frigiver kuldioxid.
-            Derudover udleder husdyrhold, især køer og får, metan, en potent
-            drivhusgas
-          </p>
-        </div>
-        <div class="content-img">
-          <img src="Tractor-removebg-preview.png" alt="" />
+      <div class="section" id="vegetarian_visualization" data-anchor="1">
+        <div class="background_for_visualization">
+          <div id="vegetarian"></div>
         </div>
       </div>
-
-      <div class="content" id="iLUC">
-        <div class="content-img">
-          <img src="ILUC.png" alt="" />
-        </div>
-        <div class="content-text">
-          <h1 class="title">ILUC</h1>
-          <p class="subtitle">
-            ILUC står for "Indirect Land Use Change," og det er et begreb inden
-            for klima- og miljøvidenskab, der relaterer sig til
-            fødevareproduktion og dens indvirkning på landbrugsarealer og
-            skovområder. Når fødevarer produceres, kræves der ofte
-            landbrugsarealer til dyrkning af afgrøder eller opdræt af husdyr.
-            Udvidelsen af landbrugsaktiviteter kan føre til ændringer i brugen
-            af landbrugsarealer, herunder skovrydning eller omdannelse af
-            naturområder til landbrug. Dette kan have en negativ indvirkning på
-            økosystemer og biodiversitet.
-          </p>
-        </div>
-      </div>
-
-      <div class="content" id="FoodProcessing" >
-        <div class="content-text">
-          <h1 class="title">Fødevareforarbejdning</h1>
-          <p class="subtitle">
-            Landbruget er en grundlæggende kilde til fødevarer, men det er også
-            en væsentlig kilde til CO2-udledning. Disse emissioner stammer fra
-            forskellige aktiviteter som produktion og brug af gødning, brug af
-            fossile brændstoffer til landbrugsmaskiner, og processer i
-            jordbruget, der frigiver CO2. Yderligere bidrager husdyrhold, især
-            køer og får, til udledninger gennem metan, som er en kraftig
-            drivhusgas. Optimering af disse processer og overgang til mere
-            bæredygtige praksisser kan reducere landbrugets klimaaftryk
-            betydeligt.
-          </p>
-        </div>
-        <div class="content-img">
-          <img src="Fabrik.png" alt="" />
-        </div>
-      </div>
-
-      <div class="content" id="Packaging" >
-        <div class="content-img">
-          <img src="Emballage.png" alt="" />
-        </div>
-        <div class="content-text">
-          <h1 class="title">Emballage</h1>
-          <p class="subtitle">
-            Landbruget er en grundlæggende kilde til fødevarer, men det er også
-            en væsentlig kilde til CO2-udledning. Disse emissioner stammer fra
-            forskellige aktiviteter som produktion og brug af gødning, brug af
-            fossile brændstoffer til landbrugsmaskiner, og processer i
-            jordbruget, der frigiver CO2. Yderligere bidrager husdyrhold, især
-            køer og får, til udledninger gennem metan, som er en kraftig
-            drivhusgas. Optimering af disse processer og overgang til mere
-            bæredygtige praksisser kan reducere landbrugets klimaaftryk
-            betydeligt.
-          </p>
-        </div>
-      </div>
-
-      <div class="content" id="Transport">
-        <div class="content-text">
-          <h1 class="title">Transport</h1>
-          <p class="subtitle">
-            Landbruget er en grundlæggende kilde til fødevarer, men det er også
-            en væsentlig kilde til CO2-udledning. Disse emissioner stammer fra
-            forskellige aktiviteter som produktion og brug af gødning, brug af
-            fossile brændstoffer til landbrugsmaskiner, og processer i
-            jordbruget, der frigiver CO2. Yderligere bidrager husdyrhold, især
-            køer og får, til udledninger gennem metan, som er en kraftig
-            drivhusgas. Optimering af disse processer og overgang til mere
-            bæredygtige praksisser kan reducere landbrugets klimaaftryk
-            betydeligt.
-          </p>
-        </div>
-        <div class="content-img">
-          <img src="Transport.png" alt="" />
-        </div>
-      </div>
-
-      <div class="content" id="Retail" >
-        <div class="content-img">
-          <img src="Forretning.png" alt="" />
-        </div>
-        <div class="content-text">
-          <h1 class="title">Detailhandel</h1>
-          <p class="subtitle">
-            Landbruget er en grundlæggende kilde til fødevarer, men det er også
-            en væsentlig kilde til CO2-udledning. Disse emissioner stammer fra
-            forskellige aktiviteter som produktion og brug af gødning, brug af
-            fossile brændstoffer til landbrugsmaskiner, og processer i
-            jordbruget, der frigiver CO2. Yderligere bidrager husdyrhold, især
-            køer og får, til udledninger gennem metan, som er en kraftig
-            drivhusgas. Optimering af disse processer og overgang til mere
-            bæredygtige praksisser kan reducere landbrugets klimaaftryk
-            betydeligt.
-          </p>
+      <div class="section" id="vegetarian_visualization" data-anchor="2">
+        <div class="background_for_visualization">
+          <div id="vegetarian"></div>
         </div>
       </div>
     </div>
-</div>
-</div>
-</div>
-      <div class="section"><p>test2</p></div>
-    </div>
-    <div class="submitquiz">
-      
-    <div class="quizbarchart"></div>
-
-    
-
     <script src="d3.v7.js"></script>
     <script src="script.js"></script>
     <script src="quiz.js"></script>
+    <script src="vegetar.js"></script>
+
     <script src="scroll-logic.js"></script>
+    <div class="speech-bubble">
+      <img src="speech-icon.png" id="icon" />
+    </div>
+    <script src="speech.js"></script>
   </body>
 </html>
