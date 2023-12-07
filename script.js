@@ -146,7 +146,18 @@ function createBarChart(
     })
     .on("click", function (event, d) {
       d3.selectAll(".contentplaceholder").style("display", "block");
-      // Vi mangler en måde at starte med at sætte alle div's med class "content" til display none
+      const AllCategories = [
+        "Agriculture",
+        "iLUC",
+        "FoodProcessing",
+        "Packaging",
+        "Transport",
+        "Retail",
+      ];
+      for (let i = 0; i < AllCategories.length; i++) {
+        const categorySection = document.getElementById(AllCategories[i]);
+        categorySection.style.display = "none";
+      }
       const category = d.category;
       const categorySection = document.getElementById(category);
       console.log(category);

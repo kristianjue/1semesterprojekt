@@ -36,7 +36,7 @@ body {
 
 .contentplaceholder {
   position: fixed;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, 64%);
   background: white;
@@ -45,9 +45,8 @@ body {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
   z-index: 1000; /* Ensure it's on top of other elements */
   border: 2px solid #333; /* Add a border */
-  height: 80%; /* Adjust the height as needed */
+  height: 60%; /* Adjust the height as needed */
   width: 50%;
-  overflow-y: auto;
 }
 
 .content {
