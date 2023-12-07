@@ -17,28 +17,30 @@ var svg = d3
 let dataset = [];
 let timeFormat = d3.timeFormat("%Y-%m");
 
-fetchContent("http://localhost:3000/personbil_udvikling/2").then((data) => {
-  for (var i = 0; i < data.personbil_udvikling.length; i++) {
-    dataset.push([
-      data.personbil_udvikling[i].årogkvartal,
-      data.personbil_udvikling[i].antal_biler,
-    ]);
+fetchContent("http://api.backlogbusters.tech/personbil_udvikling/2").then(
+  (data) => {
+    for (var i = 0; i < data.personbil_udvikling.length; i++) {
+      dataset.push([
+        data.personbil_udvikling[i].årogkvartal,
+        data.personbil_udvikling[i].antal_biler,
+      ]);
+    }
+    console.log(dataset);
+    let parseTime = d3.timeParse("%Y-%m");
+
+    dataset.forEach(function (d) {
+      console.log(d[0]);
+      d[0] = parseTime(d[0]);
+      console.log(d[0]);
+    });
+    dataset.sort(function (a, b) {
+      return a[0] - b[0];
+    });
+
+    console.log(dataset);
+    createVisualization(dataset);
   }
-  console.log(dataset);
-  let parseTime = d3.timeParse("%Y-%m");
-
-  dataset.forEach(function (d) {
-    console.log(d[0]);
-    d[0] = parseTime(d[0]);
-    console.log(d[0]);
-  });
-  dataset.sort(function (a, b) {
-    return a[0] - b[0];
-  });
-
-  console.log(dataset);
-  createVisualization(dataset);
-});
+);
 
 function createVisualization(dataset) {
   //Adds the X axis
