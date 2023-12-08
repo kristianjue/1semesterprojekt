@@ -1,8 +1,8 @@
 //graph of fuel-car
 // Define height, width and margin
-var margin = { top: 40, right: 95, bottom: 30, left: 60 },
-  width = 530 - margin.left - margin.right,
-  height = 420 - margin.top - margin.bottom;
+var margin = { top: 50, right: 95, bottom: 30, left: 60 },
+  width = 730 - margin.left - margin.right,
+  height = 620 - margin.top - margin.bottom;
 
 //Add svg object to body of the page
 var svg = d3
@@ -17,7 +17,7 @@ var svg = d3
 let dataset = [];
 let timeFormat = d3.timeFormat("%Y-%m");
 
-fetchContent("http://api.backlogbusters.tech/personbil_udvikling/2").then(
+fetchContent("https://api.backlogbusters.tech/personbil_udvikling/2").then(
   (data) => {
     for (var i = 0; i < data.personbil_udvikling.length; i++) {
       dataset.push([
@@ -100,66 +100,6 @@ function createVisualization(dataset) {
     .attr("height", height)
     .attr("fill", "rgba(255, 164, 6, 0.3)");
 
-  //Add label and circle to graph points
-  var tooltip = d3
-    .select("#line1")
-    .append("div")
-    .attr("class", "tooltip")
-    .style("opacity", 0);
-
-  var focus = svg.append("g").style("display", "none");
-
-  focus
-    .append("circle")
-    .attr("r", 5)
-    .attr("class", "focus-circle")
-    .style("fill", "#ffa406");
-
-  focus
-    .append("text")
-    .attr("x", 9)
-    .attr("dy", ".35em")
-    .style("font-size", "15px")
-    .attr("class", "focus-text");
-
-  //Add an overlay to the entire graph to handle hover event
-  svg
-    .append("rect")
-    .attr("width", width)
-    .attr("height", height)
-    .style("fill", "none")
-    .style("pointer-events", "all")
-    .style("cursor", "zoom-in")
-    .on("mouseover", handleMouseOver)
-    .on("mousemove", handleMouseMove)
-    .on("mouseout", handleMouseOut);
-
-  //Function to handle hover event
-  function handleMouseOver() {
-    focus.style("display", null);
-    tooltip.style("opacity", 1);
-  }
-
-  function handleMouseMove(event) {
-    var xValue = x.invert(d3.pointer(event, this)[0]);
-    var bisectDate = d3.bisector(function (d) {
-      return d[0];
-    }).left;
-    var i = bisectDate(dataset, xValue, 1);
-    var d = dataset[i];
-
-    //Update the position of the circle and ethic
-    focus.attr("transform", "translate(" + x(d[0]) + "," + y(d[1]) + ")");
-
-    //Update the text next to the circle
-    focus.select(".focus-text").text(d[1].toLocaleString("da-DK"));
-  }
-
-  function handleMouseOut() {
-    focus.style("display", "none");
-    tooltip.style("opacity", 0);
-  }
-
   //Add clipPath
   svg
     .append("defs")
@@ -189,6 +129,64 @@ function createVisualization(dataset) {
     )
     .attr("clip-path", "url(#clip)"); //Apply clipPath
 
+  //Add label and circle to graph points
+  var tooltip = d3
+    .select("#line1")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
+  var focus = svg.append("g").style("display", "none");
+
+  focus
+    .append("circle")
+    .attr("r", 5)
+    .attr("class", "focus-circle")
+    .style("fill", "#ffa406");
+
+  focus
+    .append("text")
+    .attr("x", 9)
+    .attr("dy", ".35em")
+    .style("font-size", "18px")
+    .attr("class", "focus-text");
+
+  //Add an overlay to the entire graph to handle hover event
+  svg
+    .append("rect")
+    .attr("width", width)
+    .attr("height", height)
+    .style("fill", "none")
+    .style("pointer-events", "all")
+    .style("cursor", "zoom-in")
+    .on("mouseover", handleMouseOver)
+    .on("mousemove", handleMouseMove)
+    .on("mouseout", handleMouseOut);
+
+  //Function to handle hover event
+  function handleMouseOver() {
+    focus.style("display", null);
+    tooltip.style("opacity", 1);
+  }
+
+  function handleMouseMove(event) {
+    var xValue = x.invert(d3.pointer(event, this)[0]);
+    var bisectDate = d3.bisector(function (d) {
+      return d[0];
+    }).left;
+    var i = bisectDate(dataset, xValue, 1);
+    var d = dataset[i];
+
+    //Update the position of the circle and text
+    focus.attr("transform", "translate(" + x(d[0]) + "," + y(d[1]) + ")");
+    focus.select(".focus-text").text(d[1].toLocaleString("da-DK"));
+  }
+
+  function handleMouseOut() {
+    focus.style("display", "none");
+    tooltip.style("opacity", 0);
+  }
+
   //Add a title to the left of the graph
   svg
     .append("text")
@@ -209,9 +207,9 @@ async function fetchContent(url) {
 }
 
 //graph over electric-car - this is done the same way as above
-var margin2 = { top: 40, right: 95, bottom: 30, left: 60 },
-  width2 = 530 - margin2.left - margin2.right,
-  height2 = 420 - margin2.top - margin2.bottom;
+var margin2 = { top: 50, right: 95, bottom: 30, left: 60 },
+  width2 = 730 - margin2.left - margin2.right,
+  height2 = 620 - margin2.top - margin2.bottom;
 
 var svg2 = d3
   .select("#line2")
@@ -224,7 +222,7 @@ var svg2 = d3
 let dataset2 = [];
 let timeFormat2 = d3.timeFormat("%Y-%m");
 
-fetchContent("http://api.backlogbusters.tech/personbil_udvikling/1").then(
+fetchContent("https://api.backlogbusters.tech/personbil_udvikling/1").then(
   (data) => {
     for (var i = 0; i < data.personbil_udvikling.length; i++) {
       dataset2.push([
@@ -302,6 +300,33 @@ function createVisualization2(dataset2) {
     .attr("height", height2)
     .attr("fill", "rgba(0, 150, 199, 0.3)");
 
+  svg2
+    .append("defs")
+    .append("clipPath")
+    .attr("id", "clip2")
+    .append("rect")
+    .attr("width", width2)
+    .attr("height", height2);
+
+  svg2
+    .append("path")
+    .datum(dataset2)
+    .attr("fill", "none")
+    .attr("stroke", "#0096c7")
+    .attr("stroke-width", 1.5)
+    .attr(
+      "d",
+      d3
+        .line()
+        .x(function (d) {
+          return x2(d[0]);
+        })
+        .y(function (d) {
+          return y2(d[1]);
+        })
+    )
+    .attr("clip-path", "url(#clip2)");
+
   var tooltip2 = d3
     .select("#line2")
     .append("div")
@@ -320,7 +345,7 @@ function createVisualization2(dataset2) {
     .append("text")
     .attr("x", 9)
     .attr("dy", ".35em")
-    .style("font-size", "15px")
+    .style("font-size", "18px")
     .attr("class", "focus-text");
 
   svg2
@@ -356,33 +381,6 @@ function createVisualization2(dataset2) {
     focus2.style("display", "none");
     tooltip2.style("opacity", 0);
   }
-
-  svg2
-    .append("defs")
-    .append("clipPath")
-    .attr("id", "clip2")
-    .append("rect")
-    .attr("width", width2)
-    .attr("height", height2);
-
-  svg2
-    .append("path")
-    .datum(dataset2)
-    .attr("fill", "none")
-    .attr("stroke", "#0096c7")
-    .attr("stroke-width", 1.5)
-    .attr(
-      "d",
-      d3
-        .line()
-        .x(function (d) {
-          return x2(d[0]);
-        })
-        .y(function (d) {
-          return y2(d[1]);
-        })
-    )
-    .attr("clip-path", "url(#clip2)");
 
   svg2
     .append("text")

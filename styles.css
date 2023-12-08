@@ -1,3 +1,33 @@
+#navigation {
+  position: fixed;
+  top: 50%;
+  right: 15px;
+  list-style-type: none;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+#navigation li {
+  margin: 10px;
+}
+
+#navigation li a {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffa406;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#navigation li a:hover {
+  transform: scale(2);
+}
+
+#navigation li a.active {
+  transform: scale(2);
+}
+
 body {
   font-family: Arial, sans-serif;
   text-align: center;
@@ -6,25 +36,123 @@ body {
   background: #fff; /* Hvid baggrund */
 }
 
-.quizanswer {
-  background-color: #f7f7f7;
-  padding: 60px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  font-weight: bold;
+.dashboard-food {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 1300px;
+  margin: auto;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1); /* Shadow for a pop-up effect */
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.dashboard-item-food {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Ensure container is positioned relatively */
 }
 
-.quizanswer:hover {
-  transform: scale(1.1);
+.full-width-food {
+  grid-column: span 2;
+}
+
+/* Stil for overskriften */
+.header-food {
+  font-size: 15px; /* Større skriftstørrelse for overskriften */
+  font-weight: bold; /* Gør teksten fed */
+  margin-bottom: 10px; /* Margen under overskriften */
+}
+
+/* Stil for det store tal */
+.number-food {
+  font-size: 80px; /* Stor skriftstørrelse for tal */
+  font-weight: bold; /* Gør tallet fed */
+  margin-bottom: 5px; /* Margen under tallet */
+}
+
+#vegetarianNumber {
+  color: #ffa406;
+}
+
+#meatloverNumber {
+  color: #0096c7;
+}
+
+/* Stil for den sekundære tekst */
+.subtext {
+  font-size: 18px; /* Mindre skriftstørrelse for sekundær tekst */
+  color: #666; /* Lysere grå farve for sekundær tekst */
+  font-style: italic; /* Kursiv stil */
+}
+
+.dashboard-item-food img {
+  width: 220px;
+  height: 220px;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.informations-billede img {
+  position: absolute;
+  bottom: 5px; /* Juster afstanden fra bunden efter behov */
+  right: 10px; /* Juster afstanden fra højre side efter behov */
+  width: 25px;
+  height: 25px;
   cursor: pointer;
 }
 
-#vegetarvouch {
-  background-color: #ffa406;
+.sort-billede img {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  bottom: 10px; /* Juster afstanden fra bunden efter behov */
+  right: 50px; /* Juster afstanden fra højre side efter behov */
 }
 
-#meatlovervouch {
-  background-color: #0096c7;
+.plate:hover .info {
+  visibility: visible;
+}
+
+/* Stil for overlay */
+#overlayContent {
+  display: none; /* Start with hidden overlay */
+  position: fixed; /* Fixed position relative to viewport */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, 380%);
+  background: white; /* Background color */
+  padding: 40px; /* Padding inside the box */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1); /* Shadow for a pop-up effect */
+  /*z-index: 1000; /* Ensure it's on top of other elements */
+  /*text-align: center; /* Center the text inside */
+}
+
+/* Add this to style the close button */
+#closeOverlay {
+  margin-top: 20px;
+  padding: 5px 10px;
+  background-color: gray;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.tooltip_food {
+  position: absolute;
+  text-align: center;
+  padding: 8px;
+  background: lightsteelblue;
+  border: 1px solid #666;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.barcharts {
+  cursor: pointer;
 }
 
 .contentplaceholder {
@@ -34,7 +162,7 @@ body {
   transform: translate(-50%, 64%);
   background: white;
   padding: 40px;
-  border-radius: 5px;
+  border-radius: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
   z-index: 1000; /* Ensure it's on top of other elements */
   border: 2px solid #333; /* Add a border */
@@ -72,12 +200,11 @@ body {
   max-width: min-content;
 }
 
-.header {
+.header-food {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 10%;
-  color: white;
 }
 
 .title {
@@ -107,145 +234,25 @@ body {
   color: red;
 }
 
-.dashboard {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
-  max-width: 1200px;
-  margin: auto;
-}
-.dashboard-item {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative; /* Ensure container is positioned relatively */
+.quizanswer {
+  background-color: #f7f7f7;
+  padding: 60px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
 }
 
-.full-width {
-  grid-column: span 2;
-}
-
-/* Stil for overskriften */
-.header {
-  font-size: 15px; /* Større skriftstørrelse for overskriften */
-  font-weight: bold; /* Gør teksten fed */
-  margin-bottom: 10px; /* Margen under overskriften */
-}
-
-/* Stil for det store tal */
-.number {
-  font-size: 80px; /* Stor skriftstørrelse for tal */
-  font-weight: bold; /* Gør tallet fed */
-  margin-bottom: 5px; /* Margen under tallet */
-}
-
-#vegetarianNumber {
-  color: #ffa406;
-}
-
-#meatloverNumber {
-  color: #0096c7;
-}
-
-/* Stil for den sekundære tekst */
-.subtext {
-  font-size: 18px; /* Mindre skriftstørrelse for sekundær tekst */
-  color: #666; /* Lysere grå farve for sekundær tekst */
-  font-style: italic; /* Kursiv stil */
-}
-
-img {
-  width: 250px;
-  height: 250px;
-  border-radius: 4px;
-  padding: 5px;
-}
-
-.informations-billede img {
-  position: absolute;
-  bottom: 10px; /* Juster afstanden fra bunden efter behov */
-  right: 10px; /* Juster afstanden fra højre side efter behov */
-  width: 25px;
-  height: 25px;
+.quizanswer:hover {
+  transform: scale(1.1);
   cursor: pointer;
 }
 
-.sort-billede img {
-  width: 25px;
-  height: 25px;
-  position: absolute;
-  bottom: 10px; /* Juster afstanden fra bunden efter behov */
-  right: 50px; /* Juster afstanden fra højre side efter behov */
+#vegetarvouch {
+  background-color: #ffa406;
 }
 
-.plate:hover .info {
-  visibility: visible;
-}
-
-/* Stil for overlay */
-#overlayContent {
-  display: none; /* Start with hidden overlay */
-  position: fixed; /* Fixed position relative to viewport */
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Adjust position to truly center */
-  background: white; /* Background color */
-  padding: 40px; /* Padding inside the box */
-  border-radius: 5px; /* Rounded corners */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1); /* Shadow for a pop-up effect */
-  /*z-index: 1000; /* Ensure it's on top of other elements */
-  /*text-align: center; /* Center the text inside */
-}
-
-/* Add this to style the close button */
-#closeOverlay {
-  margin-top: 20px;
-  padding: 5px 10px;
-  background-color: gray;
-  color: white;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-#overlayContentSort {
-  display: none; /* Start with hidden overlay */
-  position: fixed; /* Fixed position relative to viewport */
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Adjust position to truly center */
-  background: white; /* Background color */
-  padding: 40px; /* Padding inside the box */
-  border-radius: 5px; /* Rounded corners */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1); /* Shadow for a pop-up effect */
-  /*z-index: 1000; /* Ensure it's on top of other elements */
-  /*text-align: center; /* Center the text inside */
-}
-
-#closeOverlay {
-  margin-top: 20px;
-  padding: 5px 10px;
-  background-color: gray;
-  color: white;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.tooltip {
-  position: absolute;
-  text-align: center;
-  padding: 8px;
-  background: lightsteelblue;
-  border: 1px solid #666;
-  border-radius: 4px;
-  pointer-events: none;
-}
-
-.barcharts {
-  cursor: pointer;
+#meatlovervouch {
+  background-color: #0096c7;
 }
 
 .arrow-down {

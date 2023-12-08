@@ -1,0 +1,19 @@
+.chart-container {
+  display: flex;
+}
+.chart {
+  flex: center;
+  margin: 70px;
+  width: 1000px;
+}
+h1 {
+  text-align: center;
+  margin-top: 0;
+}
+.tooltip {
+  display: none;
+}
+
+.tooltip2 {
+  display: none;
+}

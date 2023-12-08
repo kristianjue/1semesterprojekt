@@ -5,11 +5,14 @@
     <title>CO2-udledning: Vegetarisk vs Kødret</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="fullpage.css" />
+     <link rel="stylesheet" href="/antalbiler/antal-biler.css" />
+          <link rel="stylesheet" href="/Bilchart/styles.css" />
+            <link rel="stylesheet" href="Leaderboard/style.css" />
+             <script src="https://d3js.org/d3.v7.min.js"></script>
   </head>
 
   <body>
     <script src="fullpage-src.js"></script>
-    <img src="arrow-down.png" class="arrow-down" onclick="fullpage_api.moveSectionDown()" />
     <div id="fullpage">
       <div class="section">
         <h1>Hvem udleder mest CO2?</h1>
@@ -20,41 +23,41 @@
         Kødspiseren der kører i elbil
       </button>
     </div>
+
     
-<div class="section">  
-<div class="dashboard">
-      <div class="dashboard-item" id="vegetarianDish"></div>
-      <div class="dashboard-item">
-        <div class="header">CO2 UDLEDNINGEN I KG</div>
-        <div class="number" id="vegetarianNumber">522</div>
-        <div class="subtext">
-          Værdierne repræsenterer CO2-udledning pr. kilogram for hver ingredient
-          i undersøgelsen.
+    <div class="section">  
+    <div class="dashboard-food">
+          <div class="dashboard-item-food" id="vegetarianDish"></div>
+          <div class="dashboard-item-food">
+            <div class="header-food">CO2 UDLEDNINGEN I KG</div>
+            <div class="number-food" id="vegetarianNumber">522</div>
+            <div class="subtext">
+              Værdierne repræsenterer CO2-udledning pr. kilogram for hver ingredient
+              i undersøgelsen.
+            </div>
+            <div class="informations-billede" id="vegetarianinformation"></div>
+          </div>
+          <div class="dashboard-item-food full-width" id="VegetarianBarChart"></div>
+
+          <div class="dashboard-item-food" id="meatDish"></div>
+          <div class="dashboard-item-food">
+            <div class="header-food">CO2 UDLEDNINGEN I KG</div>
+            <div class="number-food" id="meatloverNumber">1056</div>
+            <div class="subtext">
+              Værdierne repræsenterer CO2-udledning pr. kilogram for hver ingredient
+              i undersøgelsen.
+            </div>
+            <div class="informations-billede" id="meatinformation"></div>
+          </div>
+          <div class="dashboard-item-food full-width" id="MeatBarChart"></div>
+          <div class="overlay-text"></div>
         </div>
-        <div class="informations-billede" id="vegetarianinformation"></div>
-        <!--<div class="sort-billede" id = "sortvegetarian"></div>          HVIS DER SKAL INKLUDERES YEAR-->
-      </div>
-      <div class="dashboard-item full-width" id="VegetarianBarChart"></div>
 
-      <div class="dashboard-item" id="meatDish"></div>
-      <div class="dashboard-item">
-        <div class="header">CO2 UDLEDNINGEN I KG</div>
-        <div class="number" id="meatloverNumber">1056</div>
-        <div class="subtext">
-          Værdierne repræsenterer CO2-udledning pr. kilogram for hver ingredient
-          i undersøgelsen.
+        <div id="overlayContent" style="display: none">
+          <button id="closeOverlay">Luk</button>
         </div>
-        <div class="informations-billede" id="meatinformation"></div>
-        <div class="sortering"></div>
-      </div>
-      <div class="dashboard-item full-width" id="MeatBarChart"></div>
-    </div>
 
-    <div id="overlayContent" style="display: none">
-      <button id="closeOverlay">Luk</button>
-    </div>
-
-    <div id="hover-text" class="hover-text" style="display: none"></div>
+        <div id="hover-text" class="hover-text" style="display: none"></div>
 
     <div class="contentplaceholder" style="display: none">
       <span id="close-button">X</span>
@@ -176,19 +179,71 @@
       </div>
     </div>
 </div>
-</div>
-</div>
-      <div class="section"><p>test2</p></div>
+
+<div class="section">  
+<div class="dashboard">
+      <div class="dashboard-item" id="mercedes"></div>
+      <div class="dashboard-item">
+        <div class="header">Fuelcar</div>
+        <div class="number" id="numbertwo">4250</div>
+        <div class="subtext">
+          This is the Co2 per kg emission from a fuelcar in a year
+        </div>
+        <div class="information-picture"></div>
+        <div class="sortering"></div>
+      </div>
+      <div class="dashboard-item full-width" id="fuelChart"></div>
+
+      <div class="dashboard-item" id="audi"></div>
+      <div class="dashboard-item">
+        <div class="header">Electriccar</div>
+        <div class="number" id="numberone">2688</div>
+        <div class="subtext">
+          This is the Co2 per kg emission from a electriccar in a year
+        </div>
+        <div class="information-picture"></div>
+        <div class="sortering"></div>
+      </div>
+      <div class="dashboard-item full-width" id="eCarchart"></div>
     </div>
-    <div class="submitquiz">
-      
-    <div class="quizbarchart"></div>
+    <div id="popout"></div>
+    <div id="popout2"></div>
+    <div id="overlayContentcar" style="display: none">
+      <button id="closeOverlaycar"></button>
+    </div>
+</div>
 
-    
 
+      <div class="section">
+        <h1>Bestanden af personbiler efter ejerforhold, drivmiddel og tid</h1>
+        <div class="chart-container">
+          <div class="chart" id="line1"></div>
+          <div class="chart" id="line2"></div>
+          <div class="tooltip"></div>
+          <div class="tooltip2"></div>
+        </div>
+      </div>
+      <div class = "section" >
+      <div class="quizbarchart"></div>
+</div>
+<div class="section">
+        <h1>Who produces more CO2 in kg (leaderboard)</h1>
+    <div id="dataforleaderboard"></div>
+</div>
+      </div>
+    </div>
+</div>
+</div>
+
+
+<img src="arrow-down.png" class="arrow-down" onclick="fullpage_api.moveSectionDown()" />
+    <script src="/Bilchart/script.js"></script>
     <script src="d3.v7.js"></script>
     <script src="script.js"></script>
     <script src="quiz.js"></script>
     <script src="scroll-logic.js"></script>
+    <script src="/antalbiler/antal-biler.js"></script>
+          <script src="Leaderboard/leaderboard.js"></script>
   </body>
 </html>
+

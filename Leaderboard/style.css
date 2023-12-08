@@ -1,4 +1,4 @@
-.tooltip {
+.tooltip3 {
   position: absolute;
   opacity: 0;
   background-color: white;
@@ -7,8 +7,7 @@
   padding: 10px;
 }
 
-
-#popout {
+#popout3 {
   display: none;
   position: absolute;
   background-color: #ffa406;

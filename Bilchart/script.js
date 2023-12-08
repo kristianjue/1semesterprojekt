@@ -39,48 +39,48 @@ d3.selectAll(".information-picture")
     d3.select(this).style("opacity", 1);
   });
 
-d3.selectAll(".information-picture img").on("click", showOverlayContentInfo);
+d3.selectAll(".information-picture img").on("click", showOverlayContentInfocar);
 
-d3.select("#closeOverlay").on("click", closeOverlayContentInfo);
+d3.select("#closeOverlaycar").on("click", closeOverlayContentInfocar);
 
 let billede = document.getElementsByClassName("information-picture");
 
 billede[0].addEventListener("click", function () {
   // Handle click for vegetarian information icon
 
-  let eCarptag = document.createElement("p");
-  eCarptag.textContent =
-    "This is information about CO2 emissions from electriccars";
-  informationDisplay(eCarptag);
+  let fuelCarptag = document.createElement("p");
+  fuelCarptag.textContent =
+    "This is information about CO2 emissions from fuelcars";
+  informationDisplaycar(fuelCarptag);
 });
 
 billede[1].addEventListener("click", function () {
   // Handle click for meat information icon
-  let overlayContent = document.getElementById("overlayContent");
-  let fuelCarptag = document.createElement("p");
-  fuelCarptag.textContent =
-    "This is information about CO2 emissions from fuelcars";
-  informationDisplay(fuelCarptag);
+  let eCarptag = document.createElement("p");
+  eCarptag.textContent =
+    "This is information about CO2 emissions from electriccars";
+  informationDisplaycar(eCarptag);
 });
 
-function informationDisplay(ptag) {
+function informationDisplaycar(ptag) {
   // Append the new <p> tag
-  let previousTag = overlayContent.querySelector("p");
+  let overlayContentcar = document.getElementById("overlayContentcar");
+  let previousTag = overlayContentcar.querySelector("p");
   if (previousTag) {
     previousTag.remove();
   }
-  overlayContent.appendChild(ptag);
+  overlayContentcar.appendChild(ptag);
 
   // Display the overlay
-  overlayContent.style.display = "block";
+  overlayContentcar.style.display = "block";
 }
 
-function showOverlayContentInfo() {
-  d3.select("#overlayContent").style("display", "block");
+function showOverlayContentInfocar() {
+  d3.select("#overlayContentcar").style("display", "block");
 }
 
-function closeOverlayContentInfo() {
-  d3.select("#overlayContent").style("display", "none");
+function closeOverlayContentInfocar() {
+  d3.select("#overlayContentcar").style("display", "none");
 }
 
 function barchartel(dataset) {

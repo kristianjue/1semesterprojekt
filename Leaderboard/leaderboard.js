@@ -5,8 +5,8 @@ const margin = { top: 10, right: 30, bottom: 20, left: 60 },
 
 // Fetch og opsætning af diagram
 fetchContent("https://api.backlogbusters.tech/leaderboard").then((data) => {
-  const dataset = data.leaderboard;
-  drawStackedBarChart(dataset);
+  const dataset2 = data.leaderboard;
+  drawStackedBarChart(dataset2);
 });
 
 // Funktion til at oprette stacked bar chart
@@ -44,13 +44,13 @@ function drawStackedBarChart(data) {
     //.style("font-style", "italic")
     .text("Co2-emissions (kg)");
 
-  const popout2 = d3.select("#popout2");
+  const popout3 = d3.select("#popout3");
 
-  const tooltip = d3
+  const tooltip3 = d3
     .select("#dataforleaderboard") //div
     .append("div") //div
     .style("opacity", 0) //opacity 0
-    .attr("class", "tooltip") //tooltip class
+    .attr("class", "tooltip3") //tooltip class
     .style("background-color", "white") //background color
     .style("border", "solid") //border
     .style("border-width", "1px") //border
@@ -59,13 +59,16 @@ function drawStackedBarChart(data) {
 
   // Three functions that change the tooltip and handle opacity changes
   const mouseover = function (event, d) {
-    console.log(d);
     const subgroupName = d3.select(this.parentNode).datum().key;
     const subgroupValue = d.data[subgroupName];
-    tooltip.html(subgroupName + ":" + " " + subgroupValue).style("opacity", 1);
+    tooltip3.html(subgroupName + ":" + " " + subgroupValue).style("opacity", 1);
 
     // Highlight the specific part of the bar
-    d3.select(this).transition().duration(200).style("opacity", 1);
+    d3.select(this)
+      .transition()
+      .duration(200)
+      .style("opacity", 1)
+      .style("transition", "opacity 200ms linear");
 
     // Fade out other bars and their corresponding parts
     d3.selectAll("rect")
@@ -74,18 +77,23 @@ function drawStackedBarChart(data) {
       })
       .transition()
       .duration(200)
-      .style("opacity", 0.2);
+      .style("opacity", 0.2)
+      .style("transition", "opacity 200ms linear");
   };
 
   const mouseleave = function (event, d) {
-    tooltip.style("opacity", 0);
+    tooltip3.style("opacity", 0);
 
     // Restore opacity of other bars and their corresponding parts
-    d3.selectAll("rect").transition().duration(200).style("opacity", 1);
+    d3.selectAll("rect")
+      .transition()
+      .duration(200)
+      .style("opacity", 1)
+      .style("transition", "opacity 200ms linear");
   };
 
   const mousemove = function (event, d) {
-    tooltip
+    tooltip3
       .style("transform", "translateY(-55%)")
       .style("left", event.x + 10 + "px")
       .style("top", event.y + 40 + "px");

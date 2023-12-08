@@ -1,41 +1,41 @@
-let aggregatedVegetarData = 0;
-let aggregatedMeatloverData = 0;
-let maaltidVegetar = []; // maaltid 1, maaltid 4, maaltid 6
-let maaltidMeatlover = []; // maaltid 2, maaltid 3, maaltid 5
+let vegetarianData = 0;
+let meateaterData = 0;
+let vegetarianArray = []; // maaltid 1, maaltid 4, maaltid 6
+let meateaterArray = []; // maaltid 2, maaltid 3, maaltid 5
 
 fetchContent("https://api.backlogbusters.tech/tallerken/")
   .then((data) => {
     // Iterer over data og opdel i vegetarisk og kødelsker arrays
 
-    data.tallerken.forEach((maaltid) => {
+    data.tallerken.forEach((meal) => {
       if (
-        maaltid.maaltid_id === 1 ||
-        maaltid.maaltid_id === 4 ||
-        maaltid.maaltid_id === 6
+        meal.maaltid_id === 1 ||
+        meal.maaltid_id === 4 ||
+        meal.maaltid_id === 6
       ) {
-        maaltidVegetar.push(maaltid);
+        vegetarianArray.push(meal);
       } else if (
-        maaltid.maaltid_id === 2 ||
-        maaltid.maaltid_id === 3 ||
-        maaltid.maaltid_id === 5
+        meal.maaltid_id === 2 ||
+        meal.maaltid_id === 3 ||
+        meal.maaltid_id === 5
       ) {
-        maaltidMeatlover.push(maaltid);
+        meateaterArray.push(meal);
       }
     });
 
-    console.log(maaltidVegetar);
-    console.log(maaltidMeatlover);
+    console.log(vegetarianArray);
+    console.log(meateaterArray);
 
-    aggregatedVegetarData = aggregateData(maaltidVegetar);
-    aggregatedMeatloverData = aggregateData(maaltidMeatlover);
+    vegetarianData = transformData(vegetarianArray);
+    meateaterData = transformData(meateaterArray);
     createBarChart(
-      aggregatedVegetarData,
+      vegetarianData,
       "#VegetarianBarChart",
       "rgb(255,201,7)",
       "rgb(204,131,4)"
     );
     createBarChart(
-      aggregatedMeatloverData,
+      meateaterData,
       "#MeatBarChart",
       "rgb(0,195,255)",
       "rgb(0,75,99)"
@@ -45,8 +45,8 @@ fetchContent("https://api.backlogbusters.tech/tallerken/")
     console.error("Der opstod en fejl under hentning af JSON-data:", error);
   });
 
-function aggregateData(maaltider) {
-  const aggregatedData = {
+function transformData(meals) {
+  const transformData = {
     Agriculture: 0,
     iLUC: 0,
     FoodProcessing: 0,
@@ -55,28 +55,23 @@ function aggregateData(maaltider) {
     Retail: 0,
   };
 
-  maaltider.forEach((maaltid) => {
-    aggregatedData.Agriculture += parseFloat(maaltid.Agriculture * 365);
-    aggregatedData.iLUC += parseFloat(maaltid.iLUC * 365);
-    aggregatedData.FoodProcessing += parseFloat(maaltid.FoodProcessing * 365);
-    aggregatedData.Packaging += parseFloat(maaltid.Packaging * 365);
-    aggregatedData.Transport += parseFloat(maaltid.Transport * 365);
-    aggregatedData.Retail += parseFloat(maaltid.Retail * 365);
+  meals.forEach((meal) => {
+    transformData.Agriculture += parseFloat(meal.Agriculture * 365);
+    transformData.iLUC += parseFloat(meal.iLUC * 365);
+    transformData.FoodProcessing += parseFloat(meal.FoodProcessing * 365);
+    transformData.Packaging += parseFloat(meal.Packaging * 365);
+    transformData.Transport += parseFloat(meal.Transport * 365);
+    transformData.Retail += parseFloat(meal.Retail * 365);
   });
-  return aggregatedData;
+  return transformData;
 }
 
-function createBarChart(
-  aggregatedData,
-  elementSelector,
-  lightcolor,
-  darkcolor
-) {
+function createBarChart(transformData, elementSelector, lightcolor, darkcolor) {
   const margin = { top: 20, right: 20, bottom: 50, left: 100 },
     width = 600 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
-  const data = Object.entries(aggregatedData).map(([category, value]) => ({
+  const data = Object.entries(transformData).map(([category, value]) => ({
     category,
     value,
   }));
@@ -129,7 +124,7 @@ function createBarChart(
       const tooltip = d3
         .select("body")
         .append("div")
-        .attr("class", "tooltip")
+        .attr("class", "tooltip_food")
         .style("opacity", 0);
 
       tooltip.transition().duration(200).style("opacity", 0.9);
@@ -142,7 +137,7 @@ function createBarChart(
     .on("mouseout", function () {
       d3.selectAll(".barcharts").transition().duration(10).style("opacity", 1);
 
-      d3.selectAll(".tooltip").remove();
+      d3.selectAll(".tooltip_food").remove();
     })
     .on("click", function (event, d) {
       d3.selectAll(".contentplaceholder").style("display", "block");
@@ -228,9 +223,9 @@ d3.selectAll(".informations-billede img").on("click", showOverlayContentInfo);
 
 d3.select("#closeOverlay").on("click", closeOverlayContentInfo);
 
-let billede = document.getElementsByClassName("informations-billede");
+let image = document.getElementsByClassName("informations-billede");
 
-billede[0].addEventListener("click", function () {
+image[0].addEventListener("click", function () {
   // Handle click for vegetarian information icon
 
   let vegetarianptag = document.createElement("p");
@@ -241,7 +236,7 @@ billede[0].addEventListener("click", function () {
   informationDisplay(vegetarianptag);
 });
 
-billede[1].addEventListener("click", function () {
+image[1].addEventListener("click", function () {
   // Handle click for meat information icon
   //let overlayContent = document.getElementById("overlayContent");
   let meatptag = document.createElement("p");
