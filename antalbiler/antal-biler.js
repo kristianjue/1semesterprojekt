@@ -81,13 +81,13 @@ function createVisualization(dataset) {
     .append("text")
     .attr("x", x(referenceDate) - 80) // Justér denne værdi for at justere vandret placering af teksten
     .attr("y", -30) // Justér denne værdi for at justere lodret placering af teksten
-    .text("Faldning på -2,19%")
+    .text("Decrease of -2.19%")
     .style("font-size", "14px")
     .style("font-weight", "bold")
     .append("tspan")
     .attr("x", x(referenceDate) - 80)
     .attr("dy", 20) // Justér denne værdi for at justere afstanden mellem linjerne
-    .text("fra 2022/10 til 2023/10")
+    .text("from 2022/10 to 2023/10")
     .style("font-size", "12px")
     .style("font-weight", "normal"); // Gør kun denne del ikke-fed
 
@@ -196,7 +196,7 @@ function createVisualization(dataset) {
     .style("font-size", "20px") // Juster størrelsen efter behov
     .style("fill", "black")
     .style("text-decoration", "underline")
-    .text("Brændsel-biler");
+    .text("Fuel-cars");
 }
 
 //Magic
@@ -282,13 +282,13 @@ function createVisualization2(dataset2) {
     .append("text")
     .attr("x", x2(referenceDate2) - 80)
     .attr("y", -30)
-    .text("Stigning på 73,75%")
+    .text("Increase of 73.75%")
     .style("font-size", "14px")
     .style("font-weight", "bold")
     .append("tspan")
     .attr("x", x2(referenceDate2) - 80)
     .attr("dy", 20)
-    .text("fra 2022/10 til 2023/10")
+    .text("from 2022/10 to 2023/10")
     .style("font-size", "12px")
     .style("font-weight", "normal");
 
@@ -390,7 +390,7 @@ function createVisualization2(dataset2) {
     .style("font-size", "20px")
     .style("fill", "black")
     .style("text-decoration", "underline")
-    .text("El-biler");
+    .text("Electric cars");
 }
 
 async function fetchContent(url) {
