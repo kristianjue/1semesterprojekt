@@ -262,3 +262,32 @@ body {
   transform: translate(-0%, 1400%);
   z-index: 1000;
 }
+
+.speech-bubble {
+  background-color: #e15554;
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  top: 90%;
+  left: 95%;
+  border-radius: 50px;
+  cursor: pointer;
+  animation: jump 1s ease-in-out infinite;
+}
+
+#icon {
+  margin-top: 10px;
+  width: 60px;
+  height: 60px;
+  filter: invert(1);
+}
+
+@keyframes jump {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}

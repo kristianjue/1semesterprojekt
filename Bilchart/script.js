@@ -49,16 +49,82 @@ billede[0].addEventListener("click", function () {
   // Handle click for vegetarian information icon
 
   let fuelCarptag = document.createElement("p");
-  fuelCarptag.textContent =
-    "This is information about CO2 emissions from fuelcars";
+  fuelCarptag.innerHTML =
+    "<b>" +
+    "Vehicle Size: " +
+    "</b>" +
+    "<i>" +
+    "Large ICE " +
+    "</i>" +
+    "(Internal combustion engine)" +
+    "<br/>" +
+    "<br/>" +
+    "<b>" +
+    "Electric Car Emissions Breakdown: " +
+    "</b>" +
+    "The electric car, like this Audi e-tron, represents a move towards cleaner transportation with a total CO2 emission of 2,688 kg per year. Here's the emission distribution:" +
+    "<br/>" +
+    "<br/>" +
+    "<b>" +
+    "Vehicle manufacturing: " +
+    "</b>" +
+    "The initial production of the electric car, especially the battery, has a higher environmental cost compared to traditional cars. Battery manufacturing: The production of lithium-ion batteries is energy-intensive and contributes significantly to the vehicle's lifetime emissions." +
+    "<br/>" +
+    "<br/>" +
+    "<b>" +
+    "Fuel/electricity production: " +
+    "</b>" +
+    "Although much lower than fuel cars, the generation of electricity to power the vehicle still has an environmental impact, depending on the energy source." +
+    "<br/>" +
+    "<br/>" +
+    "<b>" +
+    "Tailpipe emissions: " +
+    "</b>" +
+    "Virtually zero, as electric cars do not burn fuel and hence have no exhaust emissions." +
+    "<br/>" +
+    "<br/>" +
+    "<b>" +
+    "Vehicle maintenance and end-of-life: " +
+    "</b>" +
+    "Emissions from these stages are relatively low but are part of the electric vehicle's total ecological footprint. Each aspect underscores the importance of clean energy sources and responsible end-of-life recycling to minimize the environmental impact of electric vehicles.";
   informationDisplaycar(fuelCarptag);
 });
 
 billede[1].addEventListener("click", function () {
   // Handle click for meat information icon
   let eCarptag = document.createElement("p");
-  eCarptag.textContent =
-    "This is information about CO2 emissions from electriccars";
+  eCarptag.innerHTML =
+    "<b>" +
+    "Vehicle Size: " +
+    "</b>" +
+    "<i>" +
+    "Large BEV" +
+    "</i>" +
+    "(Internal combustion engine)" +
+    "<br/>" +
+    "<br/>" +
+    "<b>" +
+    "Fuel Car Emissions Breakdown: " +
+    "</b>" +
+    "The traditional fuel car, such as the one shown here, contributes significantly to environmental pollution, with a total CO2 emission of 4,250 kg per year. The detailed emissions are as follows:" +
+    "<br/>" +
+    "<br/>" +
+    "<b>" +
+    "Tailpipe emissions: " +
+    "</b>" +
+    "The combustion of fuel emits the most CO2, accounting for the majority of the car's carbon footprint." +
+    "<br/>" +
+    "<br/>" +
+    "<b>" +
+    "Fuel production: " +
+    "</b>" +
+    "The process of extracting, refining, and transporting fuel is the second-largest contributor to the vehicle's emissions. " +
+    "<br/>" +
+    "<br/>" +
+    "<b>" +
+    "Vehicle manufacturing, maintenance, and end-of-life: " +
+    "</b>" +
+    "These factors also contribute to the total emissions, highlighting the environmental impact throughout the car's lifecycle. Each component reflects the ongoing environmental challenges associated with fuel car ownership.";
   informationDisplaycar(eCarptag);
 });
 
