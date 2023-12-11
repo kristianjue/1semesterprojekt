@@ -1,8 +1,13 @@
 new fullpage("#fullpage", {
-  //options here
+  afterRender: function () {
+    fullpage_api.setAllowScrolling(false);
+  },
+  onLeave: function () {
+    disableAudio();
+  },
 });
 
-const slide1 = new Audio("biodynamic-impact-braam-tonal-dark-176441.mp3");
+const slide1 = new Audio("page0.mp3");
 const slide2 = new Audio("ambient-piano-logo-165357.mp3");
 const sound3 = new Audio("mixkit-arcade-retro-game-over-213.wav");
 const sound4 = new Audio("mixkit-arcade-retro-game-over-213.wav");
@@ -23,4 +28,13 @@ function toggleSpeechBubble() {
   } else if (ActiveSectionNumber === "2") {
     slide2.play();
   }
+}
+
+function disableAudio() {
+  slide1.pause();
+  slide2.pause();
+  sound3.pause();
+  sound4.pause();
+  sound5.pause();
+  sound6.pause();
 }
