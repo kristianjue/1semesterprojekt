@@ -13,6 +13,17 @@
   </head>
 
   <body>
+<ul id="navigation">
+    <li data-anchor="1" class = "active"><a href="#firstPage"></a></li>
+    <li data-anchor="2"><a href="#secondPage"></a></li>
+    <li data-anchor="3"><a href="#thirdPage"></a></li>
+     <li data-anchor="4"><a href="#fourthPage"></a></li>
+      <li data-anchor="5"><a href="#fithPage"></a></li>
+       <li data-anchor="6"><a href="#sixthPage"></a></li>
+        <li data-anchor="7"><a href="#seventhPage"></a></li>
+  </ul>
+
+
     <script src="fullpage-src.js"></script>
     <div id="fullpage">
       <div class="section" data-anchor="1">
@@ -24,17 +35,19 @@
         Kødspiseren der kører i elbil
       </button>
     </div>
+    <div class="section" data-anchor="2">
+<div id="vegetarian"></div>
+    </div>
 
     
-    <div class="section">  
+    <div class="section" data-anchor="3">  
     <div class="dashboard-food">
           <div class="dashboard-item-food" id="vegetarianDish"></div>
           <div class="dashboard-item-food">
-            <div class="header-food">CO2 UDLEDNINGEN I KG</div>
+            <div class="header-food">CO2 EMISSIONS PR KG</div>
             <div class="number-food" id="vegetarianNumber">522</div>
             <div class="subtext">
-              Værdierne repræsenterer CO2-udledning pr. kilogram for hver ingredient
-              i undersøgelsen.
+              The value represents the total carbon dioxide emissions per kg for the ingredients included in a full day's vegetarian diet.
             </div>
             <div class="informations-billede" id="vegetarianinformation"></div>
           </div>
@@ -42,99 +55,82 @@
 
           <div class="dashboard-item-food" id="meatDish"></div>
           <div class="dashboard-item-food">
-            <div class="header-food">CO2 UDLEDNINGEN I KG</div>
+            <div class="header-food">CO2 EMISSIONS PR KG</div>
             <div class="number-food" id="meatloverNumber">1056</div>
             <div class="subtext">
-              Værdierne repræsenterer CO2-udledning pr. kilogram for hver ingredient
-              i undersøgelsen.
+              The value represents the total carbon dioxide emissions per kg for the ingredients included in a full day's standard diet.
             </div>
             <div class="informations-billede" id="meatinformation"></div>
           </div>
           <div class="dashboard-item-food full-width" id="MeatBarChart"></div>
-          <div class="overlay-text"></div>
         </div>
 
         <div id="overlayContent" style="display: none">
-          <button id="closeOverlay">Luk</button>
+          <button id="closeOverlay">Close</button>
         </div>
 
         <div id="hover-text" class="hover-text" style="display: none"></div>
 
     <div class="contentplaceholder" style="display: none">
-      <span id="close-button">X</span>
+      <span id="close-button">x</span>
       <div class="content" id="Agriculture">
         <div class="content-text">
-          <h1 class="title">Landbrug</h1>
+          <h1 class="title">Agriculture</h1>
           <p class="subtitle">
-            Landbruget spiller en betydelig rolle i vores kuldioxid-fodaftryk.
-            Det bidrager til CO2-udledninger gennem forskellige aktiviteter,
-            såsom brugen af fossile brændstoffer i landbrugsmaskiner, produktion
-            og anvendelse af gødning samt jordprocesser, der frigiver kuldioxid.
-            Derudover udleder husdyrhold, især køer og får, metan, en potent
-            drivhusgas
+            Agriculture significantly impacts our carbon dioxide emissions. 
+            It contributes to CO2 emissions in various ways, including the use of fossil fuels in farm machinery, and the production and use of fertilizers that can release carbon dioxide. 
+            Moreover, livestock farming, particularly of cows and sheep, is a major source of methane emissions, a greenhouse gas that is even more potent than CO2 in trapping heat in the atmosphere. 
+            This highlights the environmental challenges associated with traditional farming practices.
           </p>
         </div>
         <div class="content-img">
-          <img src="Tractor-removebg-preview.png" alt="" />
+          <img src="Tractor-removebg-preview.png"/>
         </div>
       </div>
 
       <div class="content" id="iLUC">
         <div class="content-img">
-          <img src="ILUC.png" alt="" />
+          <img src="ILUC.png"/>
         </div>
         <div class="content-text">
           <h1 class="title">ILUC</h1>
           <p class="subtitle">
-            ILUC står for "Indirect Land Use Change," og det er et begreb inden
-            for klima- og miljøvidenskab, der relaterer sig til
-            fødevareproduktion og dens indvirkning på landbrugsarealer og
-            skovområder. Når fødevarer produceres, kræves der ofte
-            landbrugsarealer til dyrkning af afgrøder eller opdræt af husdyr.
-            Udvidelsen af landbrugsaktiviteter kan føre til ændringer i brugen
-            af landbrugsarealer, herunder skovrydning eller omdannelse af
-            naturområder til landbrug. Dette kan have en negativ indvirkning på
-            økosystemer og biodiversitet.
+            ILUC, or "Indirect Land Use Change," is a term in climate and environmental science. 
+            It's about how making food affects land, like farms and forests. 
+            When we grow food, we often need land for crops or raising animals. 
+            Expanding farms can change how land is used, like cutting down forests or turning natural areas into farms. 
+            ILUC affects CO2 emissions because when land, like forests, is changed to farms, it can release stored carbon into the atmosphere. 
+            Trees and plants absorb CO2, but when they're removed, this CO2 is released.
           </p>
         </div>
       </div>
 
       <div class="content" id="FoodProcessing" >
         <div class="content-text">
-          <h1 class="title">Fødevareforarbejdning</h1>
+          <h1 class="title">Food Processing</h1>
           <p class="subtitle">
-            Landbruget er en grundlæggende kilde til fødevarer, men det er også
-            en væsentlig kilde til CO2-udledning. Disse emissioner stammer fra
-            forskellige aktiviteter som produktion og brug af gødning, brug af
-            fossile brændstoffer til landbrugsmaskiner, og processer i
-            jordbruget, der frigiver CO2. Yderligere bidrager husdyrhold, især
-            køer og får, til udledninger gennem metan, som er en kraftig
-            drivhusgas. Optimering af disse processer og overgang til mere
-            bæredygtige praksisser kan reducere landbrugets klimaaftryk
-            betydeligt.
+            Food processing is about turning raw ingredients into finished products. 
+            This process can include cleaning, cutting, cooking, freezing, and packaging. 
+            It often requires a lot of energy, mainly from electricity or fossil fuels, and can also involve a lot of water. 
+            Both energy use and water treatment can lead to CO2 emissions.
           </p>
         </div>
         <div class="content-img">
-          <img src="Fabrik.png" alt="" />
+          <img src="Fabrik.png"/>
         </div>
       </div>
 
       <div class="content" id="Packaging" >
         <div class="content-img">
-          <img src="Emballage.png" alt="" />
+          <img src="Emballage.png"/>
         </div>
         <div class="content-text">
-          <h1 class="title">Emballage</h1>
+          <h1 class="title">Packaging</h1>
           <p class="subtitle">
-            Landbruget er en grundlæggende kilde til fødevarer, men det er også
-            en væsentlig kilde til CO2-udledning. Disse emissioner stammer fra
-            forskellige aktiviteter som produktion og brug af gødning, brug af
-            fossile brændstoffer til landbrugsmaskiner, og processer i
-            jordbruget, der frigiver CO2. Yderligere bidrager husdyrhold, især
-            køer og får, til udledninger gennem metan, som er en kraftig
-            drivhusgas. Optimering af disse processer og overgang til mere
-            bæredygtige praksisser kan reducere landbrugets klimaaftryk
-            betydeligt.
+            Packaging involves wrapping and protecting food for transport, storage, and sale. 
+            This process often uses materials like plastic, paper, and metal, which require energy and resources to produce. 
+            The production of these materials can lead to CO2 emissions, especially if they're made from non-renewable resources or involve energy-intensive processes. 
+            Additionally, disposing of packaging, especially non-recclable materials in landfills can lead to further emissions. 
           </p>
         </div>
       </div>
@@ -143,45 +139,45 @@
         <div class="content-text">
           <h1 class="title">Transport</h1>
           <p class="subtitle">
-            Landbruget er en grundlæggende kilde til fødevarer, men det er også
-            en væsentlig kilde til CO2-udledning. Disse emissioner stammer fra
-            forskellige aktiviteter som produktion og brug af gødning, brug af
-            fossile brændstoffer til landbrugsmaskiner, og processer i
-            jordbruget, der frigiver CO2. Yderligere bidrager husdyrhold, især
-            køer og får, til udledninger gennem metan, som er en kraftig
-            drivhusgas. Optimering af disse processer og overgang til mere
-            bæredygtige praksisser kan reducere landbrugets klimaaftryk
-            betydeligt.
+            Transport in the context of food CO2 emissions refers to moving food from where it's grown or made to where it's sold. 
+            This can involve trucks, ships, and planes, most of which use fossil fuels. 
+            Burning these fuels releases CO2 into the atmosphere. The longer the distance food travels, the higher its transport-related emissions.
           </p>
         </div>
         <div class="content-img">
-          <img src="Transport.png" alt="" />
+          <img src="Transport.png"/>
         </div>
       </div>
 
       <div class="content" id="Retail" >
         <div class="content-img">
-          <img src="Forretning.png" alt="" />
+          <img src="Forretning.png"/>
         </div>
         <div class="content-text">
-          <h1 class="title">Detailhandel</h1>
+          <h1 class="title">Retail</h1>
           <p class="subtitle">
-            Landbruget er en grundlæggende kilde til fødevarer, men det er også
-            en væsentlig kilde til CO2-udledning. Disse emissioner stammer fra
-            forskellige aktiviteter som produktion og brug af gødning, brug af
-            fossile brændstoffer til landbrugsmaskiner, og processer i
-            jordbruget, der frigiver CO2. Yderligere bidrager husdyrhold, især
-            køer og får, til udledninger gennem metan, som er en kraftig
-            drivhusgas. Optimering af disse processer og overgang til mere
-            bæredygtige praksisser kan reducere landbrugets klimaaftryk
-            betydeligt.
+            Retail, in terms of CO2 emissions, involves the selling of food in stores or markets. 
+            This stage consumes energy for lighting, heating, cooling, and refrigeration. 
+            It also involves additional transportation for restocking and waste management, like disposing of unsold food. 
+            Retail stores' energy use, especially if sourced from fossil fuels, contributes to CO2 emissions.
           </p>
         </div>
       </div>
     </div>
 </div>
 
-<div class="section">  
+      <div class="section" data-anchor="4">
+        <h1>The number of private cars categorized by ownership, fuel type, and time.</h1>
+        <div class="chart-container">
+          <div class="chart" id="line1"></div>
+          <div class="chart" id="line2"></div>
+          <div class="tooltip"></div>
+          <div class="tooltip2"></div>
+        </div>
+      </div>
+
+
+<div class="section" data-anchor="5">  
 <div class="dashboard">
       <div class="dashboard-item" id="mercedes"></div>
       <div class="dashboard-item">
@@ -215,26 +211,19 @@
 </div>
 
 
-      <div class="section">
-        <h1>The number of private cars categorized by ownership, fuel type, and time.</h1>
-        <div class="chart-container">
-          <div class="chart" id="line1"></div>
-          <div class="chart" id="line2"></div>
-          <div class="tooltip"></div>
-          <div class="tooltip2"></div>
-        </div>
-      </div>
-      
-      <div class = "section" >
-      <div class="quizbarchart"></div>
-</div>
-<div class="section">
+
+
+      <div class="section" data-anchor="6">
         <h1>Who produces more CO2 in kg (leaderboard)</h1>
     <div id="dataforleaderboard"></div>
 </div>
-<div class="section">
-<div id="vegetarian"></div>
-    </div>
+      
+<div class = "section"  data-anchor="7">
+      <div class="quizbarchart"></div>
+      <div class = "result" id="vegetarvouch-result" style="display: none;">Du gættede rigtigt</div>
+      <div class = "result" id="meatlovervouch-result" style ="display: none;">Du gættede forkert</div>
+</div>
+
       </div>
     </div>
 </div>

@@ -25,7 +25,7 @@ function drawStackedBarChart(data) {
 
   const series = stack(data);
 
-  const color = d3.scaleOrdinal().domain(keys).range(["#66c2a5", "#fc8d62"]);
+  const color = d3.scaleOrdinal().domain(keys).range(["#0096c7", "#ffa406"]);
 
   // Skalering af akser
   const xScale = d3.scaleBand().domain([0, 1]).range([0, 400]).padding(0.1);

@@ -104,7 +104,7 @@ body {
   position: fixed; /* Fixed position relative to viewport */
   top: 50%; /* Center vertically */
   left: 50%; /* Center horizontally */
-  transform: translate(-55%, 390%); /* Adjust position to truly center */
+  transform: translate(-55%, 820%); /* Adjust position to truly center */
   background: white; /* Background color */
   padding: 40px; /* Padding inside the box */
   border-radius: 5px; /* Rounded corners */

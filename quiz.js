@@ -70,9 +70,9 @@ function createQuizChart(dataset) {
     .attr("y", (d) => yScale(d.Value))
     .attr("height", (d) => height - yScale(d.Value))
     .style("fill", function (d, i) {
-      if (d.Person === "Vegetaren") {
+      if (d.Person === "Vegetarian") {
         return "#ffa406";
-      } else if (d.Person === "Kødelskeren") {
+      } else if (d.Person === "MeatEater") {
         return "#0096c7";
       }
     });
@@ -100,9 +100,9 @@ function createQuizChart(dataset) {
     .attr("text-anchor", "middle")
     .text((d) => d.Value + "%") // Tekstindholdet - procentværdien
     .style("fill", function (d) {
-      if (d.Person === "Vegetaren") {
+      if (d.Person === "Vegetarian") {
         return "#ffa406";
-      } else if (d.Person === "Kødelskeren") {
+      } else if (d.Person === "MeatEater") {
         return "#0096c7";
       }
     })
@@ -117,11 +117,11 @@ function fetchdata() {
     (data) => {
       for (var i = 0; i < data.results.length; i++) {
         dataset.push({
-          Person: "Vegetaren",
+          Person: "Vegetarian",
           Value: Number(data.results[i].percentageof1),
         });
         dataset.push({
-          Person: "Kødelskeren",
+          Person: "MeatEater",
           Value: Number(data.results[i].percentageof2),
         });
       }
