@@ -141,6 +141,10 @@ body {
   cursor: pointer;
 }
 
+#navigation li.active a {
+  transform: scale(2);
+}
+
 .tooltip_food {
   position: absolute;
   text-align: center;

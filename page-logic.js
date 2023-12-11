@@ -5,16 +5,6 @@ new fullpage("#fullpage", {
   onLeave: function () {
     disableAudio();
   },
-  anchors: [
-    "firstPage",
-    "secondPage",
-    "thirdPage",
-    "fourthPage",
-    "fithPage",
-    "sixthPage",
-    "seventhPage",
-  ],
-  menu: "#navigation",
 });
 
 const slide1 = new Audio("/sound_files/Introduction.mp3");
