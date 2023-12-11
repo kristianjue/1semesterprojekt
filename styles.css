@@ -268,8 +268,8 @@ body {
   width: 100px;
   height: 100px;
   position: fixed;
-  top: 90%;
-  left: 95%;
+  top: 89vh;
+  left: 94vw;
   border-radius: 50px;
   cursor: pointer;
   animation: jump 1s ease-in-out infinite;

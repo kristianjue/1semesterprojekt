@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CO2-udledning: Vegetarisk vs Kødret</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="fullpage.css" />
@@ -14,7 +15,7 @@
   <body>
     <script src="fullpage-src.js"></script>
     <div id="fullpage">
-      <div class="section">
+      <div class="section" data-anchor="1">
         <h1>Hvem udleder mest CO2?</h1>
       <button class="quizanswer" id="vegetarvouch">
         Vegetaren der kører i dieselbil
@@ -241,6 +242,9 @@
 
 
 <img src="arrow-down.png" class="arrow-down" onclick="fullpage_api.moveSectionDown()" />
+ <div class="speech-bubble">
+            <img src="speech-icon.png" id="icon" />
+          </div>
     <script src="/Bilchart/script.js"></script>
        <script src="vegetar.js"></script>
     <script src="d3.v7.js"></script>
@@ -252,9 +256,7 @@
   
 
 
-          <div class="speech-bubble">
-            <img src="speech-icon.png" id="icon" />
-          </div>
+         
   </body>
 </html>
 
