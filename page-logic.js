@@ -22,6 +22,7 @@ speech.addEventListener("click", function () {
 function toggleSpeechBubble() {
   currentSection = fullpage_api.getActiveSection();
   ActiveSectionNumber = currentSection.anchor;
+  console.log(currentSection);
   if (ActiveSectionNumber === "1") {
     slide1.play();
   } else if (ActiveSectionNumber === "2") {
@@ -42,3 +43,7 @@ function disableAudio() {
   sound4.pause();
   sound5.pause();
 }
+
+window.addEventListener("load", function () {
+  window.location.hash = "1";
+});

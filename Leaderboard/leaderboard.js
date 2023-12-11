@@ -126,8 +126,6 @@ function drawStackedBarChart(data) {
     .attr("transform", `translate(0, ${400})`)
     .call(
       d3.axisBottom(xScale).tickFormat(function (d) {
-        console.log(data);
-        console.log(d);
         //while (d < data.length) {
         if (data[d].person_id === 1) {
           return "Meatlover";

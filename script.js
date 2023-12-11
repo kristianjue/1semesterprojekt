@@ -22,12 +22,8 @@ fetchContent("https://api.backlogbusters.tech/tallerken/")
       }
     });
 
-    console.log(vegetarianArray);
-    console.log(meateaterArray);
-
     vegetarianData = transformData(vegetarianArray);
     meateaterData = transformData(meateaterArray);
-    console.log(vegetarianData);
 
     createBarChart(
       vegetarianData,
@@ -97,8 +93,6 @@ function createBarChart(transformData, elementSelector, lightcolor, darkcolor) {
     category,
     value,
   }));
-
-  console.log(data);
 
   const svg = d3
     .select(elementSelector)
@@ -185,7 +179,6 @@ function createBarChart(transformData, elementSelector, lightcolor, darkcolor) {
       }
       const category = d.category;
       const categorySection = document.getElementById(category);
-      console.log(category);
       categorySection.style.display = "flex";
       if (document.getElemensByClass()) {
         categorySection.style.display = "block";

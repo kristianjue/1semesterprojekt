@@ -3,7 +3,6 @@ let quizsubmitmeatlover = document.getElementById("meatlovervouch");
 
 quizsubmitvegetarian.addEventListener("click", function () {
   sendQuizRequest(1);
-  console.log("Hej");
   if ("click") {
     quizsubmitvegetarian.disabled = true;
     quizsubmitmeatlover.disabled = true;
@@ -13,7 +12,6 @@ quizsubmitvegetarian.addEventListener("click", function () {
 
 quizsubmitmeatlover.addEventListener("click", function () {
   sendQuizRequest(2);
-  console.log("hej igen");
   if ("click") {
     quizsubmitvegetarian.disabled = true;
     quizsubmitmeatlover.disabled = true;
@@ -29,7 +27,6 @@ async function sendQuizRequest(value) {
   } catch (error) {
   } finally {
     fullpage_api.moveSectionDown();
-    console.log("Success");
     fetchdata();
   }
 }

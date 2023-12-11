@@ -10,19 +10,15 @@ fetchContent("https://api.backlogbusters.tech/personbil_udvikling/2").then(
         data.personbil_udvikling[i].antal_biler,
       ]);
     }
-    console.log(dataset);
     let parseTime = d3.timeParse("%Y-%m");
 
     dataset.forEach(function (d) {
-      console.log(d[0]);
       d[0] = parseTime(d[0]);
-      console.log(d[0]);
     });
     dataset.sort(function (a, b) {
       return a[0] - b[0];
     });
 
-    console.log(dataset);
     createVisualization(dataset);
   }
 );
@@ -229,19 +225,15 @@ fetchContent("https://api.backlogbusters.tech/personbil_udvikling/1").then(
         data.personbil_udvikling[i].antal_biler,
       ]);
     }
-    console.log(dataset2);
     let parseTime = d3.timeParse("%Y-%m");
 
     dataset2.forEach(function (d) {
-      console.log(d[0]);
       d[0] = parseTime(d[0]);
-      console.log(d[0]);
     });
     dataset2.sort(function (a, b) {
       return a[0] - b[0];
     });
 
-    console.log(dataset2);
     createVisualization2(dataset2);
   }
 );
