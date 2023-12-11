@@ -1,6 +1,6 @@
 let dataset = [];
 
-// Kalder funktionen fetchContent
+// Calls the function fetchContent
 fetchContent("https://api.backlogbusters.tech/vegetarer/").then((data) => {
   for (var i = 0; i < data.vegetarer.length; i++) {
     dataset.push([
@@ -11,30 +11,30 @@ fetchContent("https://api.backlogbusters.tech/vegetarer/").then((data) => {
   displayData(dataset);
 });
 
-//Definerer højde og bredde
+//Defines height and width
 var w = 2000;
 var h = 1000;
 
-//Finder div med ID'et datavisualiseirng og laver en SVG med defineret højde og bredde
+//Finds the div with the ID datavisualiseirng and creates an SVG with defined height and width
 var svg = d3
   .select("#vegetarian")
   .append("svg")
   .attr("width", w)
   .attr("height", h);
 
-// Definerer margin
+// Defines margin
 var svg = d3.select("svg"),
   margin = 200,
   width = svg.attr("width") - margin,
   height = svg.attr("height") - margin;
 
-// Laver en skalering af dataen
+// Scales the data
 var xScale = d3.scaleLinear().domain([2017, 2022]).range([0, width]),
   yScale = d3.scaleLinear().domain([80000, 200000]).range([height, 0]);
 
 var g = svg.append("g").attr("transform", "translate(" + 100 + "," + 100 + ")");
 
-// Opretter variabel til at lave labels
+// Creates variable to make labels
 var tooltip = d3
   .select("#vegetarian")
   .append("div")
@@ -47,7 +47,7 @@ var tooltip = d3
   .style("transition", ".2s opacity");
 
 function displayData(dataset) {
-  //Tilføjelse af tekst til top og bund
+  //Adding text to top and bottom
   svg
     .append("text")
     .attr("x", width / 2 + 100)
@@ -74,7 +74,7 @@ function displayData(dataset) {
     .text("Vegetarians")
     .style("font-size", 20);
 
-  // Opretter værdier på x-aksen, men kun på specifikke årstal
+  // Creates values ​​on the x-axis, but only on specific years
   g.append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(
@@ -86,13 +86,13 @@ function displayData(dataset) {
     .selectAll("text")
     .style("font-size", "16px");
 
-  // Opretter værdier på y-aksen, hvor værdierne bliver vist som heltal
+  // Creates values ​​on the y-axis, where the values ​​are displayed as integers
   g.append("g")
     .call(d3.axisLeft(yScale).tickFormat(d3.format("d")))
     .selectAll("text")
     .style("font-size", "16px");
 
-  // Opretter datapunkter/prikker på grafen
+  // Creates data points/dots on the graph
   svg
     .append("g")
     .selectAll("dot")
@@ -110,7 +110,7 @@ function displayData(dataset) {
     .style("fill", "#ffa406")
     .style("cursor", "zoom-in")
 
-    // Logik til når man holder musen over et punkt, vises label (for 2 sek)
+    // Logic for when hovering the mouse over a point, label is displayed (for 4 sec)
     .on("mouseover", function (event, d) {
       tooltip.transition().style("opacity", 1);
 
@@ -124,7 +124,7 @@ function displayData(dataset) {
       }, 4000);
     });
 
-  // Definerer kurven
+  // Defines the line
   var line = d3
     .line()
     .x(function (d) {
@@ -135,7 +135,7 @@ function displayData(dataset) {
     })
     .curve(d3.curveMonotoneX);
 
-  //Opretter kurven
+  //Creates the line
   svg
     .append("path")
     .datum(dataset)
@@ -148,7 +148,7 @@ function displayData(dataset) {
     .style("cursor", "zoom-in");
 }
 
-// Definerer funktionen som asynkront henter data fra en url der kommer med som argument og derefter retunerer dataen som JSON
+// Defines the function that asynchronously retrieves data from a url provided as an argument and then returns the data as JSON
 async function fetchContent(url) {
   let request = await fetch(url);
   let json = await request.json();
