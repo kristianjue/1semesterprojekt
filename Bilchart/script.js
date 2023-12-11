@@ -56,7 +56,7 @@ billede[0].addEventListener("click", function () {
     "<i>" +
     "Large ICE " +
     "</i>" +
-    "(Internal combustion engine)" +
+    "(Internal Combustion Engine)" +
     "<br/>" +
     "<br/>" +
     "<b>" +
@@ -98,9 +98,9 @@ billede[1].addEventListener("click", function () {
     "Vehicle Size: " +
     "</b>" +
     "<i>" +
-    "Large BEV" +
+    "Large BEV " +
     "</i>" +
-    "(Internal combustion engine)" +
+    "(Battery Electric Vehicle)" +
     "<br/>" +
     "<br/>" +
     "<b>" +

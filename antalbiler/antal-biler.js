@@ -1,18 +1,3 @@
-//graph of fuel-car
-// Define height, width and margin
-var margin = { top: 50, right: 95, bottom: 30, left: 60 },
-  width = 730 - margin.left - margin.right,
-  height = 620 - margin.top - margin.bottom;
-
-//Add svg object to body of the page
-var svg = d3
-  .select("#line1")
-  .append("svg")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
 //Load Data, time format is used to get data in the correct format
 let dataset = [];
 let timeFormat = d3.timeFormat("%Y-%m");
@@ -43,6 +28,20 @@ fetchContent("https://api.backlogbusters.tech/personbil_udvikling/2").then(
 );
 
 function createVisualization(dataset) {
+  //graph of fuel-car
+  // Define height, width and margin2
+  var margin2 = { top: 50, right: 95, bottom: 30, left: 60 },
+    width = 730 - margin2.left - margin2.right,
+    height = 620 - margin2.top - margin2.bottom;
+
+  //Add svg object to body of the page
+  var svg = d3
+    .select("#line1")
+    .append("svg")
+    .attr("width", width + margin2.left + margin2.right)
+    .attr("height", height + margin2.top + margin2.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
   //Adds the X axis
   var x = d3
     .scaleTime()
@@ -190,8 +189,8 @@ function createVisualization(dataset) {
   //Add a title to the left of the graph
   svg
     .append("text")
-    .attr("x", -margin.left) // Placer til venstre for grafområdet
-    .attr("y", -margin.top / 2) // Placer over toppen af grafområdet
+    .attr("x", -margin2.left) // Placer til venstre for grafområdet
+    .attr("y", -margin2.top / 2) // Placer over toppen af grafområdet
     .attr("text-anchor", "start") // Juster til venstrejusteret tekst
     .style("font-size", "20px") // Juster størrelsen efter behov
     .style("fill", "black")
@@ -384,8 +383,8 @@ function createVisualization2(dataset2) {
 
   svg2
     .append("text")
-    .attr("x", -margin.left)
-    .attr("y", -margin.top / 2)
+    .attr("x", -margin2.left)
+    .attr("y", -margin2.top / 2)
     .attr("text-anchor", "start")
     .style("font-size", "20px")
     .style("fill", "black")

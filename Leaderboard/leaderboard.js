@@ -1,8 +1,3 @@
-// set the dimensions and margins of the graph
-const margin = { top: 10, right: 30, bottom: 20, left: 60 },
-  width = 460 - margin.left - margin.right,
-  height = 500 - margin.top - margin.bottom;
-
 // Fetch og opsætning af diagram
 fetchContent("https://api.backlogbusters.tech/leaderboard").then((data) => {
   const dataset2 = data.leaderboard;
@@ -11,15 +6,20 @@ fetchContent("https://api.backlogbusters.tech/leaderboard").then((data) => {
 
 // Funktion til at oprette stacked bar chart
 function drawStackedBarChart(data) {
+  // set the dimensions and margins of the graph
+  const margin1 = { top: 10, right: 30, bottom: 20, left: 60 },
+    width = 460 - margin1.left - margin1.right,
+    height = 500 - margin1.top - margin1.bottom;
+
   const keys = ["fooddata", "vehicledata"];
 
   const svg = d3
     .select("#dataforleaderboard")
     .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("width", width + margin1.left + margin1.right)
+    .attr("height", height + margin1.top + margin1.bottom)
     .append("g")
-    .attr("transform", `translate(${margin.left},${margin.top})`);
+    .attr("transform", `translate(${margin1.left},${margin1.top})`);
 
   const stack = d3.stack().keys(keys);
 
@@ -36,7 +36,7 @@ function drawStackedBarChart(data) {
   svg
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", -margin.left)
+    .attr("y", -margin1.left)
     .attr("x", 0 - height / 2)
     .attr("dy", "1em")
     .style("text-anchor", "middle")
@@ -73,6 +73,9 @@ function drawStackedBarChart(data) {
     // Fade out other bars and their corresponding parts
     d3.selectAll("rect")
       .filter((otherD) => {
+        if (!otherD || otherD.length < 2 || !d || d.length < 2) {
+          return false;
+        }
         return otherD[0] != d[0] || otherD[1] != d[1];
       })
       .transition()
