@@ -12,7 +12,7 @@ function leaderBoard() {
       width = 460 - margin1.left - margin1.right,
       height = 500 - margin1.top - margin1.bottom;
 
-    const keys = ["Co2_emmision_for_food", "Co2_emmision_for_car"];
+    const keys = ["Co2_for_food", "Co2_for_car"];
 
     const svg = d3
       .select("#dataforleaderboard")
