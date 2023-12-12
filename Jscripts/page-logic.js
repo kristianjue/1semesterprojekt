@@ -1,6 +1,7 @@
 new fullpage("#fullpage", {
   afterRender: function () {
     fullpage_api.setAllowScrolling(false);
+    fullpage_api.setKeyboardScrolling(false);
   },
   onLeave: function () {
     disableAudio();

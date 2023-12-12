@@ -3,7 +3,7 @@ let meateaterData = 0;
 let vegetarianArray = []; // Array for vegetarian meals
 let meateaterArray = []; // Array for meat meals
 
-fetchContent("https://api.backlogbusters.tech/tallerken/")
+fetchContent("https://api-7crq.onrender.com/tallerken/")
   .then((data) => {
     // iterates over data and groups by vegetarian or normal meals
     data.tallerken.forEach((meal) => {

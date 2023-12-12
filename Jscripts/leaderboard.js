@@ -1,5 +1,5 @@
 // Fetch og opsætning af diagram
-fetchContent("https://api.backlogbusters.tech/leaderboard").then((data) => {
+fetchContent("https://api-7crq.onrender.com/leaderboard").then((data) => {
   const dataset2 = data.leaderboard;
   drawStackedBarChart(dataset2);
 });
