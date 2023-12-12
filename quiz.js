@@ -21,7 +21,7 @@ quizsubmitmeatlover.addEventListener("click", function () {
 
 async function sendQuizRequest(value) {
   try {
-    await fetch("https://api.backlogbusters.tech/quizvote/" + value, {
+    await fetch("https://api-7crq.onrender.com/quizvote/" + value, {
       method: "POST",
     });
   } catch (error) {
@@ -110,7 +110,7 @@ function createQuizChart(dataset) {
 function fetchdata() {
   let dataset = [];
 
-  fetchContent("https://api.backlogbusters.tech/quizvote/results").then(
+  fetchContent("https://api-7crq.onrender.com/quizvote/results").then(
     (data) => {
       for (var i = 0; i < data.results.length; i++) {
         dataset.push({

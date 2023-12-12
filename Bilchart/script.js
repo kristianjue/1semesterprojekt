@@ -1,7 +1,7 @@
 let eCardata = [];
 let fuelCardata = [];
 
-fetchContent("https://api.backlogbusters.tech/vehicle_co2_emissions/1").then(
+fetchContent("https://api-7crq.onrender.com/vehicle_co2_emissions/1").then(
   (data) => {
     for (i = 0; i < data.vehicle_co2_emissions.length; i++) {
       eCardata.push([
@@ -13,7 +13,7 @@ fetchContent("https://api.backlogbusters.tech/vehicle_co2_emissions/1").then(
   }
 );
 
-fetchContent("https://api.backlogbusters.tech/vehicle_co2_emissions/2").then(
+fetchContent("https://api-7crq.onrender.com/vehicle_co2_emissions/2").then(
   (data) => {
     for (i = 0; i < data.vehicle_co2_emissions.length; i++) {
       fuelCardata.push([

@@ -1,7 +1,7 @@
 let datasetvegetar = [];
 
 // Calls the function fetchContent
-fetchContent("https://api.backlogbusters.tech/vegetarer/").then((data) => {
+fetchContent("https://api-7crq.onrender.com/vegetarer/").then((data) => {
   for (var i = 0; i < data.vegetarer.length; i++) {
     datasetvegetar.push([
       parseInt(data.vegetarer[i].År),

@@ -2,7 +2,7 @@
 let dataset = [];
 let timeFormat = d3.timeFormat("%Y-%m");
 
-fetchContent("https://api.backlogbusters.tech/personbil_udvikling/2").then(
+fetchContent("https://api-7crq.onrender.com/personbil_udvikling/2").then(
   (data) => {
     for (var i = 0; i < data.personbil_udvikling.length; i++) {
       dataset.push([
@@ -217,7 +217,7 @@ var svg2 = d3
 let dataset2 = [];
 let timeFormat2 = d3.timeFormat("%Y-%m");
 
-fetchContent("https://api.backlogbusters.tech/personbil_udvikling/1").then(
+fetchContent("https://api-7crq.onrender.com/personbil_udvikling/1").then(
   (data) => {
     for (var i = 0; i < data.personbil_udvikling.length; i++) {
       dataset2.push([
