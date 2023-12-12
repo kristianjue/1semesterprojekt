@@ -49,5 +49,7 @@ function scrollToSection() {
 }*/
 
 new fullpage("#fullpage", {
-  //options here
+  anchors: ["firstPage", "secondPage", "thirdPage"],
+  menu: "#navigation",
+ 
 });

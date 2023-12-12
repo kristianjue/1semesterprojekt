@@ -1,41 +1,42 @@
-let aggregatedVegetarData = 0;
-let aggregatedMeatloverData = 0;
-let maaltidVegetar = []; // maaltid 1, maaltid 4, maaltid 6
-let maaltidMeatlover = []; // maaltid 2, maaltid 3, maaltid 5
+let vegetarianData = 0;
+let meateaterData = 0;
+let vegetarianArray = []; // Array for vegetarian meals
+let meateaterArray = []; // Array for meat meals
 
 fetchContent("https://api.backlogbusters.tech/tallerken/")
   .then((data) => {
-    // Iterer over data og opdel i vegetarisk og kødelsker arrays
-
-    data.tallerken.forEach((maaltid) => {
+    // iterates over data and groups by vegetarian or normal meals
+    data.tallerken.forEach((meal) => {
       if (
-        maaltid.maaltid_id === 1 ||
-        maaltid.maaltid_id === 4 ||
-        maaltid.maaltid_id === 6
+        meal.maaltid_id === 1 ||
+        meal.maaltid_id === 4 ||
+        meal.maaltid_id === 6
       ) {
-        maaltidVegetar.push(maaltid);
+        vegetarianArray.push(meal);
       } else if (
-        maaltid.maaltid_id === 2 ||
-        maaltid.maaltid_id === 3 ||
-        maaltid.maaltid_id === 5
+        meal.maaltid_id === 2 ||
+        meal.maaltid_id === 3 ||
+        meal.maaltid_id === 5
       ) {
-        maaltidMeatlover.push(maaltid);
+        meateaterArray.push(meal);
       }
     });
 
-    console.log(maaltidVegetar);
-    console.log(maaltidMeatlover);
+    console.log(vegetarianArray);
+    console.log(meateaterArray);
 
-    aggregatedVegetarData = aggregateData(maaltidVegetar);
-    aggregatedMeatloverData = aggregateData(maaltidMeatlover);
+    vegetarianData = transformData(vegetarianArray);
+    meateaterData = transformData(meateaterArray);
+    console.log(vegetarianData);
+
     createBarChart(
-      aggregatedVegetarData,
+      vegetarianData,
       "#VegetarianBarChart",
       "rgb(255,201,7)",
       "rgb(204,131,4)"
     );
     createBarChart(
-      aggregatedMeatloverData,
+      meateaterData,
       "#MeatBarChart",
       "rgb(0,195,255)",
       "rgb(0,75,99)"
@@ -45,8 +46,15 @@ fetchContent("https://api.backlogbusters.tech/tallerken/")
     console.error("Der opstod en fejl under hentning af JSON-data:", error);
   });
 
-function aggregateData(maaltider) {
-  const aggregatedData = {
+/*In out dataset, the CO2 emissions data is showed for each ingredient and not for each diet. We therefore
+need to sum the CO2 emissions data for each diet and group them by category to make our visualization. 
+This function iterates through each meal in the diet
+and sums up the CO2 emissions data for each category. Becuase all of our data is written in strings,
+we then use parseFloat to transform it to decimal numbers. We then times every category with 365, as our
+visualization examines the CO2 emission for each diet pr year  */
+
+function transformData(diet) {
+  const transformData = {
     Agriculture: 0,
     iLUC: 0,
     FoodProcessing: 0,
@@ -55,31 +63,42 @@ function aggregateData(maaltider) {
     Retail: 0,
   };
 
-  maaltider.forEach((maaltid) => {
-    aggregatedData.Agriculture += parseFloat(maaltid.Agriculture * 365);
-    aggregatedData.iLUC += parseFloat(maaltid.iLUC * 365);
-    aggregatedData.FoodProcessing += parseFloat(maaltid.FoodProcessing * 365);
-    aggregatedData.Packaging += parseFloat(maaltid.Packaging * 365);
-    aggregatedData.Transport += parseFloat(maaltid.Transport * 365);
-    aggregatedData.Retail += parseFloat(maaltid.Retail * 365);
+  diet.forEach((meal) => {
+    transformData.Agriculture += parseFloat(meal.Agriculture * 365);
+    transformData.iLUC += parseFloat(meal.iLUC * 365);
+    transformData.FoodProcessing += parseFloat(meal.FoodProcessing * 365);
+    transformData.Packaging += parseFloat(meal.Packaging * 365);
+    transformData.Transport += parseFloat(meal.Transport * 365);
+    transformData.Retail += parseFloat(meal.Retail * 365);
   });
-  return aggregatedData;
+  return transformData;
 }
 
-function createBarChart(
-  aggregatedData,
-  elementSelector,
-  lightcolor,
-  darkcolor
-) {
+/* This function is used to create our barchart with d3. It takes 4 parameters.
+one is our transformedData, which is the result of the function above, that we have used on both arrays containing our meals.
+second is our elementSelector, which is where in our document we should place our svg
+third and fourth takes in two colorcodes which we use to make our barcharts have a darker shade based on the min and max values in our data.
+*/
+
+function createBarChart(transformData, elementSelector, lightcolor, darkcolor) {
   const margin = { top: 20, right: 20, bottom: 50, left: 100 },
     width = 600 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
-  const data = Object.entries(aggregatedData).map(([category, value]) => ({
+  /* In following code we have an object called transformData that contains data categorized 
+  by different categories and each category has a value representing CO2 emissions.
+  To make it easier to make a barchart based on category and co2 emission 
+  we needed to transform this object into an array of objects, where each object represents a category and its corresponding value 
+  We first transform our transformData object into an array with key(category) and value(co2) pairs.
+  We then map the key and value pairs into object with properties category and value. We can now
+  seperate and access the two easilier.  
+  */
+  const data = Object.entries(transformData).map(([category, value]) => ({
     category,
     value,
   }));
+
+  console.log(data);
 
   const svg = d3
     .select(elementSelector)
@@ -100,7 +119,7 @@ function createBarChart(
   const colorScale = d3
     .scaleLinear()
     .domain([0, d3.max(data, (d) => d.value)])
-    .range([lightcolor, darkcolor]); // Lys til mørk skala
+    .range([lightcolor, darkcolor]);
 
   svg
     .selectAll("rect")
@@ -108,10 +127,16 @@ function createBarChart(
     .enter()
     .append("rect")
     .attr("x", 0)
-    .attr("y", (d) => y(d.category))
-    .attr("width", (d) => x(d.value))
+    .attr("y", function (d) {
+      return y(d.category);
+    })
+    .attr("width", function (d) {
+      return x(d.value);
+    })
     .attr("height", y.bandwidth())
-    .attr("fill", (d) => colorScale(d.value))
+    .attr("fill", function (d) {
+      return colorScale(d.value);
+    })
     .attr("class", "barcharts")
     .on("mouseover", function (event, d) {
       d3.selectAll(".barcharts")
@@ -129,7 +154,7 @@ function createBarChart(
       const tooltip = d3
         .select("body")
         .append("div")
-        .attr("class", "tooltip")
+        .attr("class", "tooltip_food")
         .style("opacity", 0);
 
       tooltip.transition().duration(200).style("opacity", 0.9);
@@ -142,7 +167,7 @@ function createBarChart(
     .on("mouseout", function () {
       d3.selectAll(".barcharts").transition().duration(10).style("opacity", 1);
 
-      d3.selectAll(".tooltip").remove();
+      d3.selectAll(".tooltip_food").remove();
     })
     .on("click", function (event, d) {
       d3.selectAll(".contentplaceholder").style("display", "block");
@@ -163,7 +188,6 @@ function createBarChart(
       console.log(category);
       categorySection.style.display = "flex";
       if (document.getElemensByClass()) {
-        //categorySection.scrollIntoView({ behavior: "smooth", block: "start" });
         categorySection.style.display = "block";
       }
     });
@@ -176,11 +200,15 @@ function createBarChart(
     .enter()
     .append("text")
     .attr("class", "value-label")
-    .attr("x", (d) => x(d.value) + 5) // a little offset to the right of the bar's end
-    .attr("y", (d) => y(d.category) + y.bandwidth() / 2) // centered in the bar
+    .attr("x", function (d) {
+      return x(d.value) + 5;
+    })
+    .attr("y", function (d) {
+      return y(d.category) + y.bandwidth() / 2;
+    })
     .text((d) => d.value.toFixed(2))
-    .style("fill", "black") // text color
-    .style("font-size", "10px"); // text size
+    .style("fill", "black")
+    .style("font-size", "10px");
 
   svg
     .append("g")
@@ -193,20 +221,21 @@ function createBarChart(
 function getDescription(category) {
   const descriptions = {
     Agriculture:
-      "Tryk for at læse mere om hvordan Agriculture påvriker CO2-udledningen...",
-    iLUC: "Tryk for at læse mere om hvordan iLUC påvriker CO2-udledningen...",
+      "Press to learn more about how Agriculture effects the increase in CO2 emissions",
+    iLUC: "Press to learn more about how iLUC effects the increase in CO2 emissions",
     FoodProcessing:
-      "Tryk for at læse mere om hvordan FoodProcessing påvriker CO2-udledningen...",
+      "Press to learn more about how Food Processing effects the increase in CO2 emissions",
     Packaging:
-      "Tryk for at læse mere om hvordan Packaging påvriker CO2-udledningen...",
+      "Press to learn more about how Packaging effects the increase in CO2 emissions",
     Transport:
-      "Tryk for at læse mere om hvordan Transport påvriker CO2-udledningen...",
+      "Press to learn more about how Transport effects the increase in CO2 emissions",
     Retail:
-      "Tryk for at læse mere om hvordan Retail påvriker CO2-udledningen...",
+      "Press to learn more about how Retail effects the increase in CO2 emissions",
   };
   return descriptions[category];
 }
 
+//Function to append images
 function appendImg(place, img) {
   d3.select(place).append("img").attr("src", img);
 }
@@ -216,11 +245,12 @@ appendImg("#meatDish", "meatlover.png");
 appendImg("#vegetarianinformation", "informationbutton.png");
 appendImg("#meatinformation", "informationbutton.png");
 
+//mouseover design for when hovering over informationbutton
 d3.selectAll(".informations-billede")
-  .on("mouseover", function (event, d) {
+  .on("mouseover", function () {
     d3.select(this).style("opacity", 0.5);
   })
-  .on("mouseout", function (event, d) {
+  .on("mouseout", function () {
     d3.select(this).style("opacity", 1);
   });
 
@@ -228,38 +258,35 @@ d3.selectAll(".informations-billede img").on("click", showOverlayContentInfo);
 
 d3.select("#closeOverlay").on("click", closeOverlayContentInfo);
 
-let billede = document.getElementsByClassName("informations-billede");
+/*Handle click for vegetarian information icon. If clicked it creates a paragraph element and
+  writes the relevant description. It then calls the display function
+  */
+let image = document.getElementsByClassName("informations-billede");
 
-billede[0].addEventListener("click", function () {
-  // Handle click for vegetarian information icon
-
+image[0].addEventListener("click", function () {
   let vegetarianptag = document.createElement("p");
   vegetarianptag.innerHTML =
-    "Resultat er baseret på en vegetarisk diæt for en hel dag. Diæten består af Morgenmad:" +
-    "<br/>" +
-    "170g Müsli, 210g Sødmælk, 30 Blåbær, 30g Jordbær. Frokost: 200g Rudbrød, 140g Æg, 10g Pesto, 10g Soltørrede tomater. Aftensmad: 100g Ris, 120g Falafel, 80g Rucola Salat, 100g Rødvin.";
+    "The following vegetarian diet has been customized and the CO2 footprint has been calculated, taking into account the measurements.<br>The diet consists of Breakfast: 170g of Muesli, 210g of Milk, 30g of Blueberries, 30g of Strawberries.<br>Lunch: 200g of Rye Bread, 140g of Eggs, 10g of Pesto, 10g of Sun-dried Tomatoes.<br>Dinner: 100g of Rice, 120g of Falafel, 80g of Arugula Salad, 100g of Red Wine.";
   informationDisplay(vegetarianptag);
 });
 
-billede[1].addEventListener("click", function () {
-  // Handle click for meat information icon
-  //let overlayContent = document.getElementById("overlayContent");
+image[1].addEventListener("click", function () {
   let meatptag = document.createElement("p");
   meatptag.innerHTML =
-    "Resultatet er baseret på en normal diæt for en hel dag. Diæten består af Morgenmad: 120g Grovbolle, 50g Danbo Ost, 20g Roastbeef, 250g Appelsinjuice. Frokost: 200g Rugbrød, 80g Leverpostej, 60g Rødbede, 20g Agurk. Aftensmad: 150g Hakket Grisekød, 100g Kartoffeler, 50g Broccoli, 100g Hvidvin.";
+    "The following standard diet has been customized and the CO2 footprint has been calculated, taking into account the measurements.<br>The diet consists of Breakfast: 120g of whole grain bun, 50g of Danbo cheese, 20g of roast beef, 250g of orange juice.<br>Lunch: 200g of rye bread, 80g of liver pâté, 60g of beetroot, 20g of cucumber.<br>Dinner: 150g of minced pork, 100g of potatoes, 50g of broccoli, 100g of white wine.";
   informationDisplay(meatptag);
 });
 
+/* This function handles what to display based on if the user presses the
+vegetarian informationbutton or the meateater informationbutton. It first clears the previous
+p tag element and then it appends a new p tag element with the relevant description*/
 function informationDisplay(ptag) {
-  // Clear previous content
-  // Append the new <p> tag
   let previousTag = overlayContent.querySelector("p");
   if (previousTag) {
     previousTag.remove();
   }
   overlayContent.appendChild(ptag);
 
-  // Display the overlay
   overlayContent.style.display = "block";
 }
 
