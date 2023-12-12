@@ -7,6 +7,7 @@ quizsubmitvegetarian.addEventListener("click", function () {
     quizsubmitvegetarian.disabled = true;
     quizsubmitmeatlover.disabled = true;
     fullpage_api.setAllowScrolling(true);
+    fullpage_api.setKeyboardScrolling(true);
   }
 });
 
@@ -16,6 +17,7 @@ quizsubmitmeatlover.addEventListener("click", function () {
     quizsubmitvegetarian.disabled = true;
     quizsubmitmeatlover.disabled = true;
     fullpage_api.setAllowScrolling(true);
+    fullpage_api.setKeyboardScrolling(true);
   }
 });
 
