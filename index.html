@@ -3,26 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CO2-udledning: Vegetarisk vs Kødret</title>
+    <title>CO2-Emission: Vegetarian vs Meat Eater</title>
     <link rel="stylesheet" href="Css/styles.css" />
     <link rel="stylesheet" href="Css/fullpage.css" />
-     <link rel="stylesheet" href="/Css/antal-biler.css" />
-          <link rel="stylesheet" href="/Css/Bilchart.css" />
+     <link rel="stylesheet" href="/Css/numberofcars.css" />
+          <link rel="stylesheet" href="/Css/carChart.css" />
             <link rel="stylesheet" href="Css/Leaderboard.css" />
+                        <link rel="stylesheet" href="Css/Quiz.css" />
+
              <script src="https://d3js.org/d3.v7.min.js"></script>
   </head>
 
   <body>
     <script src="Jscripts/fullpage-src.js"></script>
     <div id="fullpage">
-      <div class="section" data-anchor="1">
-        <h1>Hvem udleder mest CO2?</h1>
-      <button class="quizanswer" id="vegetarvouch">
-        Vegetaren der kører i dieselbil
-      </button>
-      <button class="quizanswer" id="meatlovervouch">
-        Kødspiseren der kører i elbil
-      </button>
+     <div class="section" data-anchor="1">
+      <div class="quiz">
+        <h1>Introduction</h1>
+        <p id = "introduction">In a world characterized by rising temperatures, extreme weather conditions, and melting ice caps, climate change poses a global challenge. 
+          <br>Our behavior and how we use our resources impact the environment, highlighting the need to implement sustainable solutions and individual responsibility.
+          <br>
+           <br> We aim to shed light on how individual choices, such as dietary habits and modes of transportation, affect overall CO2 emissions. 
+            <br>On this page, we examine two different lifestyle scenarios: a dedicated vegan who drives a fuel-car, and a meat-eater who has chosen an environmentally friendly electric car. 
+            <br>We aim to answer the question: which of the two individuals emits more CO2 based on their lifestyle choices?
+            <br>
+            <br>Take a guess, explore our visualizations, and reflect on how your own choices can impact our planet.
+</p>
+      </div>
+        <div class = "quiz"> 
+          <div class = "quizTitle"> 
+            <h1>Guess Who Leaves The Bigger CO2 Footprint...</h1>
+          </div>
+          <div class = "quizButton">
+            <button class="quizanswer" id="vegetarvouch">
+              The Vegeterian Who Drives A Fuel Car
+            </button>
+            <button class="quizanswer" id="meatlovervouch">
+              The Meat Eater Who Drives An Electric Car
+            </button>
+          </div>   
+        </div>
     </div>
     <div class="section" data-anchor="2">
 <div id="vegetarian"></div>
@@ -30,6 +50,7 @@
 
     
     <div class="section" data-anchor="3">  
+      <h1> The Carbon Cost of Food: Vegetarian VS Standard Diet </h1>
     <div class="dashboard-food">
           <div class="dashboard-item-food" id="vegetarianDish"></div>
           <div class="dashboard-item-food">
@@ -166,7 +187,8 @@
       </div>
 
 
-<div class="section" data-anchor="5">  
+<div class="section" data-anchor="5"> 
+  <h1>CO2-Emission for a fuel car and electric car</h1> 
 <div class="dashboard">
       <div class="dashboard-item" id="mercedes"></div>
       <div class="dashboard-item">
@@ -202,15 +224,20 @@
 
 
 
-      <div class="section" data-anchor="6">
-        <h1>Who produces more CO2 in kg (leaderboard)</h1>
-    <div id="dataforleaderboard"></div>
+<div class="section" data-anchor="6">
+    <h1>Who produces more CO2 in kg (leaderboard)</h1>
+    <div class = "leaderboardcontainer"> 
+      <div id="dataforleaderboard"></div>
+    </div>
 </div>
       
 <div class = "section"  data-anchor="7">
+      <div class = "largeQuizTitle"> Lets Check The Results </div>
       <div class="quizbarchart"></div>
-      <div class = "result" id="vegetarvouch-result" style="display: none;">Du gættede rigtigt</div>
-      <div class = "result" id="meatlovervouch-result" style ="display: none;">Du gættede forkert</div>
+      <div class = "feedback">
+        <div class = "result" id="vegetarvouch-result" style="display: none;"> <h1> Congrats you were correct🎉 </h1> <p>In conclusion, our choices, whether it's related to transportation or eating habits, have an impact on how we affect the environment. Although the meat eater emits more CO2 through their diet, our study and visualizations clearly show that the overall CO2 footprint is lower for the meat eater driving an electric car compared to the vegetarian driving a fuel car. This result indicates that the choice of transportation has a significantly greater influence on an individual's total CO2 emissions than dietary habits alone. Switching to an electric car has a significant positive effect on the environment, offsetting the increased CO2 emissions associated with a meat eater's diet. Therefore, prioritizing a focus on sustainable transportation should be seen as an effective strategy to reduce an individual's environmental impact. </p> </div>
+        <div class = "result" id="meatlovervouch-result" style ="display: none;"><h1>Unfortunately you were wrong🙁 </h1> <p> In conclusion, our choices, whether it's related to transportation or eating habits, have an impact on how we affect the environment. Although the meat eater emits more CO2 through their diet, our study and visualizations clearly show that the overall CO2 footprint is lower for the meat eater driving an electric car compared to the vegetarian driving a fuel car. This result indicates that the choice of transportation has a significantly greater influence on an individual's total CO2 emissions than dietary habits alone. Switching to an electric car has a significant positive effect on the environment, offsetting the increased CO2 emissions associated with a meat eater's diet. Therefore, prioritizing a focus on sustainable transportation should be seen as an effective strategy to reduce an individual's environmental impact. </p></div>
+      </div>
 </div>
 
       </div>
@@ -219,18 +246,18 @@
 </div>
 
 
-<img src="arrow-down.png" class="arrow-down" onclick="fullpage_api.moveSectionDown()" />
  <div class="speech-bubble">
             <img src="Mediafiles/speech-icon.png" id="icon" />
+            <p id="speech-text">Press me</p>
           </div>
-    <script src="Jscripts/Bilchart.js"></script>
-       <script src="Jscripts/vegetar.js"></script>
+    <script src="Jscripts/carChart.js"></script>
+       <script src="Jscripts/vegetarian.js"></script>
     <script src="Jscripts/d3.v7.js"></script>
     <script src="Jscripts/Food.js"></script>
     <script src="Jscripts/quiz.js"></script>
     <script src="Jscripts/page-logic.js"></script>
               <script src="Jscripts/leaderboard.js"></script>
-    <script src="Jscripts/antal-biler.js"></script>
+    <script src="Jscripts/numberofcars.js"></script>
   
 
 

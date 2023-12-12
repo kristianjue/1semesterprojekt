@@ -32,17 +32,17 @@ body {
   font-family: Arial, sans-serif;
   text-align: center;
   padding: 20px;
-  color: #333; /* Mørkegrå farve for tekst */
-  background: #fff; /* Hvid baggrund */
+  color: #333;
+  background: #fff;
 }
 
 .dashboard-food {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  width: 1300px;
+  width: 90vw;
   margin: auto;
   border-radius: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1); /* Shadow for a pop-up effect */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
   background-color: rgba(255, 255, 255, 0.9);
 }
 .dashboard-item-food {
@@ -51,25 +51,23 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative; /* Ensure container is positioned relatively */
+  position: relative;
 }
 
 .full-width-food {
   grid-column: span 2;
 }
 
-/* Stil for overskriften */
 .header-food {
-  font-size: 15px; /* Større skriftstørrelse for overskriften */
-  font-weight: bold; /* Gør teksten fed */
-  margin-bottom: 10px; /* Margen under overskriften */
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-/* Stil for det store tal */
 .number-food {
-  font-size: 80px; /* Stor skriftstørrelse for tal */
-  font-weight: bold; /* Gør tallet fed */
-  margin-bottom: 5px; /* Margen under tallet */
+  font-size: 80px;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 #vegetarianNumber {
@@ -80,11 +78,10 @@ body {
   color: #0096c7;
 }
 
-/* Stil for den sekundære tekst */
 .subtext {
-  font-size: 18px; /* Mindre skriftstørrelse for sekundær tekst */
-  color: #666; /* Lysere grå farve for sekundær tekst */
-  font-style: italic; /* Kursiv stil */
+  font-size: 18px;
+  color: #666;
+  font-style: italic;
 }
 
 .dashboard-item-food img {
@@ -96,8 +93,8 @@ body {
 
 .informations-billede img {
   position: absolute;
-  bottom: 5px; /* Juster afstanden fra bunden efter behov */
-  right: 10px; /* Juster afstanden fra højre side efter behov */
+  bottom: 5px;
+  right: 10px;
   width: 25px;
   height: 25px;
   cursor: pointer;
@@ -107,30 +104,27 @@ body {
   width: 25px;
   height: 25px;
   position: absolute;
-  bottom: 10px; /* Juster afstanden fra bunden efter behov */
-  right: 50px; /* Juster afstanden fra højre side efter behov */
+  bottom: 10px;
+  right: 50px;
 }
 
 .plate:hover .info {
   visibility: visible;
 }
 
-/* Stil for overlay */
 #overlayContent {
   display: none; /* Start with hidden overlay */
-  position: fixed; /* Fixed position relative to viewport */
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, 700%);
-  background: white; /* Background color */
-  padding: 40px; /* Padding inside the box */
-  border-radius: 5px; /* Rounded corners */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 750%);
+  background: white;
+  padding: 40px;
+  border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 1); /* Shadow for a pop-up effect */
-  /*z-index: 1000; /* Ensure it's on top of other elements */
-  /*text-align: center; /* Center the text inside */
+  text-align: center; /* Center the text inside*/
 }
 
-/* Add this to style the close button */
 #closeOverlay {
   margin-top: 20px;
   padding: 5px 10px;
@@ -139,10 +133,6 @@ body {
   border: none;
   border-radius: 3px;
   cursor: pointer;
-}
-
-#navigation li.active a {
-  transform: scale(2);
 }
 
 .tooltip_food {
@@ -180,13 +170,9 @@ body {
   padding: 5px;
 }
 
-.content-text {
-  flex-basis: 60%; /* Allocate 60% of the space to the text content */
-}
-
 .image-content {
-  width: 275px; /* Adjust the maximum width as needed */
-  height: 75px; /* Adjust the maximum height as needed */
+  width: 275px;
+  height: 75px;
 }
 
 .subtitle {
@@ -206,23 +192,21 @@ body {
 }
 
 .title {
-  font-size: 3rem;
+  font-size: 30px;
   font-weight: 700;
   margin: 0;
 }
 
 .subtitle {
-  font-size: 1rem;
+  font-size: 18px;
   font-weight: 300;
-  margin-top: 0.5rem;
-  margin-bottom: 2rem;
   max-width: 600px;
 }
 
 #close-button {
   position: absolute;
-  top: 10px; /* Adjust the top position as needed */
-  left: 10px; /* Adjust the left position as needed */
+  top: 10px;
+  left: 10px;
   cursor: pointer;
   font-size: 24px;
   color: #333;
@@ -230,35 +214,6 @@ body {
 
 #close-button:hover {
   color: red;
-}
-
-.quizanswer {
-  background-color: #f7f7f7;
-  padding: 60px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  font-weight: bold;
-}
-
-.quizanswer:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-}
-
-#vegetarvouch {
-  background-color: #ffa406;
-}
-
-#meatlovervouch {
-  background-color: #0096c7;
-}
-
-.arrow-down {
-  width: 50px;
-  height: 50px;
-  position: relative;
-  transform: translate(-0%, 1400%);
-  z-index: 1000;
 }
 
 .speech-bubble {
@@ -294,4 +249,23 @@ body {
   background-image: url("../Mediafiles/Background.jpg");
   background-position: center;
   background-size: cover;
+}
+
+#speech-text {
+  color: white;
+  font-size: 14px;
+  margin-top: -8px;
+}
+
+#vegetarian {
+  max-width: 1650px;
+  margin: auto;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+#introduction {
+  font-size: 20px;
+  margin: 10px 10px;
 }

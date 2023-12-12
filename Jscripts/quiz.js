@@ -3,6 +3,8 @@ let quizsubmitmeatlover = document.getElementById("meatlovervouch");
 
 quizsubmitvegetarian.addEventListener("click", function () {
   sendQuizRequest(1);
+  showResult("vegetarvouch");
+
   if ("click") {
     quizsubmitvegetarian.disabled = true;
     quizsubmitmeatlover.disabled = true;
@@ -13,6 +15,8 @@ quizsubmitvegetarian.addEventListener("click", function () {
 
 quizsubmitmeatlover.addEventListener("click", function () {
   sendQuizRequest(2);
+  showResult("meatlovervouch");
+
   if ("click") {
     quizsubmitvegetarian.disabled = true;
     quizsubmitmeatlover.disabled = true;
@@ -107,6 +111,19 @@ function createQuizChart(dataset) {
     })
     .style("font-size", "60px") // Større skriftstørrelse
     .style("font-weight", "bold"); // Fed skrift
+}
+
+const correctAnswer = "vegetarvouch"; // ID af det korrekte svar
+
+function showResult(selectedAnswer) {
+  const resultElementId = selectedAnswer + "-result";
+  const resultElement = document.getElementById(resultElementId);
+
+  if (selectedAnswer === correctAnswer) {
+    resultElement.style.display = "block";
+  } else {
+    resultElement.style.display = "block";
+  }
 }
 
 function fetchdata() {
