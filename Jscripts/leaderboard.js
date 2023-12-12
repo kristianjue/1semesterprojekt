@@ -4,7 +4,7 @@ const margin = { top: 10, right: 30, bottom: 20, left: 60 },
   height = 500 - margin.top - margin.bottom;
 
 // Fetch and setup chart
-fetchContent("https://api.backlogbusters.tech/leaderboard").then((data) => {
+fetchContent("https://api-7crq.onrender.com/leaderboard").then((data) => {
   const dataset = data.leaderboard;
   drawStackedBarChart(dataset);
 });
