@@ -3,7 +3,7 @@ const margin = { top: 10, right: 30, bottom: 20, left: 60 },
   width = 460 - margin.left - margin.right,
   height = 500 - margin.top - margin.bottom;
 
-// Fetch og opsætning af diagram
+// Fetch and setup chart
 fetchContent("https://api.backlogbusters.tech/leaderboard").then((data) => {
   const dataset = data.leaderboard;
   drawStackedBarChart(dataset);
