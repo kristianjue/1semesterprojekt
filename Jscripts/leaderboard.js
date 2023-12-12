@@ -3,13 +3,13 @@ const margin = { top: 10, right: 30, bottom: 20, left: 60 },
   width = 460 - margin.left - margin.right,
   height = 500 - margin.top - margin.bottom;
 
-// Fetch and setup chart
+// Fetch og opsætning af diagram
 fetchContent("https://api.backlogbusters.tech/leaderboard").then((data) => {
   const dataset = data.leaderboard;
   drawStackedBarChart(dataset);
 });
 
-// Function to create stacked bar chart
+// Funktion til at oprette stacked bar chart
 function drawStackedBarChart(data) {
   const keys = ["fooddata", "vehicledata"];
 
@@ -27,12 +27,12 @@ function drawStackedBarChart(data) {
 
   const color = d3.scaleOrdinal().domain(keys).range(["#66c2a5", "#fc8d62"]);
 
-  // Scaling of axes
+  // Skalering af akser
   const xScale = d3.scaleBand().domain([0, 1]).range([0, 400]).padding(0.1);
 
   const yScale = d3.scaleLinear().domain([0, 5000]).range([400, 0]);
 
-  // Add the title to the y-axis with an adjusted y-offset
+  // Tilføj titlen til y-aksen med en justeret y-offset
   svg
     .append("text")
     .attr("transform", "rotate(-90)")
@@ -41,20 +41,21 @@ function drawStackedBarChart(data) {
     .attr("dy", "1em")
     .style("text-anchor", "middle")
     .style("font-size", "12px")
+    //.style("font-style", "italic")
     .text("Co2-emissions (kg)");
 
   const popout2 = d3.select("#popout2");
 
   const tooltip = d3
-    .select("#dataforleaderboard")
-    .append("div")
-    .style("opacity", 0)
-    .attr("class", "tooltip")
-    .style("background-color", "white")
-    .style("border", "solid")
-    .style("border-width", "1px")
-    .style("border-radius", "5px")
-    .style("padding", "10px");
+    .select("#dataforleaderboard") //div
+    .append("div") //div
+    .style("opacity", 0) //opacity 0
+    .attr("class", "tooltip") //tooltip class
+    .style("background-color", "white") //background color
+    .style("border", "solid") //border
+    .style("border-width", "1px") //border
+    .style("border-radius", "5px") //radius
+    .style("padding", "10px"); //padding
 
   // Three functions that change the tooltip and handle opacity changes
   const mouseover = function (event, d) {
@@ -90,7 +91,7 @@ function drawStackedBarChart(data) {
       .style("top", event.y + 40 + "px");
   };
 
-  // Create beams
+  // Opret bjælker
   svg
     .selectAll("g")
     .data(series)
@@ -108,7 +109,7 @@ function drawStackedBarChart(data) {
     .on("mousemove", mousemove)
     .on("mouseleave", mouseleave);
 
-  // Create x axis
+  // Opret x-akse
   svg
     .append("g")
     .attr("transform", `translate(0, ${400})`)
@@ -128,7 +129,7 @@ function drawStackedBarChart(data) {
     .selectAll("text")
     .style("font-size", "12px");
 
-  // Create y axis
+  // Opret y-akse
   svg.append("g").call(d3.axisLeft(yScale));
 }
 
