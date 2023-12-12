@@ -25,13 +25,13 @@ fetchContent("https://api.backlogbusters.tech/vehicle_co2_emissions/2").then(
   }
 );
 
-d3.select("#audi").append("img").attr("src", "2audi.png");
+d3.select("#audi").append("img").attr("src", "Mediafiles/2audi.png");
 
-d3.select("#mercedes").append("img").attr("src", "mercedesamg.png");
+d3.select("#mercedes").append("img").attr("src", "Mediafiles/mercedesamg.png");
 
 d3.selectAll(".information-picture")
   .append("img")
-  .attr("src", "informationbutton.png")
+  .attr("src", "Mediafiles/informationbutton.png")
   .on("mouseover", function (event, d) {
     d3.select(this).style("opacity", 0.5);
   })

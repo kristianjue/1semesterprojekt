@@ -233,10 +233,10 @@ function appendImg(place, img) {
   d3.select(place).append("img").attr("src", img);
 }
 
-appendImg("#vegetarianDish", "vegetarian.png");
-appendImg("#meatDish", "meatlover.png");
-appendImg("#vegetarianinformation", "informationbutton.png");
-appendImg("#meatinformation", "informationbutton.png");
+appendImg("#vegetarianDish", "Mediafiles/vegetarian.png");
+appendImg("#meatDish", "Mediafiles/meatlover.png");
+appendImg("#vegetarianinformation", "Mediafiles/informationbutton.png");
+appendImg("#meatinformation", "Mediafiles/informationbutton.png");
 
 //mouseover design for when hovering over informationbutton
 d3.selectAll(".informations-billede")

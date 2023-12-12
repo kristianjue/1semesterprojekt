@@ -7,11 +7,11 @@ new fullpage("#fullpage", {
   },
 });
 
-const slide1 = new Audio("/sound_files/Introduction.mp3");
-const slide2 = new Audio("/sound_files/development_of_vegetarians.mp3");
-const sound3 = new Audio("/sound_files/Co2_meals.mp3");
-const sound4 = new Audio("/sound_files/BEV_vs_ICE_graph.mp3");
-const sound5 = new Audio("/sound_files/BEV_vs_ICE_co2_compareson.mp3");
+const slide1 = new Audio("/Mediafiles/Introduction.mp3");
+const slide2 = new Audio("/Mediafiles/development_of_vegetarians.mp3");
+const sound3 = new Audio("/Mediafiles/Co2_meals.mp3");
+const sound4 = new Audio("/Mediafiles/BEV_vs_ICE_graph.mp3");
+const sound5 = new Audio("/Mediafiles/BEV_vs_ICE_co2_compareson.mp3");
 
 let speech = document.querySelector(".speech-bubble");
 
