@@ -1,0 +1,40 @@
+.tooltip3 {
+  position: absolute;
+  opacity: 0;
+  background-color: white;
+  border: solid 1px;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+#popout3 {
+  display: none;
+  position: absolute;
+  background-color: #ffa406;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 20px 1px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+}
+
+h1 {
+  font-size: 60px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.leaderboardcontainer {
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 1200px;
+  margin: auto;
+}
+
+.conclusion {
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 1200px;
+  margin: auto;
+}

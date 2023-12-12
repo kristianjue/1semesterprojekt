@@ -2,8 +2,11 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
-  max-width: 1500px;
+  max-width: 1650px;
   margin: auto;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+  background-color: rgba(255, 255, 255, 0.9);
 }
 .dashboard-item {
   padding: 20px;
@@ -19,7 +22,7 @@
   height: 400px;
   display: grid;
   grid-gap: 10px;
-  max-width: 1200px;
+  max-width: 1300px;
   margin: auto;
 }
 
@@ -37,20 +40,21 @@ body {
   font-size: 30px; /* Større skriftstørrelse for overskriften */
   font-weight: bold; /* Gør teksten fed */
   margin-bottom: 1px; /* Margen under overskriften */
+  color: black;
 }
 
 /* Stil for det store tal */
 #numberone {
   font-size: 72px; /* Stor skriftstørrelse for tal */
   font-weight: bold; /* Gør tallet fed */
-  color: #0076c0; /* Rød farve for tal */
+  color: #0096c7; /* Rød farve for tal */
   margin-bottom: 1px; /* Margen under tallet */
 }
 
 #numbertwo {
   font-size: 72px; /* Stor skriftstørrelse for tal */
   font-weight: bold; /* Gør tallet fed */
-  color: #d34f02; /* Rød farve for tal */
+  color: #ffa406; /* Rød farve for tal */
   margin-bottom: 1px; /* Margen under tallet */
 }
 /* Stil for den sekundære tekst */
@@ -65,7 +69,7 @@ body {
 }
 
 /*  */
-img {
+.dashboard-item img {
   width: 480px;
   height: 269.5px;
   border-radius: 4px;
@@ -74,7 +78,7 @@ img {
 
 #audi,
 #mercedes {
-  left: -100px;
+  left: -40px;
 }
 
 /* Informations knappens instillinger */
@@ -96,38 +100,39 @@ img {
 }
 
 /* Stil for overlay */
-#overlayContent {
+#overlayContentcar {
   display: none; /* Start with hidden overlay */
   position: fixed; /* Fixed position relative to viewport */
   top: 50%; /* Center vertically */
   left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Adjust position to truly center */
+  transform: translate(-55%, 820%); /* Adjust position to truly center */
   background: white; /* Background color */
   padding: 40px; /* Padding inside the box */
   border-radius: 5px; /* Rounded corners */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 1); /* Shadow for a pop-up effect */
   /*z-index: 1000; /* Ensure it's on top of other elements */
   /*text-align: center; /* Center the text inside */
+  height: 350px;
 }
 
 /* Add this to style the close button */
-#closeOverlay {
+#closeOverlaycar {
   border-radius: 50%;
   padding: 0.5em;
   width: 30px;
   height: 30px;
   border: 2px solid gray;
-  color: gray;
+  background-color: lightgray;
   position: relative;
 }
-#closeOverlay:hover {
+#closeOverlaycar:hover {
   border: 2px solid Gray;
-  background-color: lightgray;
+  background-color: white;
   color: #ffffff;
   cursor: pointer;
 }
 
-#closeOverlay::before {
+#closeOverlaycar::before {
   content: " ";
   position: absolute;
   display: block;
@@ -138,7 +143,7 @@ img {
   bottom: 5px;
   transform: rotate(45deg);
 }
-#closeOverlay::after {
+#closeOverlaycar::after {
   content: " ";
   position: absolute;
   display: block;

@@ -3,38 +3,43 @@ let quizsubmitmeatlover = document.getElementById("meatlovervouch");
 
 quizsubmitvegetarian.addEventListener("click", function () {
   sendQuizRequest(1);
-  console.log("Hej");
+  showResult("vegetarvouch");
+
   if ("click") {
     quizsubmitvegetarian.disabled = true;
     quizsubmitmeatlover.disabled = true;
+    fullpage_api.setAllowScrolling(true);
+    fullpage_api.setKeyboardScrolling(true);
   }
 });
 
 quizsubmitmeatlover.addEventListener("click", function () {
   sendQuizRequest(2);
-  console.log("hej igen");
+  showResult("meatlovervouch");
+
   if ("click") {
     quizsubmitvegetarian.disabled = true;
     quizsubmitmeatlover.disabled = true;
+    fullpage_api.setAllowScrolling(true);
+    fullpage_api.setKeyboardScrolling(true);
   }
 });
 
 async function sendQuizRequest(value) {
   try {
-    await fetch("https://api.backlogbusters.tech/quizvote/" + value, {
+    await fetch("https://api-7crq.onrender.com/quizvote/" + value, {
       method: "POST",
     });
   } catch (error) {
   } finally {
     fullpage_api.moveSectionDown();
-    console.log("Success");
     fetchdata();
   }
 }
 
 function createQuizChart(dataset) {
   console.log(dataset);
-  const margin = { top: 20, right: 20, bottom: 30, left: 40 },
+  const margin = { top: 50, right: 20, bottom: 30, left: 40 },
     width = 500 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -68,9 +73,9 @@ function createQuizChart(dataset) {
     .attr("y", (d) => yScale(d.Value))
     .attr("height", (d) => height - yScale(d.Value))
     .style("fill", function (d, i) {
-      if (d.Person === "Vegetaren") {
+      if (d.Person === "Vegetarian") {
         return "#ffa406";
-      } else if (d.Person === "Kødelskeren") {
+      } else if (d.Person === "MeatEater") {
         return "#0096c7";
       }
     });
@@ -98,9 +103,9 @@ function createQuizChart(dataset) {
     .attr("text-anchor", "middle")
     .text((d) => d.Value + "%") // Tekstindholdet - procentværdien
     .style("fill", function (d) {
-      if (d.Person === "Vegetaren") {
+      if (d.Person === "Vegetarian") {
         return "#ffa406";
-      } else if (d.Person === "Kødelskeren") {
+      } else if (d.Person === "MeatEater") {
         return "#0096c7";
       }
     })
@@ -108,18 +113,31 @@ function createQuizChart(dataset) {
     .style("font-weight", "bold"); // Fed skrift
 }
 
+const correctAnswer = "vegetarvouch"; // ID af det korrekte svar
+
+function showResult(selectedAnswer) {
+  const resultElementId = selectedAnswer + "-result";
+  const resultElement = document.getElementById(resultElementId);
+
+  if (selectedAnswer === correctAnswer) {
+    resultElement.style.display = "block";
+  } else {
+    resultElement.style.display = "block";
+  }
+}
+
 function fetchdata() {
   let dataset = [];
 
-  fetchContent("https://api.backlogbusters.tech/quizvote/results").then(
+  fetchContent("https://api-7crq.onrender.com/quizvote/results").then(
     (data) => {
       for (var i = 0; i < data.results.length; i++) {
         dataset.push({
-          Person: "Vegetaren",
+          Person: "Vegetarian",
           Value: Number(data.results[i].percentageof1),
         });
         dataset.push({
-          Person: "Kødelskeren",
+          Person: "MeatEater",
           Value: Number(data.results[i].percentageof2),
         });
       }

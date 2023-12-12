@@ -1,0 +1,271 @@
+#navigation {
+  position: fixed;
+  top: 50%;
+  right: 15px;
+  list-style-type: none;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+#navigation li {
+  margin: 10px;
+}
+
+#navigation li a {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffa406;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#navigation li a:hover {
+  transform: scale(2);
+}
+
+#navigation li a.active {
+  transform: scale(2);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+  color: #333;
+  background: #fff;
+}
+
+.dashboard-food {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 90vw;
+  margin: auto;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.dashboard-item-food {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.full-width-food {
+  grid-column: span 2;
+}
+
+.header-food {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.number-food {
+  font-size: 80px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#vegetarianNumber {
+  color: #ffa406;
+}
+
+#meatloverNumber {
+  color: #0096c7;
+}
+
+.subtext {
+  font-size: 18px;
+  color: #666;
+  font-style: italic;
+}
+
+.dashboard-item-food img {
+  width: 220px;
+  height: 220px;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.informations-billede img {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.sort-billede img {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  bottom: 10px;
+  right: 50px;
+}
+
+.plate:hover .info {
+  visibility: visible;
+}
+
+#overlayContent {
+  display: none; /* Start with hidden overlay */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 750%);
+  background: white;
+  padding: 40px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1); /* Shadow for a pop-up effect */
+  text-align: center; /* Center the text inside*/
+}
+
+#closeOverlay {
+  margin-top: 20px;
+  padding: 5px 10px;
+  background-color: gray;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.tooltip_food {
+  position: absolute;
+  text-align: center;
+  padding: 8px;
+  background: lightsteelblue;
+  border: 1px solid #666;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.barcharts {
+  cursor: pointer;
+}
+
+.contentplaceholder {
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, 500%);
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+  z-index: 1000;
+  border: 2px solid #333;
+  width: 50%;
+}
+
+.contentplaceholder img {
+  width: 220px;
+  height: 220px;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.image-content {
+  width: 275px;
+  height: 75px;
+}
+
+.subtitle {
+  color: black;
+}
+
+.content-img {
+  background-color: white;
+  max-width: min-content;
+}
+
+.header-food {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10%;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 18px;
+  font-weight: 300;
+  max-width: 600px;
+}
+
+#close-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #333;
+}
+
+#close-button:hover {
+  color: red;
+}
+
+.speech-bubble {
+  background-color: #e15554;
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  top: 89vh;
+  left: 94vw;
+  border-radius: 50px;
+  cursor: pointer;
+  animation: jump 1s ease-in-out infinite;
+}
+
+#icon {
+  margin-top: 10px;
+  width: 60px;
+  height: 60px;
+  filter: invert(1);
+}
+
+@keyframes jump {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.section {
+  background-image: url("../Mediafiles/Background.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+#speech-text {
+  color: white;
+  font-size: 14px;
+  margin-top: -8px;
+}
+
+#vegetarian {
+  max-width: 1650px;
+  margin: auto;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+#introduction {
+  font-size: 20px;
+  margin: 10px 10px;
+}
