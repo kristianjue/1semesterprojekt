@@ -1,4 +1,3 @@
-function carChart() {
   let eCardata = [];
   let fuelCardata = [];
 
@@ -368,4 +367,4 @@ function carChart() {
     let json = await request.json();
     return json;
   }
-}
+
