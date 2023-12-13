@@ -5,7 +5,6 @@ new fullpage("#fullpage", {
   },
   onLeave: function () {
     disableAudio();
-    applyDatavisualization();
   },
 });
 

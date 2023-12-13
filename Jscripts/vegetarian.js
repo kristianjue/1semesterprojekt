@@ -10,43 +10,44 @@ fetchContent("https://api-7crq.onrender.com/vegetarian/").then((data) => {
   }
   displayData(datasetvegetarian);
 });
-
-//Defines height and width
-var w = 1050;
-var h = 525;
-
-//Finds the div with the ID datavisualiseirng and creates an SVG with defined height and width
-var svg = d3
-  .select("#vegetarian")
-  .append("svg")
-  .attr("width", w)
-  .attr("height", h);
-
-// Defines margin
-var svg = d3.select("svg"),
-  margin = 200,
-  width = svg.attr("width") - margin,
-  height = svg.attr("height") - margin;
-
-// Scales the data
-var xScale = d3.scaleLinear().domain([2017, 2022]).range([0, width]),
-  yScale = d3.scaleLinear().domain([80000, 200000]).range([height, 0]);
-
-var g = svg.append("g").attr("transform", "translate(" + 100 + "," + 100 + ")");
-
-// Creates variable to make labels
-var tooltip = d3
-  .select("#vegetarian")
-  .append("div")
-  .style("position", "absolute")
-  .style("background-color", "#fff")
-  .style("padding", "3px")
-  .style("border", "1px #333 solid")
-  .style("border-radius", "5px")
-  .style("opacity", "0")
-  .style("transition", ".2s opacity");
-
 function displayData(datasetvegetarian) {
+  //Defines height and width
+  var w = 1050;
+  var h = 525;
+
+  //Finds the div with the ID datavisualiseirng and creates an SVG with defined height and width
+  var svg = d3
+    .select("#vegetarian")
+    .append("svg")
+    .attr("width", w)
+    .attr("height", h);
+
+  // Defines margin
+  var svg = d3.select("svg"),
+    margin = 200,
+    width = svg.attr("width") - margin,
+    height = svg.attr("height") - margin;
+
+  // Scales the data
+  var xScale = d3.scaleLinear().domain([2017, 2022]).range([0, width]),
+    yScale = d3.scaleLinear().domain([80000, 200000]).range([height, 0]);
+
+  var g = svg
+    .append("g")
+    .attr("transform", "translate(" + 100 + "," + 100 + ")");
+
+  // Creates variable to make labels
+  var tooltip = d3
+    .select("#vegetarian")
+    .append("div")
+    .style("position", "absolute")
+    .style("background-color", "#fff")
+    .style("padding", "3px")
+    .style("border", "1px #333 solid")
+    .style("border-radius", "5px")
+    .style("opacity", "0")
+    .style("transition", ".2s opacity");
+
   //Adding text to top and bottom
   svg
     .append("text")
