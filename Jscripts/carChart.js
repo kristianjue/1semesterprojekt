@@ -204,7 +204,9 @@ function barchartel(dataset) {
     .data(dataset)
     .enter()
     .append("rect")
-    .attr("x", x(0)) // Start from the y-axis position
+    .attr("x", function (d) {
+      return d[0] >= 0 ? x(0) : x(d[0]); // Adjust x-coordinate based on positive/negative value
+    }) // Start from the y-axis position
     .attr("y", (d) => y(d[1]))
     .attr("width", 0) // Start with zero width
     .attr("height", y.bandwidth())
@@ -298,7 +300,9 @@ function barchartFuel(dataset) {
     .data(dataset)
     .enter()
     .append("rect")
-    .attr("x", x(0)) // Start from the y-axis position
+    .attr("x", function (d) {
+      return d[0] >= 0 ? x(0) : x(d[0]); // Adjust x-coordinate based on positive/negative value
+    }) // Start from the y-axis position
     .attr("y", (d) => y(d[1]))
     .attr("width", 0) // Start with zero width
     .attr("height", y.bandwidth())
