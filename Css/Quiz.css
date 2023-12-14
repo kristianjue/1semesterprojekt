@@ -47,9 +47,11 @@
   text-align: center;
   font-size: 40px;
   color: #333;
-  width: 1600px;
+  width: 85vw;
   margin: auto;
-  margin-top: 35px;
+  padding-top: 0.5vh;
+  padding-bottom: 0.5vh;
+  margin-top: 2vh;
 }
 
 #meatlovervouch-result {
@@ -85,11 +87,11 @@
 .result p {
   font-size: 2.3vh;
   margin-left: 10vw;
-  margin-right: 20vw;
+  margin-right: 10vw;
 }
 
 .result h1 {
   font-size: 3vh;
   margin-left: 10vw;
-  margin-right: 20vw;
+  margin-right: 10vw;
 }

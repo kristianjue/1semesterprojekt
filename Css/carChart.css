@@ -106,7 +106,6 @@ body {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 1); /* Shadow for a pop-up effect */
   /*z-index: 1000; /* Ensure it's on top of other elements */
   /*text-align: center; /* Center the text inside */
-  height: 60vh;
 }
 
 /* Add this to style the close button */

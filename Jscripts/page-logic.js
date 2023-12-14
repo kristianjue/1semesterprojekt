@@ -48,13 +48,21 @@ function toggleSpeechBubble() {
 
 function disableAudio() {
   slide1.pause();
+  slide1.currentTime = 0;
   slide2.pause();
+  slide2.currentTime = 0;
   slide3.pause();
+  slide3.currentTime = 0;
   slide4.pause();
+  slide4.currentTime = 0;
   slide5.pause();
+  slide5.currentTime = 0;
   slide6.pause();
+  slide6.currentTime = 0;
   slide7.pause();
+  slide7.currentTime = 0;
   slide8.pause();
+  slide8.currentTime = 0;
 }
 
 window.addEventListener("load", function () {
