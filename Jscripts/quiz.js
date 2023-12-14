@@ -139,7 +139,7 @@ function fetchdata() {
           Value: Number(data.results[i].percentageof1),
         });
         dataset.push({
-          Person: "MeatEater",
+          Person: "Meateater",
           Value: Number(data.results[i].percentageof2),
         });
       }
