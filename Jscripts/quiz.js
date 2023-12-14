@@ -77,7 +77,7 @@ function createQuizChart(dataset) {
     .style("fill", function (d, i) {
       if (d.Person === "Vegetarian") {
         return "#ffa406";
-      } else if (d.Person === "MeatEater") {
+      } else if (d.Person === "Meateater") {
         return "#0096c7";
       }
     });
@@ -107,7 +107,7 @@ function createQuizChart(dataset) {
     .style("fill", function (d) {
       if (d.Person === "Vegetarian") {
         return "#ffa406";
-      } else if (d.Person === "MeatEater") {
+      } else if (d.Person === "Meateater") {
         return "#0096c7";
       }
     })
