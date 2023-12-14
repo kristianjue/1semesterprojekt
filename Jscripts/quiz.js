@@ -41,7 +41,6 @@ async function sendQuizRequest(value) {
 }
 
 function createQuizChart(dataset) {
-  console.log(dataset);
   const margin = { top: 70, right: 20, bottom: 30, left: 40 },
     width = 405 - margin.left - margin.right,
     height = 405 - margin.top - margin.bottom;
