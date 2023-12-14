@@ -9,7 +9,6 @@
   background-color: rgba(255, 255, 255, 0.9);
 }
 .dashboard-item {
-  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -59,7 +58,7 @@ body {
 }
 /* Stil for den sekundære tekst */
 .subtext {
-  font-size: 18px; /* Mindre skriftstørrelse for sekundær tekst */
+  font-size: 2.1vh; /* Mindre skriftstørrelse for sekundær tekst */
   color: #666; /* Lysere grå farve for sekundær tekst */
   font-style: italic; /* Kursiv stil */
 }
@@ -74,11 +73,6 @@ body {
   height: 269.5px;
   border-radius: 4px;
   padding: 5px;
-}
-
-#audi,
-#mercedes {
-  left: -40px;
 }
 
 /* Informations knappens instillinger */
@@ -105,14 +99,14 @@ body {
   position: fixed; /* Fixed position relative to viewport */
   top: 50%; /* Center vertically */
   left: 50%; /* Center horizontally */
-  transform: translate(-55%, 820%); /* Adjust position to truly center */
+  transform: translate(-27vw, 370vh); /* Adjust position to truly center */
   background: white; /* Background color */
   padding: 40px; /* Padding inside the box */
   border-radius: 5px; /* Rounded corners */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 1); /* Shadow for a pop-up effect */
   /*z-index: 1000; /* Ensure it's on top of other elements */
   /*text-align: center; /* Center the text inside */
-  height: 350px;
+  height: 60vh;
 }
 
 /* Add this to style the close button */

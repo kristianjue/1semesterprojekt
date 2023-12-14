@@ -7,7 +7,7 @@ fetchContent("https://api-7crq.onrender.com/leaderboard").then((data) => {
 // Function to create stacked bar chart
 function drawStackedBarChart(data) {
   // set the dimensions and margins of the graph
-  const margin1 = { top: 10, right: 30, bottom: 20, left: 60 },
+  const margin1 = { top: 10, right: 30, bottom: 10, left: 60 },
     width = 460 - margin1.left - margin1.right,
     height = 500 - margin1.top - margin1.bottom;
 

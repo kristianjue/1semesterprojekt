@@ -10,7 +10,9 @@ quizsubmitvegetarian.addEventListener("click", function () {
     quizsubmitmeatlover.disabled = true;
     fullpage_api.setAllowScrolling(true);
     fullpage_api.setKeyboardScrolling(true);
+    fullpage_api.moveSectionDown();
   }
+  return (wasAnwserCorrect = true);
 });
 
 quizsubmitmeatlover.addEventListener("click", function () {
@@ -22,7 +24,9 @@ quizsubmitmeatlover.addEventListener("click", function () {
     quizsubmitmeatlover.disabled = true;
     fullpage_api.setAllowScrolling(true);
     fullpage_api.setKeyboardScrolling(true);
+    fullpage_api.moveSectionDown();
   }
+  return (wasAnwserCorrect = false);
 });
 
 async function sendQuizRequest(value) {
@@ -32,16 +36,15 @@ async function sendQuizRequest(value) {
     });
   } catch (error) {
   } finally {
-    fullpage_api.moveSectionDown();
     fetchdata();
   }
 }
 
 function createQuizChart(dataset) {
   console.log(dataset);
-  const margin = { top: 50, right: 20, bottom: 30, left: 40 },
-    width = 500 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+  const margin = { top: 70, right: 20, bottom: 30, left: 40 },
+    width = 405 - margin.left - margin.right,
+    height = 405 - margin.top - margin.bottom;
 
   const xScale = d3
     .scaleBand()
@@ -55,7 +58,7 @@ function createQuizChart(dataset) {
     .domain([0, d3.max(dataset, (d) => d.Value)]);
 
   const svg = d3
-    .select(".quizbarchart")
+    .select(".quizbarchartContainer")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -109,7 +112,7 @@ function createQuizChart(dataset) {
         return "#0096c7";
       }
     })
-    .style("font-size", "60px") // Større skriftstørrelse
+    .style("font-size", "4vw") // Større skriftstørrelse
     .style("font-weight", "bold"); // Fed skrift
 }
 

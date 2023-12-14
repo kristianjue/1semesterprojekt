@@ -17,24 +17,14 @@
   z-index: 9999;
 }
 
-h1 {
-  font-size: 60px;
-  font-weight: bold;
-  text-align: center;
-}
-
 .leaderboardcontainer {
   border-radius: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
   background-color: rgba(255, 255, 255, 0.9);
-  width: 1200px;
+  width: 70vw;
   margin: auto;
 }
 
-.conclusion {
-  border-radius: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
-  background-color: rgba(255, 255, 255, 0.9);
-  width: 1200px;
-  margin: auto;
+#dataforleaderboard {
+  padding-top: 3vh;
 }

@@ -1,8 +1,8 @@
 //graph of fuel-car
 // Define height, width and margin2
 var margin2 = { top: 50, right: 95, bottom: 30, left: 60 },
-  width = 730 - margin2.left - margin2.right,
-  height = 620 - margin2.top - margin2.bottom;
+  width = 620 - margin2.left - margin2.right,
+  height = 527 - margin2.top - margin2.bottom;
 
 //Add svg object to body of the page
 var svg = d3
@@ -202,8 +202,8 @@ async function fetchContent(url) {
 
 //graph over electric-car - this is done the same way as above
 var margin2 = { top: 50, right: 95, bottom: 30, left: 60 },
-  width2 = 730 - margin2.left - margin2.right,
-  height2 = 620 - margin2.top - margin2.bottom;
+  width2 = 620 - margin2.left - margin2.right,
+  height2 = 527 - margin2.top - margin2.bottom;
 
 //Add svg object to body of the page
 var svg2 = d3

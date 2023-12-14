@@ -12,8 +12,8 @@ fetchContent("https://api-7crq.onrender.com/vegetarian/").then((data) => {
 });
 function displayData(datasetvegetarian) {
   //Defines height and width
-  var w = 1050;
-  var h = 525;
+  var w = 1000;
+  var h = 500;
 
   //Finds the div with the ID datavisualiseirng and creates an SVG with defined height and width
   var svg = d3
@@ -52,15 +52,6 @@ function displayData(datasetvegetarian) {
   svg
     .append("text")
     .attr("x", width / 2 + 100)
-    .attr("y", 100)
-    .attr("text-anchor", "middle")
-    .style("font-family", "Helvetica")
-    .style("font-size", 32)
-    .text("Development of vegetarians in Denmark");
-
-  svg
-    .append("text")
-    .attr("x", width / 2 + 100)
     .attr("y", height - 15 + 150)
     .attr("text-anchor", "middle")
     .style("font-family", "Helvetica")
@@ -70,10 +61,11 @@ function displayData(datasetvegetarian) {
   svg
     .append("text")
     .attr("text-anchor", "middle")
-    .attr("transform", "translate(85,55)")
+    .attr("transform", "translate(85,70)")
     .style("font-family", "Helvetica")
     .text("Vegetarians")
-    .style("font-size", 20);
+    .attr("id", "vegetarianVisualisationTexts");
+  //.style("font-size", 20)
 
   // Creates values ​​on the x-axis, but only on specific years
   g.append("g")
@@ -117,7 +109,7 @@ function displayData(datasetvegetarian) {
 
       tooltip
         .html(d[1].toLocaleString("da-DK") + " Vegetarians")
-        .style("font-size", "20px")
+        .style("font-size", "1.1vw")
         .style("left", event.pageX + "px")
         .style("top", event.pageY + 15 + "px");
       setTimeout(function () {

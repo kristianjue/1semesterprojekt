@@ -5,6 +5,10 @@ body {
   color: #333;
 }
 
+#headingForIntroduktion {
+  padding-top: 2vh;
+}
+
 .dashboard-food {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -15,7 +19,6 @@ body {
   background-color: rgba(255, 255, 255, 0.9);
 }
 .dashboard-item-food {
-  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -86,7 +89,7 @@ body {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, 750%);
+  transform: translate(-24vw, 184vh);
   background: white;
   padding: 40px;
   border-radius: 5px;
@@ -122,7 +125,7 @@ body {
   position: fixed;
   top: 60%;
   left: 50%;
-  transform: translate(-50%, 500%);
+  transform: translate(-27vw, 175vh);
   background: white;
   padding: 40px;
   border-radius: 20px;
@@ -187,20 +190,20 @@ body {
 
 .speech-bubble {
   background-color: #e15554;
-  width: 100px;
-  height: 100px;
+  width: 10vh;
+  height: 10vh;
   position: fixed;
   top: 89vh;
   left: 94vw;
-  border-radius: 50px;
+  border-radius: 25vh;
   cursor: pointer;
   animation: jump 1s ease-in-out infinite;
 }
 
 #icon {
-  margin-top: 10px;
-  width: 60px;
-  height: 60px;
+  margin-top: 1vh;
+  width: 5vh;
+  height: 5vh;
   filter: invert(1);
 }
 
@@ -227,7 +230,7 @@ body {
 }
 
 #vegetarian {
-  max-width: 1650px;
+  width: 80vw;
   margin: auto;
   border-radius: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
@@ -235,7 +238,27 @@ body {
 }
 
 #introduction {
-  font-size: 20px;
-  margin: 10px;
-  padding-bottom: 20px;
+  font-size: 2vh;
+  margin: 5vh;
+  padding-bottom: 2vh;
+}
+
+#titleForFoodEmission {
+  font-size: 3vh;
+}
+
+#titleForCarEmission {
+  font-size: 3vh;
+}
+
+#vegetarianVisualisationTexts {
+  font-size: 2.7vh;
+}
+
+.titleForSlide {
+  font-size: 3vh;
+}
+
+.fp-watermark {
+  display: none;
 }

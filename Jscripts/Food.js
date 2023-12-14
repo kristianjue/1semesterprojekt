@@ -74,8 +74,8 @@ third and fourth takes in two colorcodes which we use to make our barcharts have
 
 function createBarChart(transformData, elementSelector, lightcolor, darkcolor) {
   const margin = { top: 20, right: 20, bottom: 50, left: 100 },
-    width = 600 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    width = 498 - margin.left - margin.right,
+    height = 332 - margin.top - margin.bottom;
 
   /* In following code we have an object called transformData that contains data categorized 
   by different categories and each category has a value representing CO2 emissions.

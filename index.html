@@ -11,15 +11,14 @@
             <link rel="stylesheet" href="/Css/Leaderboard.css" />
                         <link rel="stylesheet" href="/Css/Quiz.css" />
 
-             <script src="https://d3js.org/d3.v7.min.js"></script>
   </head>
 
   <body>
-    <script src="Jscripts/fullpage-src.js"></script>
+    <script src="Jscripts/fullpage.min.js"></script>
     <div id="fullpage">
      <div class="section" data-anchor="1">
       <div class="quiz">
-        <h1>Introduction</h1>
+        <h1 id="headingForIntroduktion">Introduction</h1>
         <p id = "introduction">In a world characterized by rising temperatures, extreme weather conditions, and melting ice caps, climate change poses a global challenge. 
           <br>Our behavior and how we use our resources impact the environment, highlighting the need to implement sustainable solutions and individual responsibility.
           <br>
@@ -32,7 +31,7 @@
       </div>
         <div class = "quiz"> 
           <div class = "quizTitle"> 
-            <h1>Guess Who Leaves The Bigger CO2 Footprint...</h1>
+            <h2>Guess Who Leaves The Bigger CO2 Footprint...</h2>
           </div>
           <div class = "quizButton">
             <button class="quizanswer" id="vegetarvouch">
@@ -45,12 +44,13 @@
         </div>
     </div>
     <div class="section" data-anchor="2">
+            <h1 id="titleForFoodEmission">Development of vegetarians in Denmark</h1>
 <div id="vegetarian"></div>
     </div>
 
     
     <div class="section" data-anchor="3">  
-      <h1> The Carbon Cost of Food: Vegetarian VS Standard Diet </h1>
+      <h1 id="titleForFoodEmission"> The Carbon Cost of Food: Vegetarian VS Standard Diet </h1>
     <div class="dashboard-food">
           <div class="dashboard-item-food" id="vegetarianDish"></div>
           <div class="dashboard-item-food">
@@ -177,7 +177,7 @@
 </div>
 
       <div class="section" data-anchor="4">
-        <h1>The number of private cars categorized by ownership, fuel type, and time.</h1>
+        <h1 id="headingForCarDevelopment">The number of private cars categorized by ownership, fuel type, and time.</h1>
         <div class="chart-container">
           <div class="chart" id="line1"></div>
           <div class="chart" id="line2"></div>
@@ -188,7 +188,7 @@
 
 
 <div class="section" data-anchor="5"> 
-  <h1>CO2-Emission for a fuel car and electric car</h1> 
+  <h1 id="titleForCarEmission">CO2-Emission for a fuel car and electric car</h1> 
 <div class="dashboard">
       <div class="dashboard-item" id="mercedes"></div>
       <div class="dashboard-item">
@@ -233,7 +233,9 @@
       
 <div class = "section"  data-anchor="7">
       <div class = "largeQuizTitle"> Lets Check The Results </div>
-      <div class="quizbarchart"></div>
+      <div class="quizbarchart">
+        <div class="quizbarchartContainer"></div>
+      </div>
       <div class = "feedback">
         <div class = "result" id="vegetarvouch-result" style="display: none;"> <h1> Congrats you were correct🎉 </h1> <p>In conclusion, our choices, whether it's related to transportation or eating habits, have an impact on how we affect the environment. Although the meat eater emits more CO2 through their diet, our study and visualizations clearly show that the overall CO2 footprint is lower for the meat eater driving an electric car compared to the vegetarian driving a fuel car. This result indicates that the choice of transportation has a significantly greater influence on an individual's total CO2 emissions than dietary habits alone. Switching to an electric car has a significant positive effect on the environment, offsetting the increased CO2 emissions associated with a meat eater's diet. Therefore, prioritizing a focus on sustainable transportation should be seen as an effective strategy to reduce an individual's environmental impact. </p> </div>
         <div class = "result" id="meatlovervouch-result" style ="display: none;"><h1>Unfortunately you were wrong🙁 </h1> <p> In conclusion, our choices, whether it's related to transportation or eating habits, have an impact on how we affect the environment. Although the meat eater emits more CO2 through their diet, our study and visualizations clearly show that the overall CO2 footprint is lower for the meat eater driving an electric car compared to the vegetarian driving a fuel car. This result indicates that the choice of transportation has a significantly greater influence on an individual's total CO2 emissions than dietary habits alone. Switching to an electric car has a significant positive effect on the environment, offsetting the increased CO2 emissions associated with a meat eater's diet. Therefore, prioritizing a focus on sustainable transportation should be seen as an effective strategy to reduce an individual's environmental impact. </p></div>
@@ -250,9 +252,9 @@
             <img src="Mediafiles/speech-icon.png" id="icon" />
             <p id="speech-text">Press me</p>
           </div>
+    <script src="Jscripts/d3.v7.min.js"></script>
     <script src="Jscripts/carChart.js"></script>
        <script src="Jscripts/vegetarian.js"></script>
-    <script src="Jscripts/d3.v7.js"></script>
     <script src="Jscripts/Food.js"></script>
     <script src="Jscripts/quiz.js"></script>
     <script src="Jscripts/page-logic.js"></script>
