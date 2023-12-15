@@ -184,9 +184,7 @@ function barchartel(dataset) {
       d3.min(dataset, function (d) {
         return d[0];
       }),
-      d3.max(dataset, function (d) {
-        return d[0];
-      }),
+      2687.5,
     ])
 
     .range([-0.2, width]);
@@ -204,7 +202,9 @@ function barchartel(dataset) {
     .data(dataset)
     .enter()
     .append("rect")
-    .attr("x", x(0)) // Start from the y-axis position
+    .attr("x", function (d) {
+      return d[0] >= 0 ? x(0) : x(d[0]); // Adjust x-coordinate based on positive/negative value
+    }) // Start from the y-axis position
     .attr("y", (d) => y(d[1]))
     .attr("width", 0) // Start with zero width
     .attr("height", y.bandwidth())
@@ -254,7 +254,7 @@ function barchartel(dataset) {
   svg
     .append("g")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
+    .call(d3.axisBottom(x).ticks(8));
 
   // Append y-axis
   svg.append("g").call(d3.axisLeft(y));
@@ -298,7 +298,9 @@ function barchartFuel(dataset) {
     .data(dataset)
     .enter()
     .append("rect")
-    .attr("x", x(0)) // Start from the y-axis position
+    .attr("x", function (d) {
+      return d[0] >= 0 ? x(0) : x(d[0]); // Adjust x-coordinate based on positive/negative value
+    }) // Start from the y-axis position
     .attr("y", (d) => y(d[1]))
     .attr("width", 0) // Start with zero width
     .attr("height", y.bandwidth())

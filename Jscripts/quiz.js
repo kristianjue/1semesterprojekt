@@ -41,7 +41,6 @@ async function sendQuizRequest(value) {
 }
 
 function createQuizChart(dataset) {
-  console.log(dataset);
   const margin = { top: 70, right: 20, bottom: 30, left: 40 },
     width = 405 - margin.left - margin.right,
     height = 405 - margin.top - margin.bottom;
@@ -78,7 +77,7 @@ function createQuizChart(dataset) {
     .style("fill", function (d, i) {
       if (d.Person === "Vegetarian") {
         return "#ffa406";
-      } else if (d.Person === "MeatEater") {
+      } else if (d.Person === "Meateater") {
         return "#0096c7";
       }
     });
@@ -108,7 +107,7 @@ function createQuizChart(dataset) {
     .style("fill", function (d) {
       if (d.Person === "Vegetarian") {
         return "#ffa406";
-      } else if (d.Person === "MeatEater") {
+      } else if (d.Person === "Meateater") {
         return "#0096c7";
       }
     })
@@ -140,7 +139,7 @@ function fetchdata() {
           Value: Number(data.results[i].percentageof1),
         });
         dataset.push({
-          Person: "MeatEater",
+          Person: "Meateater",
           Value: Number(data.results[i].percentageof2),
         });
       }
