@@ -144,6 +144,13 @@ function fetchdata() {
         });
       }
       createQuizChart(dataset);
+      let percentageofVegetarian = dataset[0].Value;
+      let percentageofMeateater = dataset[1].Value;
+      if (percentageofVegetarian > percentageofMeateater) {
+        return (highestPercentage = "Vegetarian");
+      } else if (percentageofVegetarian < percentageofMeateater) {
+        return (highestPercentage = "Meateater");
+      }
     }
   );
 

@@ -7,9 +7,9 @@ fetchContent("https://api-7crq.onrender.com/leaderboard").then((data) => {
 // Function to create stacked bar chart
 function drawStackedBarChart(data) {
   // set the dimensions and margins of the graph
-  const margin1 = { top: 10, right: 30, bottom: 10, left: 60 },
+  const margin1 = { top: 10, right: 30, bottom: 20, left: 60 },
     width = 460 - margin1.left - margin1.right,
-    height = 500 - margin1.top - margin1.bottom;
+    height = 400 - margin1.top - margin1.bottom;
 
   const keys = ["Co2_for_food", "Co2_for_car"];
 
@@ -30,7 +30,7 @@ function drawStackedBarChart(data) {
   // Scaling of axes
   const xScale = d3.scaleBand().domain([0, 1]).range([0, 400]).padding(0.1);
 
-  const yScale = d3.scaleLinear().domain([0, 5000]).range([400, 0]);
+  const yScale = d3.scaleLinear().domain([0, 5000]).range([300, 0]);
 
   // Add the title to the y-axis with an adjusted y-offset
   svg
@@ -122,7 +122,10 @@ function drawStackedBarChart(data) {
   // Create x axis
   svg
     .append("g")
-    .attr("transform", `translate(0, ${400})`)
+    .attr(
+      "transform",
+      `translate(0, ${height + margin1.top + margin1.bottom - 100})`
+    )
     .call(
       d3.axisBottom(xScale).tickFormat(function (d) {
         //while (d < data.length) {

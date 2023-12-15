@@ -13,7 +13,8 @@ const slide2 = new Audio("../Mediafiles/development_of_vegetarians.mp3");
 const slide3 = new Audio("../Mediafiles/Co2_meals.mp3");
 const slide4 = new Audio("../Mediafiles/BEV_vs_ICE_graph.mp3");
 const slide5 = new Audio("../Mediafiles/BEV_vs_ICE_co2_compareson.mp3");
-const slide6 = new Audio("../Mediafiles/Leaderboard.mp3");
+const slide6meat = new Audio("../Mediafiles/GuessedOnMeateater.mp3");
+const slide6vegetarian = new Audio("../Mediafiles/GuessedOnVegetarian.mp3");
 const slide7 = new Audio("../Mediafiles/Congrats.mp3");
 const slide8 = new Audio("../Mediafiles/Wrong.mp3");
 
@@ -36,8 +37,13 @@ function toggleSpeechBubble() {
     slide4.play();
   } else if (ActiveSectionNumber === "5") {
     slide5.play();
-  } else if (ActiveSectionNumber === "6") {
-    slide6.play();
+  } else if (ActiveSectionNumber === "6" && highestPercentage === "Meateater") {
+    slide6meat.play();
+  } else if (
+    ActiveSectionNumber === "6" &&
+    highestPercentage === "Vegetarian"
+  ) {
+    slide6vegetarian.play();
   } else if (ActiveSectionNumber === "7" && wasAnwserCorrect === true) {
     slide7.play();
   } else if (ActiveSectionNumber === "7" && wasAnwserCorrect === false) {
@@ -56,8 +62,10 @@ function disableAudio() {
   slide4.currentTime = 0;
   slide5.pause();
   slide5.currentTime = 0;
-  slide6.pause();
-  slide6.currentTime = 0;
+  slide6meat.pause();
+  slide6meat.currentTime = 0;
+  slide6vegetarian.pause();
+  slide6vegetarian.currentTime = 0;
   slide7.pause();
   slide7.currentTime = 0;
   slide8.pause();
