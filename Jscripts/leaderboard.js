@@ -46,15 +46,15 @@ function drawStackedBarChart(data) {
   const popout3 = d3.select("#popout3");
 
   const tooltip3 = d3
-    .select("#dataforleaderboard") //div
-    .append("div") //div
-    .style("opacity", 0) //opacity 0
-    .attr("class", "tooltip3") //tooltip class
-    .style("background-color", "white") //background color
-    .style("border", "solid") //border
-    .style("border-width", "1px") //border
-    .style("border-radius", "5px") //radius
-    .style("padding", "10px"); //padding
+    .select("#dataforleaderboard")
+    .append("div")
+    .style("opacity", 0)
+    .attr("class", "tooltip3")
+    .style("background-color", "white")
+    .style("border", "solid")
+    .style("border-width", "1px")
+    .style("border-radius", "5px")
+    .style("padding", "10px");
 
   // Three functions that change the tooltip and handle opacity changes
   const mouseover = function (event, d) {
