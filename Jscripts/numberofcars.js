@@ -1,8 +1,8 @@
 //graph of fuel-car
 // Define height, width and margin2
 var margin2 = { top: 50, right: 95, bottom: 30, left: 60 },
-  width = 620 - margin2.left - margin2.right,
-  height = 527 - margin2.top - margin2.bottom;
+  width = 558 - margin2.left - margin2.right,
+  height = 474 - margin2.top - margin2.bottom;
 
 //Add svg object to body of the page
 var svg = d3
@@ -72,23 +72,23 @@ function createVisualization(dataset) {
   //Add text to the reference area
   svg
     .append("text")
-    .attr("x", x(referenceDate) - 80) // Justér denne værdi for at justere vandret placering af teksten
-    .attr("y", -30) // Justér denne værdi for at justere lodret placering af teksten
+    .attr("x", x(referenceDate) - 80)
+    .attr("y", -30)
     .text("Decrease of -2.19%")
     .style("font-size", "14px")
     .style("font-weight", "bold")
     .append("tspan")
     .attr("x", x(referenceDate) - 80)
-    .attr("dy", 20) // Justér denne værdi for at justere afstanden mellem linjerne
+    .attr("dy", 20)
     .text("from 2022/10 to 2023/10")
     .style("font-size", "12px")
-    .style("font-weight", "normal"); // Gør kun denne del ikke-fed
+    .style("font-weight", "normal");
 
   //Colors the reference area
   svg
     .append("rect")
     .attr("x", x(referenceDate)) // Start x-koordinatet for farvet område
-    .attr("width", width - x(referenceDate)) // Bredden af det farvede område
+    .attr("width", width - x(referenceDate))
     .attr("y", 0)
     .attr("height", height)
     .attr("fill", "rgba(255, 164, 6, 0.3)");
@@ -183,10 +183,10 @@ function createVisualization(dataset) {
   //Add a title to the left of the graph
   svg
     .append("text")
-    .attr("x", -margin2.left) // Placer til venstre for grafområdet
-    .attr("y", -margin2.top / 2) // Placer over toppen af grafområdet
-    .attr("text-anchor", "start") // Juster til venstrejusteret tekst
-    .style("font-size", "20px") // Juster størrelsen efter behov
+    .attr("x", -margin2.left)
+    .attr("y", -margin2.top / 2)
+    .attr("text-anchor", "start")
+    .style("font-size", "20px")
     .style("fill", "black")
     .style("text-decoration", "underline")
     .text("Fuel-cars");
@@ -201,8 +201,8 @@ async function fetchContent(url) {
 
 //graph over electric-car - this is done the same way as above
 var margin2 = { top: 50, right: 95, bottom: 30, left: 60 },
-  width2 = 620 - margin2.left - margin2.right,
-  height2 = 527 - margin2.top - margin2.bottom;
+  width2 = 558 - margin2.left - margin2.right,
+  height2 = 474 - margin2.top - margin2.bottom;
 
 //Add svg object to body of the page
 var svg2 = d3
