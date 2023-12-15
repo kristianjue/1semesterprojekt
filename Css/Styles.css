@@ -5,10 +5,6 @@ body {
   color: #333;
 }
 
-#headingForIntroduktion {
-  padding-top: 2vh;
-}
-
 .dashboard-food {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -243,20 +239,12 @@ body {
   padding-bottom: 2vh;
 }
 
-#titleForFoodEmission {
-  font-size: 3vh;
-}
-
-#titleForCarEmission {
-  font-size: 3vh;
-}
-
 #vegetarianVisualisationTexts {
   font-size: 2.7vh;
 }
 
 .titleForSlide {
-  font-size: 3vh;
+  font-size: 3.3vh;
 }
 
 .fp-watermark {

@@ -29,14 +29,14 @@ fetchContent("https://api-7crq.onrender.com/vehicle_co2_emissions/2").then(
 //add images for Audi and Mercedes
 d3.select("#audi").append("img").attr("src", "../Mediafiles/2audi.png");
 
-d3.select("#mercedes")
+d3.select("#rangerover")
   .append("img")
-  .attr("src", "../Mediafiles/mercedesamg.png");
+  .attr("src", "../Mediafiles/rangerover.png");
 
 // add information icons to elements, with mouseover and mouseout event
 d3.selectAll(".information-picture")
   .append("img")
-  .attr("src", "Mediafiles/informationbutton.png")
+  .attr("src", "../Mediafiles/informationbutton.png")
   .on("mouseover", function (event, d) {
     d3.select(this).style("opacity", 0.5);
   })
